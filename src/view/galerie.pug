@@ -1,0 +1,52 @@
+    include partials/header
+    include partials/menu
+    
+    
+    <div class="d-flex justify-content-end text-center my-4">
+        <h3 id="titreOeuvre" class="titreGalerie m-0" style="display:none">Le Reveur des Prairies<br><span>Jerome Floyd 2024</span></h3>
+    </div>
+    <div class="container-fluid">
+        <div class="row flex-column-reverse flex-md-row">
+            <div class="col-12 col-md-9 d-flex align-items-center">
+                <p id="descriptionOeuvre" style="display:none" class="galerieText text-center text-md-start">Au cœur de cette vaste toile étendue, intitulée "Le Rêveur des Prairies", trône majestueusement un âne, dont la présence discrète évoque à la fois votre curiosité insatiable et votre aspiration indomptable à l'aventure. <br>Son regard, empreint de malice et de sagesse, semble scruter l'horizon lointain, où se dessinent les contours de l'inconnu. Autour de lui, la prairie s'étend à perte de vue, tel un océan de verdure infinie, vibrant de vie et de mystère. <br>Chaque brin d'herbe, chaque pétale de fleur semble participer à un ballet harmonieux, offrant à vous, cher spectateur, un tableau vivant de diversité et de beauté. Les couleurs se mêlent dans une symphonie enchanteresse, tandis que les rayons du soleil, émergeant timidement à l'horizon, caressent la scène d'une lumière dorée, promettant un nouveau jour empli d'aventures et de découvertes.<br>Dans cet univers foisonnant de détails et de sensations, chaque élément semble avoir une histoire à raconter, un secret à révéler. Vous imaginez sans doute les doux murmures du vent dans les hautes herbes, les parfums enivrants des fleurs sauvages, le frisson de l'herbe sous les sabots de l'âne avide d'exploration.<br>Et puis, il y a cet âne, fier et déterminé, prêt à partir à l'aventure. Il incarne à lui seul le voyageur qui sommeille en chacun de nous, rappelant avec force que les plus grandes explorations débutent souvent par un simple pas dans l'inconnu. Son attitude résolue vous invite au dépassement de soi, à l'audace de franchir les frontières du connu pour plonger tête baissée dans l'océan de l'inconnu.<br>En contemplant cette scène empreinte de magie et de poésie, vous vous trouvez transporté dans un autre monde, où le temps semble suspendu et où les rêves prennent vie. <br>Car au-delà de la simple représentation artistique, "Le Rêveur des Prairies" éveille en chacun de vous cette soif d'aventure et cette fascination pour l'inconnu qui font battre le cœur de l'humanité depuis la nuit des temps.</p>
+            </div>
+            <div class="col-12 col-md-3 text-center ">
+                <img class="tableau" src="/glimpsGoneV2/assets/img/Tableau.png" alt="Photo d'un encadrement de tableau orné, de couleur argenté, avec du vide à l'intérieur">
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" id="compteurJJ" style="display:none">
+        <div class="row justify-content-center align-items-center text-center">
+            <div class="col-12 col-lg-6">
+                <div class="row">
+                    <div class="col-6">
+                        <button id="btn_jaime" class="btn">
+                            <img class="boutonJaime" src="/glimpsGoneV2/assets/img/iconeJaime.png" alt="Bouton j'aime, pour aimer l'article">
+                        </button>
+                        <span id="jaimeOeuvre" class="resultat"></span>
+                    </div>
+                    <div class="col-6">
+                        <button id="btn_jaime_pas" class="btn">
+                            <img class="boutonJaime" src="/glimpsGoneV2/assets/img/iconeJaimePas.png" alt="Bouton je n'aime pas">
+                        </button>
+                        <span id="jaimePasOeuvre" class="resultat"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="row">
+                    <div class="col-6">
+                        <a id="btn_precedent" class="boutonValider" href="#">Précédent</a>
+                    </div>
+                    <div class="col-6">
+                        <a id="btn_suivant" class="boutonValider" href="#">Suivant</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    include partials/footer
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/glimpsGoneV2/assets/js/script.js"></script>
+    <script src="/glimpsGoneV2/assets/js/formulaire.js"></script>
+    <script src="/glimpsGoneV2/assets/js/ajouter.js"></script>

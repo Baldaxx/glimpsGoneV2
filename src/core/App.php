@@ -53,8 +53,8 @@ class App
     private function __construct()
     {
         $this->request = ServerRequest::fromGlobals();
-        var_dump($this->request);
-        die();
+        // var_dump($this->request);
+        // die();
     }
 
     /**
@@ -97,11 +97,11 @@ class App
             $response = $controller->instantiate($this->request)->execute();
             $this->sendResponse($response);
         } else {
-            $this->fatalError("Page non trouvée");
+            $this->fatalError("Page non trouvée !!!");
         }
     }
 
-    #[NoReturn]
+
     public function fatalError(string $message): void
     {
         echo $message;

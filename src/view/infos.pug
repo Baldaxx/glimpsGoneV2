@@ -1,0 +1,43 @@
+    include partials/header
+    include partials/menu
+    
+    
+  <div class="titre3Galerie d-flex justify-content-end  text-center my-4">
+      <h3 class="titreInfos m-0">Virginie<br><span>Baldacchino</span></h3>
+  </div>
+  <div>
+      <p class="textInfo">
+          Passionnée d'art, de design et de décoration d'intérieur, je m'efforce de créer des espaces qui allient beauté et fonctionnalité, capturant l'essence de l'innovation. C'est dans cet esprit que "Glimps Gone : L'Extravagante Galerie d'Art des Œuvres Invisibles" est né, reflétant ma vision personnelle et mon engagement pour l'art dans toutes ses formes. <br>Ce projet transcende les limites du perceptible, offrant un espace où <span>l'imaginaire domine.</span> À travers Glimps Gone, j'invite le public à explorer l'art invisible et à célébrer notre imagination collective. Rejoignons-nous dans cette aventure extraordinaire, découvrant l'art omniprésent, prêt à être perçu par ceux qui regardent au-delà du visible.</p>
+  </div>
+  <div class="container-fluid">
+      <form class="formulaireProposer data-parsley-validate">
+          <div class="row flex-md-row">
+              <div class="col-md-6 col-12">
+                  <div class="mb-3">
+                      <input class="form-control" id="inputPrenom" placeholder="Prénom" required data-parsley-trigger="change" data-parsley-minlength="1" data-parsley-maxlength="25" required data-parsley-required-message="Si ton prénom était une danse, il serait le tango invisible. On ne peut pas le suivre sans le connaître !">
+                  </div>
+                  <div class="mb-3">
+                      <input type="text" class="form-control" id="inputNom" placeholder="Nom" required data-parsley-trigger="change" data-parsley-minlength="1" data-parsley-maxlength="25" required data-parsley-required-message="Sans nom, tu es un artiste anonyme comme Banksy, mais moins cool !">
+                  </div>
+                  <div class="mb-3">
+                      <input type="email" class="form-control" id="inputEmail" placeholder="Email" required data-parsley-trigger="change" data-parsley-type="email" required data-parsley-required-message="Un email non renseigné, c'est comme envoyer une lettre par pigeon voyageur... en oubliant le pigeon.">
+                  </div>
+                  <div class="mb-3">
+                      <input type="tel" class="form-control" id="inputTelephone" placeholder="Téléphone" required data-parsley-trigger="change" required data-parsley-required-message="Ce numéro de téléphone ne nous mène nulle part. Un vrai mystère." pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$">
+                  </div>
+              </div>
+              <div class="col-md-6 col-12">
+                  <div class="mb-3">
+                      <textarea class="form-control" id="inputCommentaire" rows="6" placeholder="Ajoutez votre message ici" style="resize: none;"></textarea>
+                  </div>
+                  <button type="submit" id="boutonValiderInfos">Envoyer</button>
+
+              </div>
+          </div>
+  </div>
+  </form>
+  </div>
+    include partials/footer
+  <script src="/glimpsGoneV2/asset/js/script.js"></script>
+  <script src="/glimpsGoneV2/asset/js/formulaire.js"></script>
+  <script src="/glimpsGoneV2/asset/js/ajouter.js"></script>

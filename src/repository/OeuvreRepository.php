@@ -1,14 +1,13 @@
 <?php
 
-namespace Ttizio\DemoPhp\repository;
+namespace GlimpsGoneV2\repository;
 
 use DateTime;
 use PDO;
-use Ttizio\DemoPhp\model\Oeuvre;
+use GlimpsGoneV2\model\Oeuvre;
 
 class OeuvreRepository
 {
-
     private PDO $pdo;
 
     public function __construct(PDO $inputPdo)
@@ -19,7 +18,6 @@ class OeuvreRepository
     public function getOeuvres(): array
     {
         $sql = "SELECT * FROM oeuvre ORDER BY id";
-
         $statement = $this->pdo->query($sql);
         $results = $statement->fetchAll();
 
@@ -30,7 +28,7 @@ class OeuvreRepository
                 $result["description"],
                 new DateTime($result["date_de_creation"]),
                 $result["compteur_jaime"],
-                $result["compteur_jaime_pas"],
+                $result["compteur_jaime_pas"]
             );
         }, $results);
     }

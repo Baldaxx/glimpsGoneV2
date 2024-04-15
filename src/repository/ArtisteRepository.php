@@ -1,6 +1,6 @@
 <?php
 
-namespace Ttizio\DemoPhp\repository;
+namespace GlimpsGoneV2\repository;
 
 use PDO;
 use Ttizio\DemoPhp\core\App;
