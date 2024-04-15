@@ -1,0 +1,28 @@
+{
+    "name": "glimps-gone/glimpsgonev2",
+    "type": "project",
+    "require": {
+        "guzzlehttp/psr7": "^2.6",
+        "pug-php/pug": "^3.5",
+        "ext-pdo": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "11.1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "GlimpsGoneV2\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Virginie Baldacchino",
+            "email": "virginie.bm13@icloud.com"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "nodejs-php-fallback/nodejs-php-fallback": true
+        }
+    }
+}

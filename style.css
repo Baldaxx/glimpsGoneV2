@@ -1,0 +1,435 @@
+@font-face {
+    font-family: 'TheNextFont';
+    src: url('font/TheNextFont.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'DancingScript';
+    src: url('font/DancingScript.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('font/Lato.ttf') format('truetype');
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #1b1b1b;
+}
+
+.logo {
+    width: 30%;
+    max-width: 120px;
+    min-width: 40px;
+    height: auto;
+}
+
+.titre {
+    color: white;
+    font-family: 'TheNextFont', 'arial';
+    font-size: 5rem;
+}
+
+.slogan {
+    color: white;
+    font-family: 'dancingSCript', 'arial';
+    font-size: 2rem;
+    text-align: end;
+    margin-right: 95px;
+}
+
+.nav-container {
+    width: 90%;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    margin: auto;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+nav li a {
+    display: block;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 2.3rem;
+    font-family: 'TheNextFont', 'arial';
+}
+
+nav li a:hover {
+    color: #4b4b4b;
+}
+
+nav li a.active {
+    color: #4b4b4b;
+}
+
+.viewSize {
+    min-height: 55vh;
+}
+
+.textIndex {
+    color: white;
+    font-family: 'Lato light', 'arial';
+    padding-right: 100px;
+    font-size: 1rem;
+}
+
+.texteFocus {
+    font-size: 1.7rem;
+    color: #02A551;
+    font-family: 'lato', 'arial';
+}
+
+.titreIndex {
+    color: #161616;
+    font-family: 'TheNextFont', 'arial';
+    font-size: 2rem;
+    background-color: #02A551;
+}
+
+.titreGalerie,
+.titreInfos {
+    font-family: 'TheNextFont', 'arial';
+    font-size: 2.8rem;
+    background-color: #7070ff;
+    color: #161616;
+    font-size: 2rem;
+}
+
+.titreProposer {
+    color: #161616;
+    font-family: 'TheNextFont', 'arial';
+    font-size: 2rem;
+    background-color: #fc9701;
+}
+
+.titreFaq {
+    color: #161616;
+    font-family: 'TheNextFont', 'arial';
+    font-size: 2rem;
+    background-color: #02a551;
+}
+
+.titreIndex span,
+.titreGalerie span,
+.titreProposer span,
+.titreFaq span,
+.titreInfos span {
+    color: white;
+}
+
+.tableau {
+    width: 80%;
+}
+
+.galerieText {
+    color: white;
+    font-family: 'lato light', 'arial';
+    font-size: 1rem;
+}
+
+.form-control,
+.form-control:focus,
+#inputCommentaire,
+#inputCommentaire:focus {
+    color: rgb(255, 255, 255) !important;
+    background-color: rgba(255, 255, 255, 0.062) !important;
+    border: none !important;
+    resize: none !important;
+    font-size: 1rem !important;
+    font-family: 'Lato light', 'Arial' !important;
+    box-shadow: none !important;/
+}
+
+::placeholder {
+    color: rgb(255, 255, 255) !important;
+    opacity: 1 !important;
+}
+
+.form-control:-webkit-autofill,
+.form-control:-webkit-autofill:hover,
+.form-control:-webkit-autofill:focus,
+.form-control:-webkit-autofill:active {
+    -webkit-text-fill-color: rgb(255, 255, 255) !important;
+    box-shadow: rgba(255, 255, 255, 0.185) inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.accordion-item {
+    background-color: rgba(255, 255, 255, 0.062);
+    border: none;
+    font-size: 1.6rem;
+    font-family: 'lato light', 'arial' !important;
+    margin-left: 200px;
+    margin-right: 200px;
+    text-align: center;
+}
+
+.accordionText {
+    color: #02A551;
+    font-size: 1.3rem;
+    font-family: 'lato light', 'arial' !important;
+    padding: 2%;
+}
+
+.container-fluid button {
+    background-color: rgba(247, 0, 0, 0);
+    border: none;
+    font-family: 'lato light', 'arial' !important;
+}
+
+.accordion-collapse {
+    margin-bottom: 16px;
+}
+
+.collapsed {
+    font-size: 1.6rem;
+    font-family: 'lato light', 'arial';
+}
+
+.textInfo,
+.textProposerMerci {
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    font-family: 'lato light', 'arial';
+    font-size: 1rem;
+}
+
+.textProposerMerci {
+    padding-top: 100px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-size: 'lato light', 'arial';
+}
+
+.textFocusOrange {
+    color: #fc9701;
+    font-family: 'lato', 'arial';
+}
+
+.textFocusViolet {
+    color: #7070ff;
+    font-family: 'lato', 'arial';
+}
+
+button,
+.resultat {
+    background-color: #161616;
+    color: white;
+    font-family: 'lato', 'arial';
+}
+
+.boutonValider {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    border: white 1px solid;
+    border-radius: 20%;
+    padding: 5px;
+    font-family: 'TheNextFont', 'arial';
+}
+
+.textAdmin {
+    font-family: 'TheNextFont', 'arial';
+    color: white;
+}
+
+.boutonJaime {
+    margin-right: 10px;
+
+}
+
+.boutonValider:hover {
+    color: #4b4b4b;
+}
+
+.placeBoutonValiderCentre {
+    text-align: center;
+}
+
+footer {
+    margin-top: auto;
+    
+    width: 100%;
+   
+}
+
+.footerText {
+    font-family: 'Lato light', 'arial';
+    color: white;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.iconesRS {
+    height: 30px;
+}
+
+.menuBurger {
+    display: none;
+}
+
+.menuBurgerDesign {
+    display: none;
+}
+
+.content {
+    flex: 1;
+}
+
+.parsley-errors-list {
+    color: rgb(255, 0, 0);
+    font-family: 'lato light', 'arial';
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-5px, 5px);
+    }
+
+    40% {
+        transform: translate(5px, -5px);
+    }
+
+    60% {
+        transform: translate(-5px, 5px);
+    }
+
+    80% {
+        transform: translate(5px, -5px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+.glitch {
+    animation: glitch 0.1s;
+}
+
+
+@media screen and (min-width: 1241px) {
+    .viewSize {
+        min-height: 54vh;
+    }
+}
+@media screen and (min-width: 1025px) and (max-width: 1240px) {
+    .viewSize {
+        min-height: 50vh;
+    }
+}
+@media (max-width: 1024px) {
+    .titre {
+        font-size: 3rem;
+    }
+
+    .nav-container {
+        display: none;
+    }
+
+    .textIndex {
+        color: white;
+        font-family: 'Lato light', 'arial';
+        padding-right: 5px;
+        font-size: 1rem;
+        padding-top: 0px;
+        padding-left: 5px;
+    }
+
+    .menuBurger {
+        text-align: end;
+        width: 95%;
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        margin: auto;
+    }
+
+    .menuBurgerDesign,
+    .menuBurger {
+        display: block;
+    }
+
+    .burger {
+        width: 60px;
+        height: 60px;
+    }
+
+    .menuBurgerDesign {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        background-color: #1b1b1b;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+
+    .menuBurgerDesign a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 22px;
+        color: white;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .menuShown {
+        width: 250px;
+    }
+
+    .menuBurgerDesign a:hover {
+        color: #4b4b4b;
+    }
+
+    .menuBurgerDesign .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+
+    .galerieText {
+        font-size: 1rem;
+    }
+
+    .accordionText {
+        padding: 20px;
+    }
+
+    .accordion-item {
+        margin-left: 00px;
+        margin-right: 00px;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+   .viewSize{
+    min-height: 65vh;
+   }
+}
+
