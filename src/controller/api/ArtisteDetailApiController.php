@@ -1,12 +1,13 @@
 <?php
 
-namespace Ttizio\DemoPhp\controller\api;
+namespace GlimpsGoneV2\controller\api;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Ttizio\DemoPhp\core\AbstractController;
-use Ttizio\DemoPhp\core\App;
-use Ttizio\DemoPhp\repository\ArtisteRepository;
+use GlimpsGoneV2\core\AbstractController;
+use GlimpsGoneV2\core\App;
+use GlimpsGoneV2\repository\ArtisteRepository;
+
 
 class ArtisteDetailApiController extends AbstractController
 {

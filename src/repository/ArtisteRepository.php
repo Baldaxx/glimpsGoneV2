@@ -3,8 +3,8 @@
 namespace GlimpsGoneV2\repository;
 
 use PDO;
-use Ttizio\DemoPhp\core\App;
-use Ttizio\DemoPhp\model\Artiste;
+use GlimpsGoneV2\core\App;
+use GlimpsGoneV2\model\Artiste;
 
 class ArtisteRepository
 {
@@ -15,18 +15,19 @@ class ArtisteRepository
         $this->pdo = $pdo;
     }
 
-    public function getArtisteById(int $id): Artiste
+    public function getArtisteById(int $id): ?Artiste
     {
         $statement = $this->pdo->prepare("SELECT * FROM " . Artiste::TABLE_NAME . " WHERE id = ?");
         if (!$statement->execute([$id])) {
-            App::getAppInstance()->fatalError("Can not execute sql request");
+            App::getAppInstance()->fatalError("Cannot execute SQL request.");
         }
 
-        $result = $statement->fetch();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
 
         if (!$result) {
-            App::getAppInstance()->fatalError("The artiste is not found.");
+            App::getAppInstance()->fatalError("Artiste not found.");
         }
+
 
         return Artiste::fromPdoResult($result);
     }

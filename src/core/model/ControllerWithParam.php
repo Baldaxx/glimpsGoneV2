@@ -7,7 +7,9 @@ use GlimpsGoneV2\core\AbstractController;
 
 class ControllerWithParam
 {
+
     private string $controllerClass;
+
     private array $pathParams;
 
     public function __construct(string $controllerClass, array $params)

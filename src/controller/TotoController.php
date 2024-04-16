@@ -9,6 +9,7 @@ use GlimpsGoneV2\core\AbstractController;
 
 class TotoController extends AbstractController
 {
+
     public function __construct(ServerRequestInterface $request, array $pathParams)
     {
         parent::__construct($request, $pathParams);

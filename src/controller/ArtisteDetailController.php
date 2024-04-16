@@ -14,10 +14,10 @@ class ArtisteDetailController extends AbstractController
     private ArtisteRepository $artisteRepository;
 
     /**
-     * Constructeur de la classe.
+     * The constructor of the class.
      *
-     * @param ServerRequestInterface $request L'instance de la requête PSR-7
-     * @param array $pathParams Les paramètres de chemin
+     * @param ServerRequestInterface $request the psr7 request instance
+     * @param array $pathParams the path parameters
      */
     public function __construct(ServerRequestInterface $request, array $pathParams)
     {
@@ -26,13 +26,14 @@ class ArtisteDetailController extends AbstractController
     }
 
     /**
-     * Action du contrôleur.
+     * The action of the controller.
      *
-     * @return ResponseInterface L'instance de réponse PSR-7
+     * @return ResponseInterface the psr7 response instance
      */
     function execute(): ResponseInterface
     {
         $artisteId = intval($this->pathParams[0]);
+
         $artiste = $this->artisteRepository->getArtisteById($artisteId);
 
         return $this->phugResponse("artiste_detail", ["data" => $artiste]);

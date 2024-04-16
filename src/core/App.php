@@ -15,25 +15,28 @@ use GlimpsGoneV2\controller\TotoDetailController;
 use GlimpsGoneV2\core\model\ControllerWithParam;
 
 
+/**
+ * Core application class. This class is a singleton, the instance can be retrieve with [App::getInstance()].
+ */
 class App
 {
     /**
-     * Instance de la requête PSR7.
+     * @var ServerRequestInterface PSR7 request instance.
      */
     private ServerRequestInterface $request;
 
     /**
-     * Instance unique de la classe App.
+     * @var App|null The single instance of the class.
      */
     private static App|null $appInstance = null;
 
     /**
-     * Instance unique de PDO.
+     * @var PDO|null the single instance of PDO.
      */
     private static PDO|null $pdoInstance = null;
 
     /**
-     * Liste de tous les contrôleurs de l'application.
+     * @var array|string[] List of all controllers of the application.
      */
     private array $controllers = [
         "GET /" => TotoController::class,
@@ -41,6 +44,7 @@ class App
         "GET /toto/{string}" => TotoDetailController::class,
         "GET /artiste/{int}" => ArtisteDetailController::class,
         "GET /api/artiste/{int}" => ArtisteDetailApiController::class,
+
         "GET /gallerie" => GallerieController::class,
         "POST /gallerie" => GallerieController::class,
         "DELETE /gallerie" => GallerieController::class,
@@ -48,23 +52,21 @@ class App
     ];
 
     /**
-     * Constructeur privé de la classe.
+     * The constructor of the class.
      */
     private function __construct()
     {
         $this->request = ServerRequest::fromGlobals();
-        // var_dump($this->request);
-        // die();
     }
 
     /**
-     * Retourne l'instance unique de la classe App.
+     * Get the unique instance of the App class.
      *
-     * @return App L'instance unique de App
+     * @return App The unique instance of App
      */
     public static function getAppInstance(): App
     {
-        if (self::$appInstance === null) {
+        if (self::$appInstance == null) {
             self::$appInstance = new App();
         }
 
@@ -72,13 +74,13 @@ class App
     }
 
     /**
-     * Retourne l'instance unique de PDO.
+     * Get the unique instance of the PDO class.
      *
-     * @return PDO L'instance unique de PDO.
+     * @return PDO The unique instance of PDO.
      */
-    public function getPDO(): PDO
+    function getPDO(): PDO
     {
-        if (self::$pdoInstance === null) {
+        if (self::$pdoInstance == null) {
             $db = Config::getDbConfig();
             $dsn = "mysql:dbname=" . $db["name"] . ";host=" . $db["host"];
             self::$pdoInstance = new PDO($dsn, $db["user"], $db["password"]);
@@ -88,30 +90,33 @@ class App
     }
 
     /**
-     * Exécute la requête en déléguant à un contrôleur approprié ou retourne une erreur si aucun contrôleur ne peut gérer la requête.
+     * Execute the request.
+     * This function will delegate this job to the appropriate controller, or return a not found error if no controller
+     * can handle the request.
+     *
+     * @return void
      */
-    public function run(): void
+    function run(): void
     {
         $controller = $this->getController();
-        if ($controller !== null) {
+        if ($controller != null) {
             $response = $controller->instantiate($this->request)->execute();
             $this->sendResponse($response);
         } else {
-            $this->fatalError("Page non trouvée !!!");
+            $this->fatalError("Not found");
         }
     }
 
-
-    public function fatalError(string $message): void
+    function fatalError(string $message): void
     {
         echo $message;
         die();
     }
 
     /**
-     * Retourne le contrôleur capable de gérer la requête ou null si aucun contrôleur n'est trouvé.
+     * Return the controller able to handle the request or null if no controller are found.
      *
-     * @return ControllerWithParam|null Le contrôleur ou null
+     * @return ControllerWithParam|null the controller or null
      */
     private function getController(): ControllerWithParam|null
     {
@@ -123,8 +128,10 @@ class App
             $method = $this->getMethodForPath($controllerPath);
 
             $paramsMatched = [];
-            if (preg_match($pattern, $requestedPath, $paramsMatched) > 0 && $method === $requestedMethod) {
+            if (preg_match($pattern, $requestedPath, $paramsMatched) > 0 && $method == $requestedMethod) {
+                // First preg_match return is the entire of the path
                 array_shift($paramsMatched);
+
                 return new ControllerWithParam($controllerClass, $paramsMatched);
             }
         }
@@ -133,17 +140,21 @@ class App
     }
 
     /**
-     * Retourne le motif regex associé au chemin d'un contrôleur, remplaçant les jetons {string} ou {int} par le motif regex approprié.
+     * Return a regex pattern associate to the path of a controller.
+     * Basically replace {string} or {int} token to the appropriate regex pattern, and escape / character.
      *
-     * @param string $path Le chemin à convertir en motif regex
-     * @return string Le motif regex
+     * @param string $path the path to convert into pattern
+     * @return string the regex pattern
      */
     private function getPatternForPath(string $path): string
     {
         $pattern = str_replace("/", "\\/", $path);
         $pattern = str_replace("{string}", "(.+)", $pattern);
         $pattern = str_replace("{int}", "([0-9]+)", $pattern);
-        $pattern = preg_replace('/(GET|POST|PUT|DELETE)\\s/', '', $pattern);
+        $pattern = str_replace("GET ", "", $pattern);
+        $pattern = str_replace("POST ", "", $pattern);
+        $pattern = str_replace("PUT ", "", $pattern);
+        $pattern = str_replace("DELETE ", "", $pattern);
 
         return "#^$pattern$#";
     }
