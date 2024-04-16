@@ -1,38 +1,33 @@
-<div class="content">
-  <div class="container-fluid">
-    <div class="row align-items-end">
-      <div class="col-3 col-sm-4 col-md-2"><img src="/glimpsGoneV2/assets/img/LogoBlanc.png" class="logo" alt="Logo de Glimps Gone, l'extravagante galerie d'art d'oeuvre invisible"></div>
-      <div class="col-9 col-sm-8 col-md-10">
-        <h1 class="titre">GLIMPS GONE</h1>
-      </div>
-    </div>
-    <div>
-      <h2 class="slogan">L’extravagante Galerie d'Art des Œuvres Invisibles !</h2>
-    </div>
+div.content
+  div.container-fluid
+    div.row.align-items-end
+      div.col-3.col-sm-4.col-md-2
+        img.logo(src="/glimpsGoneV2/public/img/LogoBlanc.png", alt="Logo de Glimps Gone, l'extravagante galerie d'art d'oeuvre invisible")
+      div.col-9.col-sm-8.col-md-10
+        h1.titre GLIMPS GONE
+    div
+      h2.slogan L’extravagante Galerie d'Art des Œuvres Invisibles !
+    div.nav-container
+      nav
+        ul
+          li
+            a(href="glimpsGoneV2/src/view/index.php") Accueil
+          li
+            a(href="glimpsGoneV2/src/view/galerie.pug") Galerie
+          li
+            a(href="glimpsGoneV2/src/view/ajouter.pug") Ajouter
+          li
+            a(href="glimpsGoneV2/src/view/faq.pug") FAQ
+          li
+            a(href="glimpsGoneV2/src/view/infos.pug") A propos&contact
+    div.menuBurger
+      button(onclick="toggleMenu()")
+        img.burger(src="../public/img/menuBurger.png", alt="Menu")
+    div.menuBurgerDesign#menuBurgerDesign
+      a.closebtn(href="javascript:void(0)", onclick="toggleMenu()") ×
+      a(href="glimpsGoneV2/src/view/index.php") Accueil
+      a(href="glimpsGoneV2/src/view/galerie.pug") Galerie
+      a(href="glimpsGoneV2/src/view/ajouter.pug") Ajouter
+      a(href="glimpsGoneV2/src/view/faq.pug") FAQ
+      a(href="glimpsGoneV2/src/view/infos.pug") A propos&contact
 
-    <div class="nav-container">
-      <nav>
-        <ul>
-          <li><a href="/glimpsGoneV2/index.php">Accueil</a></li>
-          <li><a href="/glimpsGoneV2/pages/user/galerie.php">Galerie</a></li>
-          <li><a href="/glimpsGoneV2/pages/user/ajouter.php">Ajouter</a></li>
-          <li><a href="/glimpsGoneV2/pages/user/faq.php">FAQ</a></li>
-          <li><a href="/glimpsGoneV2/pages/user/infos.php">A propos & contact</a></li>
-        </ul>
-      </nav>
-    </div>
-
-    <div class="menuBurger">
-      <button onclick="toggleMenu()">
-        <img class="burger" src="/glimpsGoneV2/assets/img/menuBurger.png" alt="Menu">
-      </button>
-    </div>
-    <div class="menuBurgerDesign" id="menuBurgerDesign">
-      <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">&times;</a>
-      <a href="/glimpsGoneV2/index.php">Accueil</a>
-      <a href="/glimpsGoneV2/pages/user/galerie.php">Galerie</a>
-      <a href="/glimpsGoneV2/pages/user/ajouter.php">Ajouter</a>
-      <a href="/glimpsGoneV2/pages/user/faq.php">FAQ</a>
-      <a href="/glimpsGoneV2/pages/user/infos.php">A propos & contact</a>
-    </div>
-  </div>

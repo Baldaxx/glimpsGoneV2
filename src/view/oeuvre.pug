@@ -1,132 +1,36 @@
-<!DOCTYPE html>
-<html lang="fr">
+include partials/head.pug
+include partials/menu.pug
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glimps Gone</title>
-    <meta name="description"
-          content="Découvrez l'unique galerie d'art d'œuvres invisibles, un voyage sensoriel au-delà du visuel. Explorez une collection inédite où imagination, sensation et perception défient les frontières de l'art traditionnel. Une expérience artistique inoubliable qui invite à la réflexion et à l'éveil des sens.">
-    <meta property="og:title" content="Galerie d'Art Moderne"/>
-    <meta property="og:description" content="Découvrez nos dernières collections d'art contemporain."/>
-    <meta property="og:image" content="Img/LogoNoir.png"/>
-    <link rel="icon" href="Img/LogoBlanc.png" type="image/png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
-</head>
+div.d-flex.justify-content-end.text-center.my-4
+    h3#titreOeuvre.titreGalerie.m-0
+        | #{$data->getTitre()}<br>
+        span TODO Afficher l'artiste #{$data->getAnneeCreation()}
+div.container-fluid
+    div.row.flex-column-reverse.flex-md-row
+        div.col-12.col-md-9.d-flex.align-items-center
+            p#galerieText.text-center.text-md-start #{$data->getDescription()}
+        div.col-12.col-md-3.text-center
+            img.tableau(src="Img/Tableau.png", alt="Photo d'un encadrement de tableau orné, de couleur argenté, avec du vide à l'intérieur")
+div.container-fluid#compteurJJ
+    div.row.justify-content-center.align-items-center.text-center
+        div.col-12.col-lg-6
+            div.row
+                div.col-6
+                    button#btn_jaime.btn
+                        img.boutonJaime(src="Img/iconeJaime.png", alt="Bouton j'aime, pour aimer l'article")
+                    span#jaimeOeuvre.resultat #{$data->getCompteurJaime()}
+                div.col-6
+                    button#btn_jaime_pas.btn
+                        img.boutonJaime(src="Img/iconeJaimePas.png", alt="Bouton je n'aime pas")
+                    span#jaimePasOeuvre.resultat #{$data->getCompteurJaimePas()}
+        div.col-12.col-lg-6
+            div.row
+                div.col-6
+                    a#btn_precedent.boutonValider(href="#") Précédent
+                div.col-6
+                    a#btn_suivant.boutonValider(href="#") Suivant
 
-<body>
-<div class="container-fluid">
-    <div class="row align-items-end">
-        <div class="col-3 col-sm-4 col-md-2"><img src="Img/LogoBlanc.png" class="logo"
-                                                  alt="Logo de Glimps Gone, l'extravagante galerie d'art d'oeuvre invisible">
-        </div>
-        <div class="col-9 col-sm-8 col-md-10">
-            <h1 class="titre">GLIMPS GONE</h1>
-        </div>
-    </div>
-    <div>
-        <h2 class="slogan">L’extravagante Galerie d'Art des Œuvres Invisibles !</h2>
-    </div>
-
-    <div class="nav-container">
-        <nav>
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="galerie.html">Galerie</a></li>
-                <li><a href="ajouter.html">Ajouter</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="infos.html">A propos & contact</a></li>
-            </ul>
-        </nav>
-    </div>
-
-    <div class="menuBurger">
-        <button onclick="toggleMenu()">
-            <img class="burger" src="Img/menuBurger.png" alt="Menu">
-        </button>
-    </div>
-    <div class="menuBurgerDesign" id="menuBurgerDesign">
-        <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">&times;</a>
-        <a href="index.html">Accueil</a>
-        <a href="galerie.html">Galerie</a>
-        <a href="ajouter.html">Ajouter</a>
-        <a href="faq.html">FAQ</a>
-        <a href="infos.html">A propos & contact</a>
-    </div>
-</div>
-<div class="d-flex justify-content-end  text-center my-4">
-    <h3 id="titreOeuvre" class="titreGalerie m-0">#{$data->getTitre()}<br><span>TODO Afficher l'artiste #{$data->getAnneeCreation()}</span>
-    </h3>
-</div>
-<div class="container-fluid">
-    <div class="row flex-column-reverse flex-md-row">
-        <div class="col-12 col-md-9 d-flex align-items-center">
-            <p id="descriptionOeuvre" class="galerieText text-center text-md-start">
-                #{$data->getDescription()}</p>
-        </div>
-        <div class="col-12 col-md-3 text-center ">
-            <img class="tableau " src="Img/Tableau.png"
-                 alt="Photo d'un encadrement de tableau orné, de couleur argenté, avec du vide à l'intérieur">
-        </div>
-    </div>
-</div>
-<div class="container-fluid" id="compteurJJ">
-    <div class="row justify-content-center align-items-center text-center">
-        <!-- Première ligne pour "J'aime" et "Je n'aime pas" -->
-        <div class="col-12 col-lg-6">
-            <div class="row">
-                <div class="col-6">
-                    <button id="btn_jaime" class="btn">
-                        <img class="boutonJaime" src="Img/iconeJaime.png" alt="Bouton j'aime, pour aimer l'article">
-                    </button>
-                    <span id="jaimeOeuvre" class="resultat">#{$data->getCompteurJaime()}</span>
-                </div>
-                <div class="col-6">
-                    <button id="btn_jaime_pas" class="btn">
-                        <img class="boutonJaime" src="Img/iconeJaimePas.png" alt="Bouton je n'aime pas">
-                    </button>
-                    <span id="jaimePasOeuvre" class="resultat">#{$data->getCompteurJaimePas()}</span>
-                </div>
-            </div>
-        </div>
-        <!-- Deuxième ligne pour "Précédent" et "Suivant" -->
-        <div class="col-12 col-lg-6">
-            <div class="row">
-                <div class="col-6">
-                    <a id="btn_precedent" class="boutonValider" href="#">Précédent</a>
-                </div>
-                <div class="col-6">
-                    <a id="btn_suivant" class="boutonValider" href="#">Suivant</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<br>
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v11.0"
-        nonce="votreNonce"></script>
-<div class="fb-share-button" data-href="https://votreSite.com/pageDeLArt" data-layout="button_count"></div>
-
-<p class="footerText"><a target="_blank" href="https://github.com/baldaxx"><img class="iconesRS"
-                                                                                src="Img/github.png"
-                                                                                alt="icone menant à Github"></a>
-    <a target="_blank" href="https://www.linkedin.com/in/baldax/"><img class="iconesRS" src="Img/linkedin.png"
-                                                                       alt="icone menant à Linkedin"></a>
-    <a target="_blank" href="https://www.instagram.com/baldax_avec_un_x/"><img class="iconesRS"
-                                                                               src="Img/instagram.png"
-                                                                               alt="icone menant à Instagram"></a> <br>
-    © 2024
-    GlimpsGone. Tous droits réservés.
-</p>
-</footer>
-<script src="script.js"></script>
-<script src="galerie.js"></script>
-</body>
-
-</html>
+br
+div#fb-root
+    script(async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v11.0" nonce="votreNonce")
+include partials/footer.pug

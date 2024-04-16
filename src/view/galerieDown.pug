@@ -1,29 +1,29 @@
-    include partials/header
-    include partials/menu
-    
-    
- <div class="titre3Galerie d-flex justify-content-end  text-center my-4">
-     <h3 class="titreInfos m-0">Galerie<br><span>Down</span></h3>
- </div>
- <div>
-     <p class="textProposerMerci">Oupsi, nos œuvres invisibles ont poussé le concept un peu loin et se sont rendues
-         encore plus insaisissables. Ironique,
-         n'est-ce pas ?
-         <br>
-         Nous sommes en pleine opération de recherche (oui, chercher de l'invisible, tout un art !) et nous promettons de faire
-         tout notre possible pour les ramener.
-         <br>
-         Restez connecté et à l'affût. Leur
-         absence est un rappel poignant de leur subtile présence.
-         <br>
-         Merci de votre patience et de votre sens de l'humour face à cette situation pour le moins... artistiquement paradoxale.
-         <br><br>
-         L'équipe de l'Extravagante Galerie
-     </p>
- </div>
- <div class="placeBoutonValiderCentre"><a class="boutonValider" href="index.html">Page d'accueil</a>
- </div>
+include partials/head.pug
+include partials/menu.pug
 
-    include partials/footer
- <script src="/glimpsGoneV2/asset/js/script.js"></script>
+div.titre3Galerie.d-flex.justify-content-end.text-center.my-4
+    h3.titreInfos.m-0
+        | Galerie
+        br
+        span Down
+div
+    p.textProposerMerci
+        | Oupsi, nos œuvres invisibles ont poussé le concept un peu loin et se sont rendues
+        | encore plus insaisissables. Ironique,
+        | n'est-ce pas ?
+        br
+        | Nous sommes en pleine opération de recherche (oui, chercher de l'invisible, tout un art !) et nous promettons de faire
+        | tout notre possible pour les ramener.
+        br
+        | Restez connecté et à l'affût. Leur
+        | absence est un rappel poignant de leur subtile présence.
+        br
+        | Merci de votre patience et de votre sens de l'humour face à cette situation pour le moins... artistiquement paradoxale.
+        br
+        br
+        | L'équipe de l'Extravagante Galerie
+div.placeBoutonValiderCentre
+    a.boutonValider(href="index.html") Page d'accueil
 
+include partials/footer.pug
+script(src="../public/js/script.js")

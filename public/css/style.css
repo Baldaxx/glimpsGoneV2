@@ -1,23 +1,23 @@
 @font-face {
     font-family: 'TheNextFont';
-    src: url('font/TheNextFont.ttf') format('truetype');
+    src: url('/glimpsGoneV2/public/font/TheNextFont.ttf');
 }
 
 @font-face {
     font-family: 'DancingScript';
-    src: url('font/DancingScript.ttf') format('truetype');
+    src: url('/glimpsGoneV2/public/font/DancingScript.ttf');
 }
 
 @font-face {
     font-family: 'Lato';
-    src: url('font/Lato.ttf') format('truetype');
+    src: url('/glimpsGoneV2/public/font/Lato.ttf');
 }
 
 html {
     height: 100%;
 }
 
-body {
+.body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -265,9 +265,8 @@ button,
 
 footer {
     margin-top: auto;
-    
     width: 100%;
-   
+
 }
 
 .footerText {
@@ -334,11 +333,13 @@ footer {
         min-height: 54vh;
     }
 }
+
 @media screen and (min-width: 1025px) and (max-width: 1240px) {
     .viewSize {
         min-height: 50vh;
     }
 }
+
 @media (max-width: 1024px) {
     .titre {
         font-size: 3rem;
@@ -427,9 +428,9 @@ footer {
         margin-right: 00px;
     }
 }
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-   .viewSize{
-    min-height: 65vh;
-   }
-}
 
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .viewSize {
+        min-height: 65vh;
+    }
+}
