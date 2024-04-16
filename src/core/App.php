@@ -3,7 +3,6 @@
 namespace GlimpsGoneV2\core;
 
 use GuzzleHttp\Psr7\ServerRequest;
-use JetBrains\PhpStorm\NoReturn;
 use PDO;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -14,10 +13,6 @@ use GlimpsGoneV2\controller\TotoController;
 use GlimpsGoneV2\controller\TotoDetailController;
 use GlimpsGoneV2\core\model\ControllerWithParam;
 
-
-/**
- * Core application class. This class is a singleton, the instance can be retrieve with [App::getInstance()].
- */
 class App
 {
     /**

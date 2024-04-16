@@ -97,7 +97,7 @@ class Artiste
 
     public function setEmail(string $email): void
     {
-        $this->email = email;
+        $this->email = $email;
     }
 
     public function getTelephone(): string
@@ -107,6 +107,6 @@ class Artiste
 
     public function setTelephone(string $telephone): void
     {
-        $this->telephone = telephone;
+        $this->telephone = $telephone;
     }
 }

@@ -84,7 +84,7 @@ class Oeuvre
 
     public function setCompteurJaime(int $compteurJaime): void
     {
-        $this->compteurJaime = compteurJaime;
+        $this->compteurJaime = $compteurJaime;
     }
 
     public function getCompteurJaimePas(): int
@@ -94,6 +94,6 @@ class Oeuvre
 
     public function setCompteurJaimePas(int $compteurJaimePas): void
     {
-        $this->compteurJaimePas = compteurJaimePas;
+        $this->compteurJaimePas = $compteurJaimePas;
     }
 }
