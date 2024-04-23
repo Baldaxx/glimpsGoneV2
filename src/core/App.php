@@ -2,6 +2,7 @@
 
 namespace GlimpsGoneV2\core;  // Définit l'espace de noms du fichier pour organiser le code.
 
+use GlimpsGoneV2\controller\AccueilController;
 use GuzzleHttp\Psr7\ServerRequest;  // Inclut la classe ServerRequest pour gérer les requêtes HTTP.
 use Psr\Http\Message\ResponseInterface;  // Interface pour la réponse HTTP.
 use Psr\Http\Message\ServerRequestInterface;  // Interface pour la requête HTTP.
@@ -39,7 +40,7 @@ class App
      * @var array|string[] Liste des contrôleurs de l'application.
      */
     private array $controllers = [
-        "GET /" => TotoController::class,
+        "GET /" => AccueilController::class,
         "GET /toto" => TotoController::class,
         "GET /toto/{string}" => TotoDetailController::class,
         "GET /artiste/{int}" => ArtisteDetailController::class,
