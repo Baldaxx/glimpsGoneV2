@@ -11,7 +11,7 @@
     },
 "autoload": {
         "psr-4": {
-            "GlimpsGoneV2\\core\\": "src/core/"
+            "GlimpsGoneV2\\": "src/"
         }
     },
     "authors": [
