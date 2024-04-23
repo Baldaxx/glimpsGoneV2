@@ -4,12 +4,14 @@ namespace GlimpsGoneV2\controller\api;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Ttizio\DemoPhp\core\AbstractController;
-use Ttizio\DemoPhp\core\App;
-use Ttizio\DemoPhp\repository\ArtisteRepository;
+use GlimpsGoneV2\core\AbstractController;
+use GlimpsGoneV2\core\App;
+use GlimpsGoneV2\repository\ArtisteRepository;
 
 class ArtisteDetailApiController extends AbstractController
 {
+    private ArtisteRepository $artisteRepository;
+
     /**
      * The constructor of the class.
      *
@@ -22,7 +24,22 @@ class ArtisteDetailApiController extends AbstractController
         $this->artisteRepository = new ArtisteRepository(App::getAppInstance()->getPDO());
     }
 
-    function execute(): ResponseInterface
+    /**
+     * Get the artiste repository.
+     *
+     * @return ArtisteRepository The artiste repository instance
+     */
+    public function getArtisteRepository(): ArtisteRepository
+    {
+        return $this->artisteRepository;
+    }
+
+    /**
+     * Execute the action.
+     *
+     * @return ResponseInterface The response interface
+     */
+    public function execute(): ResponseInterface
     {
         $artisteId = intval($this->pathParams[0]);
 
