@@ -19,7 +19,7 @@ abstract class AbstractController
 
     abstract function execute(): ResponseInterface;
 
-    protected function __construct(ServerRequestInterface $request, array $pathParams)
+    public function __construct(ServerRequestInterface $request, array $pathParams)
     {
         $this->request = $request;
         $this->pathParams = $pathParams;
