@@ -1,6 +1,8 @@
 <?php
 
 namespace GlimpsGoneV2\core;
+use GuzzleHttp\Psr7\Response;
+use Psr\Http\Message\ResponseInterface;
 use Pug\Pug;
 
 class TemplateEngine
@@ -9,7 +11,6 @@ class TemplateEngine
 
     public function __construct()
     {
-        echo __DIR__ . '/../view';
         $this->pug = new Pug([
             'basedir' => __DIR__ . '/../view',  
             'pretty' => true,                  
@@ -18,12 +19,16 @@ class TemplateEngine
     }
 
     // Méthode pour générer le HTML à partir d'un template et des variables fournies.
-    public function render($template, $variables = [])
+    public function render(string $template, array $variables = []): ResponseInterface
     {
+        $response = new Response();
         $fullPath = $this->pug->getOption('basedir') . '/' . $template;
         if (!file_exists($fullPath)) {
             die("Le fichier template {$fullPath} n'existe pas.");
         }
-        echo $this->pug->render($fullPath, $variables);
+        $output = $this->pug->render($fullPath, $variables);
+        $response->getBody()->write($output);
+
+        return $response;
     }
 }
