@@ -216,11 +216,11 @@
 <?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(6);
 // PUG_DEBUG:6
- ?>    <link<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['rel' => 'icon'], ['href' => '/public/img/LogoBlanc.png'], ['type' => 'image/png'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>>
+ ?>    <link<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['rel' => 'icon'], ['href' => '/glimpsGoneV2/public/img/LogoBlanc.png'], ['type' => 'image/png'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>>
 <?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(7);
 // PUG_DEBUG:7
- ?>    <link<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['rel' => 'stylesheet'], ['href' => '/public/css/style.css'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>>
+ ?>    <link<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['rel' => 'stylesheet'], ['href' => '/glimpsGoneV2/public/css/style.css'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>>
 <?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(8);
 // PUG_DEBUG:8
@@ -364,7 +364,7 @@
  ?>      <button<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['onclick' => 'toggleMenu()'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>><?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(42);
 // PUG_DEBUG:42
- ?><img<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['class' => 'burger'], ['src' => '../public/img/menuBurger.png'], ['alt' => 'Menu'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>></button>
+ ?><img<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['class' => 'burger'], ['src' => '/glimpsGoneV2/public/img/menuBurger.png'], ['alt' => 'Menu'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>></button>
     </div>
 <?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(57);
@@ -516,21 +516,21 @@
 ) ? var_export($_pug_temp, true) : $_pug_temp) ?>><?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(87);
 // PUG_DEBUG:87
- ?><img<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['class' => 'iconesRS'], ['src' => '../public/img/github.png'], ['alt' => 'icone menant à Github'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>></a><?php 
+ ?><img<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['class' => 'iconesRS'], ['src' => '/glimpsGoneV2/public/img/github.png'], ['alt' => 'icone menant à Github'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>></a><?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(90);
 // PUG_DEBUG:90
  ?><a<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['target' => '_blank'], ['href' => 'https://www.linkedin.com/in/baldax/'], array(  ))
 ) ? var_export($_pug_temp, true) : $_pug_temp) ?>><?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(89);
 // PUG_DEBUG:89
- ?><img<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['class' => 'iconesRS'], ['src' => '../public/img/linkedin.png'], ['alt' => 'icone menant à Linkedin'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>></a><?php 
+ ?><img<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['class' => 'iconesRS'], ['src' => '/glimpsGoneV2/public/img/linkedin.png'], ['alt' => 'icone menant à Linkedin'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>></a><?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(92);
 // PUG_DEBUG:92
  ?><a<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['target' => '_blank'], ['href' => 'https://www.instagram.com/baldax_avec_un_x/'], array(  ))
 ) ? var_export($_pug_temp, true) : $_pug_temp) ?>><?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(91);
 // PUG_DEBUG:91
- ?><img<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['class' => 'iconesRS'], ['src' => '../public/img/instagram.png'], ['alt' => 'icone menant à Instagram'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>></a><?php 
+ ?><img<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['class' => 'iconesRS'], ['src' => '/glimpsGoneV2/public/img/instagram.png'], ['alt' => 'icone menant à Instagram'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>></a><?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(93);
 // PUG_DEBUG:93
  ?> © 2024 GlimpsGone. Tous droits réservés.</p>
@@ -538,4 +538,4 @@
 <?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(96);
 // PUG_DEBUG:96
- ?><script<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['src' => '../public/js/script.js'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>></script>
+ ?><script<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['src' => '/glimpsGoneV2/public/js/script.js'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>></script>
