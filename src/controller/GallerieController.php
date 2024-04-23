@@ -1,5 +1,7 @@
 <?php
 
+// Ce code définit une classe en PHP pour un contrôleur de galerie qui gère l'affichage d'œuvres d'art récupérées depuis une base de données, adaptant le contenu montré basé sur l'utilisateur connecté et renvoyant une page web générée.
+
 namespace GlimpsGoneV2\controller;
 
 use Psr\Http\Message\ResponseInterface;
