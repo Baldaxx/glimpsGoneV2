@@ -3,16 +3,16 @@
 namespace GlimpsGoneV2\repository;
 
 use DateTime;
-use PDO;
+use GlimpsGoneV2\core\App; 
 use GlimpsGoneV2\model\Oeuvre;
 
 class OeuvreRepository
 {
-    private PDO $pdo;
+    private \PDO $pdo;
 
-    public function __construct(PDO $inputPdo)
+    public function __construct()
     {
-        $this->pdo = $inputPdo;
+        $this->pdo = App::getAppInstance()->getPDO();
     }
 
     public function getOeuvres(): array
@@ -23,12 +23,12 @@ class OeuvreRepository
 
         return array_map(function ($result) {
             return new Oeuvre(
-                $result["id"],
-                $result["titre"],
-                $result["description"],
-                new DateTime($result["date_de_creation"]),
-                $result["compteur_jaime"],
-                $result["compteur_jaime_pas"]
+                $result['id'],
+                $result['titre'],
+                $result['description'],
+                new DateTime($result['date_de_creation']),
+                $result['compteur_jaime'],
+                $result['compteur_jaime_pas']
             );
         }, $results);
     }

@@ -2,23 +2,22 @@
 
 namespace GlimpsGoneV2\controller;
 
-use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use GlimpsGoneV2\core\AbstractController;
 
-class TotoController extends AbstractController
+class AjouterController extends AbstractController
 {
     public function __construct(ServerRequestInterface $request, array $pathParams)
     {
         parent::__construct($request, $pathParams);
     }
 
-    function execute(): ResponseInterface
+    public function execute(): ResponseInterface
     {
-        $response = new Response();
-        $response->getBody()->write("Hello world");
-
-        return $response;
+        $data = [
+            'title' => 'Ajouter une nouvelle oeuvre', 
+        ];
+        return $this->phugResponse("ajouter", $data);
     }
 }

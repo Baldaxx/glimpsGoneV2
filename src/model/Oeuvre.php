@@ -6,7 +6,7 @@ use DateTime;
 
 class Oeuvre
 {
-    private int|null $id;
+    private ?int $id;
     private string $titre;
     private string $description;
     private DateTime $dateCreation;
@@ -14,7 +14,7 @@ class Oeuvre
     private int $compteurJaimePas;
 
     /**
-     * Constructeur de l'oeuvre.
+     * Oeuvre constructor.
      * @param int|null $id
      * @param string $titre
      * @param string $description
@@ -29,7 +29,7 @@ class Oeuvre
         $this->description = $description;
         $this->dateCreation = $dateCreation;
         $this->compteurJaime = $compteurJaime;
-        $this->compteurJaimePas = $compteurJaimePas;
+        $this->compteurJaimePas = compteurJaimePas;
     }
 
     public function getId(): ?int

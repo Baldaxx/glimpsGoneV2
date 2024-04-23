@@ -12,9 +12,7 @@ use GlimpsGoneV2\model\Artiste;
 
 abstract class AbstractController
 {
-
     protected ServerRequestInterface $request;
-
     protected array $pathParams;
 
     abstract function execute(): ResponseInterface;
@@ -27,11 +25,12 @@ abstract class AbstractController
 
     protected function getCurrentUser(): Artiste|null
     {
+        // Implémentation nécessaire pour retourner l'utilisateur actuel, si applicable.
     }
 
     protected function phugResponse(string $templateName, array $params): ResponseInterface
     {
-        $templateFile = __DIR__ . "/../view/" . $templateName . ".html";
+        $templateFile = __DIR__ . "/../view/" . $templateName . ".pug";
         $response = new Response();
 
         try {

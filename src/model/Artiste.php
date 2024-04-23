@@ -3,37 +3,37 @@
 namespace GlimpsGoneV2\model;
 
 /**
- * Représentation d'un artiste.
+ * Representation of an artist.
  */
 class Artiste
 {
     /**
-     * Le nom de la table artiste dans la base de données.
+     * The name of the artist table in the database.
      */
     public const TABLE_NAME = "artiste";
 
     /**
-     * @var int|null L'identifiant de l'artiste. Null si l'artiste n'est pas encore enregistré dans la DB.
+     * @var int|null Identifier of the artist. Null if the artist is not yet registered in the DB.
      */
-    private int|null $id;
+    private ?int $id;
 
     /**
-     * @var string Le nom de l'artiste.
+     * @var string The name of the artist.
      */
     private string $name;
 
     /**
-     * @var string L'email de l'artiste.
+     * @var string The email of the artist.
      */
     private string $email;
 
     /**
-     * @var string Le numéro de téléphone de l'artiste.
+     * @var string The telephone number of the artist.
      */
     private string $telephone;
 
     /**
-     * Constructeur de la classe Artiste.
+     * Constructor for the Artiste class.
      *
      * @param int|null $id
      * @param string $name
@@ -49,7 +49,7 @@ class Artiste
     }
 
     /**
-     * Crée une instance d'Artiste à partir d'un résultat PDO.
+     * Creates an instance of Artiste from a PDO result.
      *
      * @param array $pdoResult
      * @return Artiste
@@ -60,15 +60,20 @@ class Artiste
     }
 
     /**
-     * Convertit l'instance de l'artiste en JSON.
+     * Converts the artist instance to JSON.
      */
     public function toJson(): string
     {
-        return json_encode(get_object_vars($this));
+        return json_encode([
+            'id' => $this->id,
+            'name' => $this->name,
+            'email' => $this->email,
+            'telephone' => $this->telephone
+        ]);
     }
 
     /**
-     * Getters et Setters
+     * Getters and Setters
      */
     public function getId(): ?int
     {
