@@ -5,22 +5,37 @@ namespace GlimpsGoneV2\core;
 use GuzzleHttp\Psr7\ServerRequest;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use PDO;
 use GlimpsGoneV2\controller\ArtisteDetailController;
-use GlimpsGoneV2\controller\ArtisteDetailApiController;
+use GlimpsGoneV2\controller\api\ArtisteDetailApiController;
 use GlimpsGoneV2\controller\GallerieController;
 use GlimpsGoneV2\controller\TotoController;
 use GlimpsGoneV2\controller\TotoDetailController;
 use GlimpsGoneV2\controller\AjouterController;
 use GlimpsGoneV2\controller\FaqController;
 use GlimpsGoneV2\controller\InfosController;
-use PDO;
+use GlimpsGoneV2\core\model\ControllerWithParam;
 
 class App
 {
+    /**
+     * @var ServerRequestInterface PSR7 request instance.
+     */
     private ServerRequestInterface $request;
-    private static ?App $appInstance = null;
-    private static ?PDO $pdoInstance = null;
 
+    /**
+     * @var App|null The single instance of the class.
+     */
+    private static App|null $appInstance = null;
+
+    /**
+     * @var PDO|null the single instance of PDO.
+     */
+    private static PDO|null $pdoInstance = null;
+
+    /**
+     * @var array|string[] List of all controllers of the application.
+     */
     private array $controllers = [
         "GET /" => TotoController::class,
         "GET /toto" => TotoController::class,
@@ -39,8 +54,8 @@ class App
     private function __construct()
     {
         $this->request = ServerRequest::fromGlobals();
-        $configDB = Config::getDbConfig();
-        $nomApp = Config::getAppName();
+        // var_dump($this->request);
+        // die();
     }
 
     public static function getAppInstance(): App
@@ -56,7 +71,7 @@ class App
         if (self::$pdoInstance === null) {
             $db = Config::getDbConfig();
             self::$pdoInstance = new PDO("mysql:dbname={$db['name']};host={$db['host']}", $db['user'], $db['password'], [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION  // Configurer PDO pour qu'il lance des exceptions en cas d'erreur
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
             ]);
         }
         return self::$pdoInstance;
@@ -73,21 +88,26 @@ class App
         }
     }
 
-    private function fatalError(string $message): void
+ function fatalError(string $message): void
     {
         echo $message;
         exit;
     }
 
-    private function getController()
+    private function getController(): ControllerWithParam|null
     {
-        $requestedPath = $this->request->getUri()->getPath();
+        $requestedPath = str_replace("/" . Config::getAppName(), "", $this->request->getUri()->getPath());
         $requestedMethod = $this->request->getMethod();
 
         foreach ($this->controllers as $controllerPath => $controllerClass) {
             $pattern = $this->getPatternForPath($controllerPath);
-            if (preg_match($pattern, $requestedPath) && $requestedMethod === explode(" ", $controllerPath)[0]) {
-                return new $controllerClass($this->request, []);
+            $method = $this->getMethodForPath($controllerPath);
+
+            $paramsMatched = [];
+            if (preg_match($pattern, $requestedPath, $paramsMatched) > 0 && $method == $requestedMethod) {
+                array_shift($paramsMatched);
+
+                return new ControllerWithParam($controllerClass, $paramsMatched);
             }
         }
         return null;
@@ -95,21 +115,30 @@ class App
 
     private function getPatternForPath(string $path): string
     {
-        $method = explode(" ", $path)[0];
-        $uriPattern = substr($path, strlen($method) + 1);
-        $uriPattern = preg_replace("/{int}/", '(\d+)', $uriPattern);
-        $uriPattern = preg_replace("/{string}/", '([^/]+)', $uriPattern);
-        return "#^" . str_replace("/", "\\/", $uriPattern) . "$#";
+        $pattern = str_replace("/", "\\/", $path);
+        $pattern = str_replace("{string}", "(.+)", $pattern);
+        $pattern = str_replace("{int}", "([0-9]+)", $pattern);
+        $pattern = str_replace("GET ", "", $pattern);
+        $pattern = str_replace("POST ", "", $pattern);
+        $pattern = str_replace("PUT ", "", $pattern);
+        $pattern = str_replace("DELETE ", "", $pattern);
+
+        return "#^$pattern$#";
+    }
+
+    private function getMethodForPath(string $path): string
+    {
+        return explode(" ", $path)[0];
     }
 
     private function sendResponse(ResponseInterface $response): void
     {
-        http_response_code($response->getStatusCode());
         foreach ($response->getHeaders() as $name => $values) {
             foreach ($values as $value) {
-                header("$name: $value", false);
+                header(sprintf('%s: %s', $name, $value), false);
             }
         }
+        http_response_code($response->getStatusCode());
         echo $response->getBody();
     }
 }

@@ -1,12 +1,12 @@
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
+$sqlContent = file_get_contents(__DIR__ . '/database/sql/000-install_db.sql');
 
 use GlimpsGoneV2\core\App;
 
 $title = 'Accueil';
 
-// Assurez-vous que ces chemins sont relatifs à l'emplacement du fichier index.php
 require __DIR__ . '/src/core/App.php';
 include __DIR__ . '/src/view/partials/head.pug';
 include __DIR__ . '/src/view/partials/menu.pug';
