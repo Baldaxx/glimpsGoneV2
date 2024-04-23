@@ -19,6 +19,6 @@ class FaqController extends AbstractController
 
     public function execute(): ResponseInterface
     {
-        return $this->templateEngine->render('faq');
+        return $this->templateEngine->render('faq.pug');
     }
 }
