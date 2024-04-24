@@ -1,5 +1,7 @@
 <?php
 
+//  TotoController génère une réponse statique, tandis que TotoDetailController génère une réponse dynamique en fonction des paramètres de la requête.
+
 namespace GlimpsGoneV2\controller;
 
 use GuzzleHttp\Psr7\Response;
@@ -16,7 +18,6 @@ class TotoDetailController extends AbstractController
 
     function execute(): ResponseInterface
     {
-        // Assume that the name is the first parameter in the path
         $name = $this->pathParams[0];
         $response = new Response();
         $response->getBody()->write("Hello $name");

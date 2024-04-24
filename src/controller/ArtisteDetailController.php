@@ -1,5 +1,7 @@
 <?php
 
+// Ce code PHP définit un contrôleur pour récupérer les détails d'un artiste. Il utilise une instance de ArtisteRepository pour interagir avec la base de données et récupérer les données de l'artiste à partir de son ID. Ensuite, il renvoie une réponse au format PSR-7 en utilisant la méthode phugResponse, probablement pour générer une vue avec les détails de l'artiste.
+
 namespace GlimpsGoneV2\controller;
 
 use GuzzleHttp\Psr7\Response;

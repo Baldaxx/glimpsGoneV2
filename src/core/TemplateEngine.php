@@ -18,7 +18,6 @@ class TemplateEngine
         ]);
     }
 
-    // Méthode pour générer le HTML à partir d'un template et des variables fournies.
     public function render(string $template, array $variables = []): ResponseInterface
     {
         $response = new Response();

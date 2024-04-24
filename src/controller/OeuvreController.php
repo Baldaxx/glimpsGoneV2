@@ -24,7 +24,6 @@ class OeuvreController extends AbstractController
     {
         $user = $this->getCurrentUser();
         if ($user == null) {
-            // Gérer l'absence d'utilisateur si nécessaire
         }
 
         $oeuvres = $this->oeuvreRepository->getOeuvres();

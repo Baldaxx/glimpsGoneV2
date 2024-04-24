@@ -1,5 +1,7 @@
 <?php
 
+// Ce code PHP définit un contrôleur API pour récupérer les détails d'un artiste. Il utilise une instance de ArtisteRepository pour interagir avec la base de données et récupérer les données de l'artiste à partir de son ID. Ensuite, il renvoie les détails de l'artiste au format JSON en réponse à la requête.
+
 namespace GlimpsGoneV2\controller\api;
 
 use Psr\Http\Message\ResponseInterface;

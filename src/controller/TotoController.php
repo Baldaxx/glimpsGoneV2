@@ -1,5 +1,7 @@
 <?php
 
+// Ce code PHP définit un contrôleur nommé TotoController. Lorsque sa méthode execute est appelée, il crée une réponse HTTP avec le corps "Hello world" et la renvoie.
+
 namespace GlimpsGoneV2\controller;
 
 use GuzzleHttp\Psr7\Response;

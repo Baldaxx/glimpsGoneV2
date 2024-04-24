@@ -3,9 +3,9 @@
 namespace GlimpsGoneV2\core;  
 
 use GlimpsGoneV2\controller\AccueilController;
-use GuzzleHttp\Psr7\ServerRequest;  // Inclut la classe ServerRequest pour gérer les requêtes HTTP.
-use Psr\Http\Message\ResponseInterface;  // Interface pour la réponse HTTP.
-use Psr\Http\Message\ServerRequestInterface;  // Interface pour la requête HTTP.
+use GuzzleHttp\Psr7\ServerRequest; 
+use Psr\Http\Message\ResponseInterface;  
+use Psr\Http\Message\ServerRequestInterface;  
 use PDO;  
 use GlimpsGoneV2\controller\ArtisteDetailController;
 use GlimpsGoneV2\controller\api\ArtisteDetailApiController;
@@ -53,25 +53,26 @@ class App
         "PUT /galerie" => OeuvreController::class,
     ];
 
-
+// Crée une instance avec la requête HTTP actuelle
     private function __construct()
     {
         $this->request = ServerRequest::fromGlobals();  
     }
 
+// Retourne une instance unique de la classe App, en la créant si nécessaire
     public static function getAppInstance(): App
     {
         if (self::$appInstance === null) {
-            self::$appInstance = new self();  // Crée l'instance unique si elle n'existe pas déjà.
+            self::$appInstance = new self();  
         }
         return self::$appInstance;
     }
 
+// Renvoie une instance de PDO pour la connexion à la base de données, en la créant si elle n'existe pas déjà
     public function getPDO(): PDO
     {
         if (self::$pdoInstance === null) {
-            $db = Config::getDbConfig();  // Récupère la configuration de la base de données.
-            // Crée une instance de PDO avec la configuration de la base de données.
+            $db = Config::getDbConfig();  
             self::$pdoInstance = new PDO("mysql:dbname={$db['name']};host={$db['host']}", $db['user'], $db['password'], [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
             ]);
@@ -79,32 +80,33 @@ class App
         return self::$pdoInstance;
     }
 
+// Gère la requête en appelant le contrôleur approprié et en envoyant sa réponse
     public function run(): void
     {
-        $controller = $this->getController();  // Récupère le contrôleur pour l'URL demandée.
+        $controller = $this->getController();  
         if ($controller !== null) {
-            $response = $controller->instantiate($this->request)->execute();  // Exécute la méthode du contrôleur.
-            $this->sendResponse($response);  // Envoie la réponse HTTP.
-        } else {
+            $response = $controller->instantiate($this->request)->execute();  
+            $this->sendResponse($response); 
+                } else {
             $this->fatalError("T'a merdé à un endroit frérot !!!");  
         }
     }
 
+// Affiche un message d'erreur et arrête l'exécution du programme
     function fatalError(string $message): void
     {
-        echo $message;  // Affiche le message d'erreur.
-        exit;  // Arrête l'exécution du script.
+        echo $message;  
+        exit;  
     }
 
+// Identifie et retourne le contrôleur correspondant à la requête, ou null si aucun ne correspond
     private function getController(): ControllerWithParam|null
     {
         $requestedPath = str_replace("/" . Config::getAppName(), "", $this->request->getUri()->getPath());
-        $requestedMethod = $this->request->getMethod();  // Méthode HTTP demandée.
-
+        $requestedMethod = $this->request->getMethod();  
         foreach ($this->controllers as $controllerPath => $controllerClass) {
             $pattern = $this->getPatternForPath($controllerPath);
             $method = $this->getMethodForPath($controllerPath);
-  
             $paramsMatched = [];
             if (preg_match($pattern, $requestedPath, $paramsMatched) > 0 && $method == $requestedMethod) {
                 array_shift($paramsMatched);
@@ -115,32 +117,34 @@ class App
         return null;
     }
 
+// Convertit un chemin de route en une expression régulière pour la correspondance d'URL
     private function getPatternForPath(string $path): string
     {
         $pattern = str_replace("/", "\\/", $path);
-        $pattern = str_replace("{string}", "(.+)", $pattern);  // Remplace les placeholders par des regex. Un "placeholder" est un espace réservé dans une chaîne de caractères ou une requête SQL, généralement remplacé par une valeur spécifique lors de l'exécution du programme.
+        $pattern = str_replace("{string}", "(.+)", $pattern);  
         $pattern = str_replace("{int}", "([0-9]+)", $pattern);
         $pattern = str_replace("GET ", "", $pattern);
         $pattern = str_replace("POST ", "", $pattern);
         $pattern = str_replace("PUT ", "", $pattern);
         $pattern = str_replace("DELETE ", "", $pattern);
-
-        return "#^$pattern$#";  // Retourne le pattern final pour les correspondances d'URL.
+        return "#^$pattern$#";  
     }
 
+// Extrait et retourne la méthode HTTP d'une route spécifiée
     private function getMethodForPath(string $path): string
     {
-        return explode(" ", $path)[0];  // Retourne la méthode HTTP pour un chemin donné.
+        return explode(" ", $path)[0];  
     }
 
+// Envoie la réponse HTTP, incluant les en-têtes et le corps de la réponse
     private function sendResponse(ResponseInterface $response): void
     {
         foreach ($response->getHeaders() as $name => $values) {
             foreach ($values as $value) {
-                header(sprintf('%s: %s', $name, $value), false);  // Envoie les en-têtes HTTP.
+                header(sprintf('%s: %s', $name, $value), false); 
             }
         }
-        http_response_code($response->getStatusCode());  // Définit le code de statut de la réponse HTTP.
-        echo $response->getBody();  // Affiche le corps de la réponse.
+        http_response_code($response->getStatusCode());  
+        echo $response->getBody();  
     }
 }
