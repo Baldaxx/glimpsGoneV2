@@ -7,7 +7,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use GlimpsGoneV2\core\AbstractController;
 use GlimpsGoneV2\core\TemplateEngine;
 
-class InfosController extends AbstractController
+class GalerieController extends AbstractController
 {
     private TemplateEngine $templateEngine;
 
@@ -19,6 +19,6 @@ class InfosController extends AbstractController
 
     function execute(): ResponseInterface
     {
-        return $this->templateEngine->render('infos.pug');
+        return $this->templateEngine->render('galerie.pug');
     }
 }

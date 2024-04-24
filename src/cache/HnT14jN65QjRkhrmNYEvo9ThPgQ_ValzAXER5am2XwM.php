@@ -317,7 +317,7 @@
  ?>          <li><?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(28);
 // PUG_DEBUG:28
- ?><a<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['href' => '/glimpsGoneV2/gallerie'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>><?php 
+ ?><a<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['href' => '/glimpsGoneV2/galerie'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>><?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(27);
 // PUG_DEBUG:27
  ?>Galerie</a></li>
@@ -384,7 +384,7 @@
  ?>Accueil</a><?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(50);
 // PUG_DEBUG:50
- ?><a<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['href' => '/glimpsGoneV2/gallerie'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>><?php 
+ ?><a<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['href' => '/glimpsGoneV2/galerie'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>><?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(49);
 // PUG_DEBUG:49
  ?>Galerie</a><?php 

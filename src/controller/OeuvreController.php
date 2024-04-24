@@ -10,7 +10,7 @@ use GlimpsGoneV2\core\AbstractController;
 use GlimpsGoneV2\core\App;
 use GlimpsGoneV2\repository\OeuvreRepository;
 
-class GallerieController extends AbstractController
+class OeuvreController extends AbstractController
 {
     private OeuvreRepository $oeuvreRepository;
 

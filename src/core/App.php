@@ -1,22 +1,21 @@
 <?php
 
-namespace GlimpsGoneV2\core;  // Définit l'espace de noms du fichier pour organiser le code.
+namespace GlimpsGoneV2\core;  
 
 use GlimpsGoneV2\controller\AccueilController;
 use GuzzleHttp\Psr7\ServerRequest;  // Inclut la classe ServerRequest pour gérer les requêtes HTTP.
 use Psr\Http\Message\ResponseInterface;  // Interface pour la réponse HTTP.
 use Psr\Http\Message\ServerRequestInterface;  // Interface pour la requête HTTP.
-use PDO;  // Classe pour gérer la connexion à la base de données.
-
-// Inclut différentes classes de contrôleurs utilisées dans l'application.
+use PDO;  
 use GlimpsGoneV2\controller\ArtisteDetailController;
 use GlimpsGoneV2\controller\api\ArtisteDetailApiController;
-use GlimpsGoneV2\controller\GallerieController;
+use GlimpsGoneV2\controller\GalerieController;
 use GlimpsGoneV2\controller\TotoController;
 use GlimpsGoneV2\controller\TotoDetailController;
 use GlimpsGoneV2\controller\AjouterController;
 use GlimpsGoneV2\controller\FaqController;
 use GlimpsGoneV2\controller\InfosController;
+use GlimpsGoneV2\controller\OeuvreController;
 use GlimpsGoneV2\core\model\ControllerWithParam;
 
 class App
@@ -48,15 +47,16 @@ class App
         "GET /ajouter" => AjouterController::class,
         "GET /faq" => FaqController::class,
         "GET /infos" => InfosController::class,
-        "GET /gallerie" => GallerieController::class,
-        "POST /gallerie" => GallerieController::class,
-        "DELETE /gallerie" => GallerieController::class,
-        "PUT /gallerie" => GallerieController::class,
+        "GET /galerie" => GalerieController::class,
+        "POST /galerie" => OeuvreController::class,
+        "DELETE /galerie" => OeuvreController::class,
+        "PUT /galerie" => OeuvreController::class,
     ];
+
 
     private function __construct()
     {
-        $this->request = ServerRequest::fromGlobals();  // Crée une instance de requête basée sur les globales PHP. Une "global PHP" est une variable utilisable dans tout le script PHP, accessible depuis n'importe où dans le code sans avoir besoin de la déclarer à plusieurs reprises.
+        $this->request = ServerRequest::fromGlobals();  
     }
 
     public static function getAppInstance(): App
@@ -86,7 +86,7 @@ class App
             $response = $controller->instantiate($this->request)->execute();  // Exécute la méthode du contrôleur.
             $this->sendResponse($response);  // Envoie la réponse HTTP.
         } else {
-            $this->fatalError("Page non trouvée !!!");  // Gère les erreurs de page non trouvée.
+            $this->fatalError("T'a merdé à un endroit frérot !!!");  
         }
     }
 
@@ -104,10 +104,10 @@ class App
         foreach ($this->controllers as $controllerPath => $controllerClass) {
             $pattern = $this->getPatternForPath($controllerPath);
             $method = $this->getMethodForPath($controllerPath);
-
+  
             $paramsMatched = [];
             if (preg_match($pattern, $requestedPath, $paramsMatched) > 0 && $method == $requestedMethod) {
-                array_shift($paramsMatched);  // Supprime le premier élément du tableau des correspondances.
+                array_shift($paramsMatched);
 
                 return new ControllerWithParam($controllerClass, $paramsMatched);
             }
