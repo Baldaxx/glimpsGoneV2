@@ -1,5 +1,7 @@
 <?php
 
+// Ce code définit une classe PHP nommée Oeuvre qui représente une œuvre d'art. Elle contient des propriétés telles que l'identifiant, le titre, la description, la date de création, le nombre de likes et le nombre de dislikes. La classe fournit des méthodes pour accéder et modifier ces propriétés.
+
 namespace GlimpsGoneV2\model;
 
 use DateTime;

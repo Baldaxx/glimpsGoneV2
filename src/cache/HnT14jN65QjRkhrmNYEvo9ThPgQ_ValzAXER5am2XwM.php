@@ -229,7 +229,7 @@
 <?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(9);
 // PUG_DEBUG:9
- ?>    <script<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['src' => 'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'], array(  ))
+ ?>    <script<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['src' => 'https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js'], array(  ))
 ) ? var_export($_pug_temp, true) : $_pug_temp) ?>></script>
 <?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(10);

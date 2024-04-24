@@ -24,18 +24,18 @@ div.container-fluid
                 br
                 | Car au-delà de la simple représentation artistique, "Le Rêveur des Prairies" éveille en chacun de vous cette soif d'aventure et cette fascination pour l'inconnu qui font battre le cœur de l'humanité depuis la nuit des temps.
         div.col-12.col-md-3.text-center
-            img.tableau(src="../public/img/Tableau.png", alt="Photo d'un encadrement de tableau orné, de couleur argenté, avec du vide à l'intérieur")
+            img.tableau(src="/glimpsGoneV2/public/img/Tableau.png", alt="Photo d'un encadrement de tableau orné, de couleur argenté, avec du vide à l'intérieur")
 div.container-fluid#compteurJJ(style="display:none")
     div.row.justify-content-center.align-items-center.text-center
         div.col-12.col-lg-6
             div.row
                 div.col-6
                     button#btn_jaime.btn
-                        img.boutonJaime(src="../public/img/iconeJaime.png", alt="Bouton j'aime, pour aimer l'article")
+                        img.boutonJaime(src="/glimpsGoneV2/public/img/iconeJaime.png", alt="Bouton j'aime, pour aimer l'article")
                     span#jaimeOeuvre.resultat
                 div.col-6
                     button#btn_jaime_pas.btn
-                        img.boutonJaime(src="../public/img/iconeJaimePas.png", alt="Bouton je n'aime pas")
+                        img.boutonJaime(src="/glimpsGoneV2/public/img/iconeJaimePas.png", alt="Bouton je n'aime pas")
                     span#jaimePasOeuvre.resultat
         div.col-12.col-lg-6
             div.row
@@ -45,7 +45,5 @@ div.container-fluid#compteurJJ(style="display:none")
                     a#btn_suivant.boutonValider(href="#") Suivant
 
 include partials/footer.pug
-script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
-script(src="../public/js/script.js")
-script(src="../public/js/formulaire.js")
-script(src="../public/js/ajouter.js")
+script(src="/glimpsGoneV2/public/js/script.js")
+script(src="/glimpsGoneV2/public/js/galerie.js")
