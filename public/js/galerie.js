@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       recupererEtAfficherOeuvre(toutesLesOeuvres[oeuvreCouranteIndex].id);
     } catch (error) {
       console.error(error.message);
-  //     // window.location.href = "/glimpsgoneV2/galerieDown";
+      // window.location.href = "/glimpsgoneV2/galerieDown";
     }
   }
 

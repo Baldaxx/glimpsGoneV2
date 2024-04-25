@@ -6,6 +6,8 @@ use DateTime;
 use GlimpsGoneV2\core\App;
 use GlimpsGoneV2\model\Oeuvre;
 use PDO;
+use PDOException;
+use Exception;
 
 class OeuvreRepository
 {
@@ -25,36 +27,21 @@ class OeuvreRepository
             if (empty($results)) {
                 return [];
             }
-            return $results;  
+            $oeuvres = array_map(function ($result) {
+                return new Oeuvre(
+                    $result['id'],
+                    $result['titre'],
+                    $result['description'],
+                    new DateTime($result['date_de_creation']),
+                    $result['compteur_jaime'],
+                    $result['compteur_jaime_pas']
+                );
+            }, $results);
+            return $oeuvres;
         } catch (PDOException $e) {
             error_log("Erreur lors de la récupération des oeuvres: " . $e->getMessage());
             throw new Exception("Erreur de base de données.");
         }
-    }}
-
-
-        $oeuvres = array_map(function ($result) {
-            return new Oeuvre(
-                $result['id'],
-                $result['titre'],
-                $result['description'],
-                new DateTime($result['date_de_creation']),
-                $result['compteur_jaime'],
-                $result['compteur_jaime_pas']
-            );
-        }, $results);
-
-        echo json_encode(array_map(function ($oeuvre) {
-            return [
-                'id' => $oeuvre->getId(),
-                'titre' => $oeuvre->getTitre(),
-                'description' => $oeuvre->getDescription(),
-                'dateCreation' => $oeuvre->getDateCreation()->format('Y-m-d'),
-                'compteurJaime' => $oeuvre->getCompteurJaime(),
-                'compteurJaimePas' => $oeuvre->getCompteurJaimePas()
-            ];
-        }, $oeuvres));
-        exit;
     }
 
     public function getOeuvreById(int $id): ?Oeuvre
