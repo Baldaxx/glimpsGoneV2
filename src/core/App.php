@@ -17,6 +17,7 @@ use GlimpsGoneV2\core\model\ControllerWithParam;
 use GlimpsGoneV2\controller\TotoDetailController;
 use GlimpsGoneV2\controller\GalerieDownController;
 use GlimpsGoneV2\controller\ArtisteDetailController;
+use GlimpsGoneV2\controller\api\AfficherOeuvreController;
 use GlimpsGoneV2\controller\api\OeuvreDetailApiController;
 use GlimpsGoneV2\controller\api\ArtisteDetailApiController;
 
@@ -55,6 +56,7 @@ class App
         "POST /galerie" => OeuvreController::class,
         "DELETE /galerie" => OeuvreController::class,
         "PUT /galerie" => OeuvreController::class,
+        "GET /api/galerie" => AfficherOeuvreController::class,
     ];
 
 // Crée une instance avec la requête HTTP actuelle

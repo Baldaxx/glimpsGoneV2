@@ -3,45 +3,34 @@
 namespace GlimpsGoneV2\repository;
 
 use DateTime;
-use GlimpsGoneV2\core\App;
-use GlimpsGoneV2\model\Oeuvre;
 use PDO;
-use PDOException;
-use Exception;
+use GlimpsGoneV2\model\Oeuvre;
 
 class OeuvreRepository
 {
     private PDO $pdo;
 
-    public function __construct()
+    public function __construct(PDO $inputPdo)
     {
-        $this->pdo = App::getAppInstance()->getPDO();
+        $this->pdo = $inputPdo;
     }
 
     public function getOeuvres(): array
     {
-        try {
-            $sql = "SELECT * FROM oeuvre ORDER BY id";
-            $statement = $this->pdo->query($sql);
-            $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-            if (empty($results)) {
-                return [];
-            }
-            $oeuvres = array_map(function ($result) {
-                return new Oeuvre(
-                    $result['id'],
-                    $result['titre'],
-                    $result['description'],
-                    new DateTime($result['date_de_creation']),
-                    $result['compteur_jaime'],
-                    $result['compteur_jaime_pas']
-                );
-            }, $results);
-            return $oeuvres;
-        } catch (PDOException $e) {
-            error_log("Erreur lors de la récupération des oeuvres: " . $e->getMessage());
-            throw new Exception("Erreur de base de données.");
-        }
+        $sql = "SELECT * FROM oeuvre ORDER BY id";
+        $statement = $this->pdo->query($sql);
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return array_map(function ($result) {
+            return new Oeuvre(
+                $result['id'],
+                $result['titre'],
+                $result['description'],
+                new DateTime($result['date_de_creation']),
+                $result['compteur_jaime'],
+                $result['compteur_jaime_pas']
+            );
+        }, $results);
     }
 
     public function getOeuvreById(int $id): ?Oeuvre
