@@ -14,23 +14,20 @@ div
         span l'imaginaire domine.
         |  À travers Glimps Gone, j'invite le public à explorer l'art invisible et à célébrer notre imagination collective. Rejoignons-nous dans cette aventure extraordinaire, découvrant l'art omniprésent, prêt à être perçu par ceux qui regardent au-delà du visible.
 div.container-fluid
-    form.formulaireProposer(data-parsley-validate)
+    form.formulaireProposer
         div.row.flex-md-row
             div.col-md-6.col-12
                 div.mb-3
-                    input.form-control#inputPrenom(placeholder="Prénom", required, data-parsley-trigger="change", data-parsley-minlength="1", data-parsley-maxlength="25", required, data-parsley-required-message="Si ton prénom était une danse, il serait le tango invisible. On ne peut pas le suivre sans le connaître !")
+                    input.form-control#inputPrenom(placeholder="Prénom", required, )
                 div.mb-3
-                    input.form-control(type="text", id="inputNom", placeholder="Nom", required, data-parsley-trigger="change", data-parsley-minlength="1", data-parsley-maxlength="25", required, data-parsley-required-message="Sans nom, tu es un artiste anonyme comme Banksy, mais moins cool !")
+                    input.form-control(type="text", id="inputNom", placeholder="Nom", required)
                 div.mb-3
-                    input.form-control(type="email", id="inputEmail", placeholder="Email", required, data-parsley-trigger="change", data-parsley-type="email", required, data-parsley-required-message="Un email non renseigné, c'est comme envoyer une lettre par pigeon voyageur... en oubliant le pigeon.")
+                    input.form-control(type="email", id="inputEmail", placeholder="Email", required, data-parsley-trigger="change", data-parsley-type="email", required)
                 div.mb-3
-                    input.form-control(type="tel", id="inputTelephone", placeholder="Téléphone", required, data-parsley-trigger="change", required, data-parsley-required-message="Ce numéro de téléphone ne nous mène nulle part. Un vrai mystère.", pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$")
+                    input.form-control(type="tel", id="inputTelephone", placeholder="Téléphone", required)
             div.col-md-6.col-12
                 div.mb-3
                     textarea.form-control#inputCommentaire(rows="6", placeholder="Ajoutez votre message ici", style="resize: none;")
                 button#boutonValiderInfos(type="submit") Envoyer
 
 include partials/footer.pug
-script(src="../public/js/script.js")
-script(src="../public/js/formulaire.js")
-script(src="../public/js/ajouter.js")

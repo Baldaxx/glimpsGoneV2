@@ -15,23 +15,22 @@ div
     | Nous vous invitons à libérer votre vision. Laissez "Glimps Gone" être le réceptacle de vos rêves, de vos pensées non dites. Ensemble, explorons la richesse de l'inexploré, prouvant que l'art ne se limite pas à ce qui peut être vu ou touché. Il réside aussi dans ce qui est ressenti, imaginé, partagé. Lancez-vous, partagez votre œuvre invisible, et enrichissez notre monde de votre unique perspective.
 
 div.container-fluid
-  form#formulaireProposerid.formulaireProposer(data-parsley-validate)
+  form#formulaireProposerid.formulaireProposer
     div.row.flex-md-row
       div.col-md-6.col-12
         div.mb-3
-          input.form-control#inputPrenom(name="inputPrenom" placeholder="Nom de scène" required data-parsley-trigger="change" data-parsley-minlength="1" data-parsley-maxlength="25" required data-parsley-required-message="Tu nous files ton nom de scène ?")
+          input.form-control#inputPrenom(name="inputPrenom" placeholder="Nom de scène" required)
         div.mb-3
-          input.form-control#inputNom(type="text" placeholder="Titre de l'oeuvre" required data-parsley-trigger="change" data-parsley-minlength="1" data-parsley-maxlength="25" required data-parsley-required-message="Oups ! Ton titre semble s'être égaré quelque part entre les lignes. Sans lui, tu risques de rester un mystère !")
+          input.form-control#inputNom(type="text" placeholder="Titre de l'oeuvre" required)
         div.mb-3
-          input.form-control#inputEmail(type="email" placeholder="Email" required data-parsley-trigger="change" data-parsley-type="email" required data-parsley-required-message="Alerte ! Ton email a décidé de prendre des vacances sans prévenir. Nous sommes désormais aussi perdus qu'une chèvre dans un jeu de piste !")
+          input.form-control#inputEmail(type="email" placeholder="Email" required)
         div.mb-3
-          input.form-control#inputTelephone(type="text" placeholder="Téléphone" required data-parsley-trigger="change" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" required data-parsley-required-message="Ce formulaire se sent aussi désemparé qu'un poisson hors de l'eau sans ton numéro de téléphone !")
+          input.form-control#inputTelephone(type="text" placeholder="Téléphone" required data-parsley-trigger="change" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" required)
       div.col-md-6.col-12
         div.mb-3
           textarea.form-control#inputCommentaire(rows="6" placeholder="Ajoutez votre oeuvre ici" style="resize: none;")
         button#boutonValiderProposer(type="submit") Envoyer
 
+
 include partials/footer.pug
-script(src="/GlimpsGoneV2/public/js/script.js")
-script(src="/GlimpsGoneV2/public/js/formulaire.js")
-script(src="/GlimpsGoneV2/public/js/ajouter.js")
+

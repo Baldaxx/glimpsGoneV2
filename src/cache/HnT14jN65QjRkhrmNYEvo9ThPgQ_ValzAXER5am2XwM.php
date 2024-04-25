@@ -340,7 +340,7 @@
  ?><a<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['href' => '/glimpsGoneV2/infos'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>><?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(34);
 // PUG_DEBUG:34
- ?>A propos&contact</a></li>
+ ?>Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -395,20 +395,20 @@
  ?><a<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['href' => '/glimpsGoneV2/infos'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>><?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(53);
 // PUG_DEBUG:53
- ?>A propos&contact</a></div>
+ ?>Contact</a></div>
   </div>
 </div>
 <?php 
+\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(65);
+// PUG_DEBUG:65
+ ?><div<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['class' => 'container-fluid'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>>
+<?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(64);
 // PUG_DEBUG:64
- ?><div<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['class' => 'container-fluid'], ['class' => 'viewSize'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>>
+ ?>  <div<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['class' => 'titre3Galerie'], ['class' => 'd-flex'], ['class' => 'justify-content-end'], ['class' => 'text-center'], ['class' => 'my-4'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>>
 <?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(63);
 // PUG_DEBUG:63
- ?>  <div<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['class' => 'titre3Galerie'], ['class' => 'd-flex'], ['class' => 'justify-content-end'], ['class' => 'text-center'], ['class' => 'my-4'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>>
-<?php 
-\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(62);
-// PUG_DEBUG:62
  ?>    <h3<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['class' => 'titreIndex'], ['class' => 'm-0'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>><?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(59);
 // PUG_DEBUG:59
@@ -416,79 +416,78 @@
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(60);
 // PUG_DEBUG:60
  ?><br><?php 
+\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(62);
+// PUG_DEBUG:62
+ ?><span><?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(61);
 // PUG_DEBUG:61
- ?>c'est ??</h3>
-  </div>
-</div>
-<?php 
-\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(83);
-// PUG_DEBUG:83
- ?><div<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['class' => 'container-fluid'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>>
-<?php 
-\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(82);
-// PUG_DEBUG:82
- ?>  <div<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['class' => 'row'], ['class' => 'flex-column-reverse'], ['class' => 'flex-md-row'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>>
-<?php 
-\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(81);
-// PUG_DEBUG:81
- ?>    <div<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['class' => 'col-12'], ['class' => 'col-md-12'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>>
-<?php 
-\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(80);
-// PUG_DEBUG:80
- ?>      <p<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['class' => 'textIndex'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>><?php 
-\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(65);
-// PUG_DEBUG:65
- ?>Bienvenue dans Glimps Gone l'Extravagante Galerie d'Art des Œuvres Invisibles !<?php 
-\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(66);
-// PUG_DEBUG:66
- ?><br><?php 
-\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(68);
-// PUG_DEBUG:68
- ?><span<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['class' => 'texteFocus'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>><?php 
-\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(67);
-// PUG_DEBUG:67
- ?>Oubliez tout ce que vous pensiez savoir sur l'art !</span><?php 
-\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(69);
-// PUG_DEBUG:69
- ?><br><?php 
-\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(70);
-// PUG_DEBUG:70
- ?>Ici, dans les couloirs de notre galerie, les œuvres d'art n'attendent pas sagement d'être admirées. Pourquoi ? Car elles sont invisibles !<?php 
-\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(71);
-// PUG_DEBUG:71
- ?><br><?php 
-\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(72);
-// PUG_DEBUG:72
- ?>Notre collection unique est une célébration, un carnaval de l'imagination où les tableaux se cachent derrière le voile de l'invisible et jouent à cache-cache dans le néant.<?php 
-\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(73);
-// PUG_DEBUG:73
- ?><br><?php 
-\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(74);
-// PUG_DEBUG:74
- ?>Pas de panique ! Pas besoin de lunettes spéciales ni de guides spirituels pour apprécier notre exposition. Votre propre esprit est la toile, votre imagination le pinceau.<?php 
-\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(75);
-// PUG_DEBUG:75
- ?><br><?php 
-\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(77);
-// PUG_DEBUG:77
- ?><span<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['class' => 'texteFocus'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>><?php 
-\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(76);
-// PUG_DEBUG:76
- ?>Chez nous, chaque visiteur devient un artiste, un critique d'art déjanté, inventant des chefs-d'œuvre plus éclatés les uns que les autres.</span><?php 
-\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(78);
-// PUG_DEBUG:78
- ?><br><?php 
-\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(79);
-// PUG_DEBUG:79
- ?>Alors, prêts à plonger dans le grand bain de l'art non-vu ? À interpréter le vide, à rire de l'absurde et à créer l'inimaginable ? Joignez-vous à la fête des sens (ou plutôt, du non-sens) et laissez votre imagination débridée faire le reste !</p>
-    </div>
+ ?>c'est ??</span></h3>
   </div>
 </div>
 <?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(84);
 // PUG_DEBUG:84
- ?><script<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['src' => '../public/js/script.js'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>></script>
+ ?><div<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['class' => 'container-fluid'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>>
+<?php 
+\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(83);
+// PUG_DEBUG:83
+ ?>  <div<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['class' => 'row'], ['class' => 'flex-column-reverse'], ['class' => 'flex-md-row'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>>
+<?php 
+\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(82);
+// PUG_DEBUG:82
+ ?>    <div<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['class' => 'col-12'], ['class' => 'col-md-12'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>>
+<?php 
+\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(81);
+// PUG_DEBUG:81
+ ?>      <p<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['class' => 'textIndex'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>><?php 
+\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(66);
+// PUG_DEBUG:66
+ ?>Bienvenue dans Glimps Gone l'Extravagante Galerie d'Art des Œuvres Invisibles !<?php 
+\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(67);
+// PUG_DEBUG:67
+ ?><br><?php 
+\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(69);
+// PUG_DEBUG:69
+ ?><span<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['class' => 'texteFocus'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>><?php 
+\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(68);
+// PUG_DEBUG:68
+ ?>Oubliez tout ce que vous pensiez savoir sur l'art !</span><?php 
+\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(70);
+// PUG_DEBUG:70
+ ?><br><?php 
+\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(71);
+// PUG_DEBUG:71
+ ?>Ici, dans les couloirs de notre galerie, les œuvres d'art n'attendent pas sagement d'être admirées. Pourquoi ? Car elles sont invisibles !<?php 
+\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(72);
+// PUG_DEBUG:72
+ ?><br><?php 
+\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(73);
+// PUG_DEBUG:73
+ ?>Notre collection unique est une célébration, un carnaval de l'imagination où les tableaux se cachent derrière le voile de l'invisible et jouent à cache-cache dans le néant.<?php 
+\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(74);
+// PUG_DEBUG:74
+ ?><br><?php 
+\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(75);
+// PUG_DEBUG:75
+ ?>Pas de panique ! Pas besoin de lunettes spéciales ni de guides spirituels pour apprécier notre exposition. Votre propre esprit est la toile, votre imagination le pinceau.<?php 
+\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(76);
+// PUG_DEBUG:76
+ ?><br><?php 
+\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(78);
+// PUG_DEBUG:78
+ ?><span<?= (is_bool($_pug_temp = $pugModule['Phug\\Formatter\\Format\\HtmlFormat::attributes_assignment'](['class' => 'texteFocus'], array(  ))) ? var_export($_pug_temp, true) : $_pug_temp) ?>><?php 
+\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(77);
+// PUG_DEBUG:77
+ ?>Chez nous, chaque visiteur devient un artiste, un critique d'art déjanté, inventant des chefs-d'œuvre plus éclatés les uns que les autres.</span><?php 
+\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(79);
+// PUG_DEBUG:79
+ ?><br><?php 
+\Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(80);
+// PUG_DEBUG:80
+ ?>Alors, prêts à plonger dans le grand bain de l'art non-vu ? À interpréter le vide, à rire de l'absurde et à créer l'inimaginable ? Joignez-vous à la fête des sens (ou plutôt, du non-sens) et laissez votre imagination débridée faire le reste !</p>
+    </div>
+  </div>
+</div>
 <?php 
 \Phug\Renderer\Profiler\ProfilerModule::recordProfilerDisplayEvent(95);
 // PUG_DEBUG:95

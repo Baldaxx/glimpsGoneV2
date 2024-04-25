@@ -77,10 +77,6 @@ nav li a.active {
     color: #4b4b4b;
 }
 
-.viewSize {
-    min-height: 55vh;
-}
-
 .textIndex {
     color: white;
     font-family: 'Lato light', 'arial';
@@ -94,7 +90,8 @@ nav li a.active {
     font-family: 'lato', 'arial';
 }
 
-.titreIndex {
+.titreIndex,
+.titreFaq {
     color: #161616;
     font-family: 'TheNextFont', 'arial';
     font-size: 2rem;
@@ -115,13 +112,6 @@ nav li a.active {
     font-family: 'TheNextFont', 'arial';
     font-size: 2rem;
     background-color: #fc9701;
-}
-
-.titreFaq {
-    color: #161616;
-    font-family: 'TheNextFont', 'arial';
-    font-size: 2rem;
-    background-color: #02a551;
 }
 
 .titreIndex span,
