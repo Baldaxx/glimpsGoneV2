@@ -1,13 +1,12 @@
 <?php
 
-// Ce code définit une classe en PHP pour un contrôleur de galerie qui gère l'affichage d'œuvres d'art récupérées depuis une base de données, adaptant le contenu montré basé sur l'utilisateur connecté et renvoyant une page web générée.
 
 namespace GlimpsGoneV2\controller;
 
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use GlimpsGoneV2\core\AbstractController;
 use GlimpsGoneV2\core\App;
+use Psr\Http\Message\ResponseInterface;
+use GlimpsGoneV2\core\AbstractController;
+use Psr\Http\Message\ServerRequestInterface;
 use GlimpsGoneV2\repository\OeuvreRepository;
 
 class OeuvreController extends AbstractController
@@ -20,15 +19,12 @@ class OeuvreController extends AbstractController
         $this->oeuvreRepository = new OeuvreRepository(App::getAppInstance()->getPDO());
     }
 
-    function execute(): ResponseInterface
-    {
-        $user = $this->getCurrentUser();
-        if ($user == null) {
-        }
-
+public function execute(): ResponseInterface {
+    try {
         $oeuvres = $this->oeuvreRepository->getOeuvres();
-        $oeuvreAAfficher = $oeuvres[0];
-
-        return $this->phugResponse("oeuvre", ["data" => $oeuvreAAfficher]);
+        return $this->jsonResponse($oeuvres);
+    } catch (\Exception $e) {
+        return $this->jsonResponse(['error' => $e->getMessage()], 500);
     }
+}
 }

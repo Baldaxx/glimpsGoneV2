@@ -2,21 +2,23 @@
 
 namespace GlimpsGoneV2\core;  
 
-use GlimpsGoneV2\controller\AccueilController;
+use PDO;  
 use GuzzleHttp\Psr7\ServerRequest; 
 use Psr\Http\Message\ResponseInterface;  
-use Psr\Http\Message\ServerRequestInterface;  
-use PDO;  
-use GlimpsGoneV2\controller\ArtisteDetailController;
-use GlimpsGoneV2\controller\api\ArtisteDetailApiController;
-use GlimpsGoneV2\controller\GalerieController;
-use GlimpsGoneV2\controller\TotoController;
-use GlimpsGoneV2\controller\TotoDetailController;
-use GlimpsGoneV2\controller\AjouterController;
 use GlimpsGoneV2\controller\FaqController;
+use GlimpsGoneV2\controller\TotoController;
 use GlimpsGoneV2\controller\InfosController;
 use GlimpsGoneV2\controller\OeuvreController;
+use GlimpsGoneV2\controller\AccueilController;
+use GlimpsGoneV2\controller\AjouterController;
+use GlimpsGoneV2\controller\GalerieController;
+use Psr\Http\Message\ServerRequestInterface;  
 use GlimpsGoneV2\core\model\ControllerWithParam;
+use GlimpsGoneV2\controller\TotoDetailController;
+use GlimpsGoneV2\controller\GalerieDownController;
+use GlimpsGoneV2\controller\ArtisteDetailController;
+use GlimpsGoneV2\controller\api\OeuvreDetailApiController;
+use GlimpsGoneV2\controller\api\ArtisteDetailApiController;
 
 class App
 {
@@ -44,9 +46,11 @@ class App
         "GET /toto/{string}" => TotoDetailController::class,
         "GET /artiste/{int}" => ArtisteDetailController::class,
         "GET /api/artiste/{int}" => ArtisteDetailApiController::class,
+        "GET /api/oeuvre/{int}" => OeuvreDetailApiController::class,
         "GET /ajouter" => AjouterController::class,
         "GET /faq" => FaqController::class,
         "GET /infos" => InfosController::class,
+        "GET /galerieDown" => GalerieDownController::class,
         "GET /galerie" => GalerieController::class,
         "POST /galerie" => OeuvreController::class,
         "DELETE /galerie" => OeuvreController::class,
@@ -88,15 +92,16 @@ class App
             $response = $controller->instantiate($this->request)->execute();  
             $this->sendResponse($response); 
                 } else {
-            $this->fatalError("T'a merdé à un endroit frérot !!!");  
+            $this->fatalError("t a merdé à un endroit frérot !!!");  
         }
     }
 
-// Affiche un message d'erreur et arrête l'exécution du programme
     function fatalError(string $message): void
     {
-        echo $message;  
-        exit;  
+        header("Content-Type: application/json"); 
+        http_response_code(500); 
+        echo json_encode(["error" => $message]);
+        exit;
     }
 
 // Identifie et retourne le contrôleur correspondant à la requête, ou null si aucun ne correspond

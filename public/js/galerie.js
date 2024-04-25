@@ -1,103 +1,98 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
+  const API_BASE_URL = "/glimpsgoneV2/src/api";
   let toutesLesOeuvres = [];
-  let identifiantOeuvreCourante = 0;
+  let oeuvreCouranteIndex = 0;
 
-  async function recupererEtAfficherOeuvre() {
+  async function fetchAPI(url, options = {}) {
     try {
-      const response = await fetch(
-        "/glimpsgoneV2/src/repository/OeuvreRepository.php"
-      );
+      const response = await fetch(url, options);
       if (!response.ok) {
         throw new Error(
-          "Erreur lors de la récupération des œuvres : " + response.status
+          `Erreur réseau: ${response.status} - ${response.statusText}`
         );
       }
-      const textResponse = await response.text(); 
-      console.log("Réponse brute du serveur:", textResponse); 
-      if (!textResponse) {
-        throw new Error("La réponse du serveur est vide");
-      }
-      const oeuvres = JSON.parse(textResponse); 
-      if (!oeuvres || oeuvres.length === 0) {
-        window.location.href = "galerieDown.pug";
-        return;
-      }
-      toutesLesOeuvres = oeuvres;
-      afficheOeuvre(toutesLesOeuvres[identifiantOeuvreCourante]);
+      return await response.json(); 
     } catch (error) {
       console.error(
-        "Erreur lors du parsing JSON ou de la récupération des données:",
-        error
+        "Erreur lors de la communication avec l'API:",
+        error.message
       );
+      // window.location.href = "/glimpsgoneV2/galerieDown";
+      throw error; 
     }
   }
 
-  function afficheOeuvre(oeuvre) {
+  async function recupererOeuvres() {
+    try {
+      toutesLesOeuvres = await fetchAPI(`${API_BASE_URL}/oeuvre`);
+      if (toutesLesOeuvres.length === 0) {
+        throw new Error("Aucune oeuvre disponible.");
+      }
+      recupererEtAfficherOeuvre(toutesLesOeuvres[oeuvreCouranteIndex].id);
+    } catch (error) {
+      console.error(error.message);
+  //     // window.location.href = "/glimpsgoneV2/galerieDown";
+    }
+  }
+
+  async function recupererEtAfficherOeuvre(id) {
+    try {
+      const oeuvre = await fetchAPI(`${API_BASE_URL}/oeuvre/${id}`);
+      afficherOeuvre(oeuvre);
+    } catch (error) {
+      console.error("Erreur lors du chargement de l'oeuvre:", error);
+    }
+  }
+
+  function afficherOeuvre(oeuvre) {
     if (!oeuvre) {
       console.error("Aucune oeuvre à afficher.");
       return;
     }
-    document.getElementById("titreOeuvre").innerHTML = `${
-      oeuvre.titre
-    }<br><span>${oeuvre.artiste.name} ${new Date(
-      oeuvre.dateCreation
-    ).getFullYear()}</span>`;
+    document.getElementById("titreOeuvre").innerHTML = `${oeuvre.titre} (${
+      oeuvre.artiste.name
+    }, ${new Date(oeuvre.dateCreation).getFullYear()})`;
     document.getElementById("descriptionOeuvre").innerHTML = oeuvre.description;
     document.getElementById("jaimeOeuvre").innerHTML = oeuvre.compteurJaime;
     document.getElementById("jaimePasOeuvre").innerHTML =
       oeuvre.compteurJaimePas;
   }
 
-  async function ajouterAction(action) {
+  async function ajouterAction(action, id) {
     try {
-      const response = await fetch("/galerie", {
+      await fetchAPI(`${API_BASE_URL}/oeuvre/action`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          action: action,
-          id: toutesLesOeuvres[identifiantOeuvreCourante].id,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action, id }),
       });
-      if (!response.ok) {
-        throw new Error(
-          "Erreur lors de l'ajout de l'action " +
-            action +
-            ": " +
-            response.status
-        );
-      }
-      recupererEtAfficherOeuvre(); 
+      recupererEtAfficherOeuvre(id);
     } catch (error) {
-      console.error(error);
+      console.error("Erreur lors de l'ajout d'une action:", error);
     }
   }
 
   function afficherOeuvreSuivante() {
-    if (identifiantOeuvreCourante + 1 < toutesLesOeuvres.length) {
-      identifiantOeuvreCourante++;
-      afficheOeuvre(toutesLesOeuvres[identifiantOeuvreCourante]);
-    } else {
-      window.location.href = "galerieFin.pug";
-    }
+    oeuvreCouranteIndex = (oeuvreCouranteIndex + 1) % toutesLesOeuvres.length;
+    recupererEtAfficherOeuvre(toutesLesOeuvres[oeuvreCouranteIndex].id);
   }
 
   function afficherOeuvrePrecedente() {
-    if (identifiantOeuvreCourante - 1 >= 0) {
-      identifiantOeuvreCourante--;
-      afficheOeuvre(toutesLesOeuvres[identifiantOeuvreCourante]);
-    } else {
-      window.location.href = "galerieFin.pug";
-    }
+    oeuvreCouranteIndex =
+      (oeuvreCouranteIndex - 1 + toutesLesOeuvres.length) %
+      toutesLesOeuvres.length;
+    recupererEtAfficherOeuvre(toutesLesOeuvres[oeuvreCouranteIndex].id);
   }
 
   document
     .getElementById("btn_jaime")
-    .addEventListener("click", () => ajouterAction("like"));
+    .addEventListener("click", () =>
+      ajouterAction("like", toutesLesOeuvres[oeuvreCouranteIndex].id)
+    );
   document
     .getElementById("btn_jaime_pas")
-    .addEventListener("click", () => ajouterAction("dislike"));
+    .addEventListener("click", () =>
+      ajouterAction("dislike", toutesLesOeuvres[oeuvreCouranteIndex].id)
+    );
   document
     .getElementById("btn_suivant")
     .addEventListener("click", afficherOeuvreSuivante);
@@ -105,5 +100,5 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("btn_precedent")
     .addEventListener("click", afficherOeuvrePrecedente);
 
-  recupererEtAfficherOeuvre(); 
+  await recupererOeuvres(); 
 });

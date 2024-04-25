@@ -46,15 +46,17 @@ abstract class AbstractController
         return $response;
     }
 
-    protected function jsonResponse(string $jsonBody, int $statusCode = 200): ResponseInterface
+    protected function jsonResponse(array $data, int $statusCode = 200): ResponseInterface
     {
         $response = new Response();
+        $jsonBody = json_encode($data);
         $response->getBody()->write($jsonBody);
 
         return $response
             ->withStatus($statusCode)
             ->withHeader("Content-Type", "application/json");
     }
+
 
     private function getPhugRenderer(): Renderer
     {

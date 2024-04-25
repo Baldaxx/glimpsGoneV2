@@ -15,15 +15,6 @@ class Oeuvre
     private int $compteurJaime;
     private int $compteurJaimePas;
 
-    /**
-     * Oeuvre constructor.
-     * @param int|null $id
-     * @param string $titre
-     * @param string $description
-     * @param DateTime $dateCreation
-     * @param int $compteurJaime
-     * @param int $compteurJaimePas
-     */
     public function __construct(?int $id, string $titre, string $description, DateTime $dateCreation, int $compteurJaime, int $compteurJaimePas)
     {
         $this->id = $id;
@@ -31,7 +22,7 @@ class Oeuvre
         $this->description = $description;
         $this->dateCreation = $dateCreation;
         $this->compteurJaime = $compteurJaime;
-        $this->compteurJaimePas = compteurJaimePas;
+        $this->compteurJaimePas = $compteurJaimePas;
     }
 
     public function getId(): ?int
@@ -74,11 +65,6 @@ class Oeuvre
         $this->dateCreation = $dateCreation;
     }
 
-    public function getAnneeCreation(): string
-    {
-        return $this->dateCreation->format("Y");
-    }
-
     public function getCompteurJaime(): int
     {
         return $this->compteurJaime;
@@ -98,4 +84,15 @@ class Oeuvre
     {
         $this->compteurJaimePas = $compteurJaimePas;
     }
+public function toArray(): array
+{
+    return [
+        'id' => $this->getId(),
+        'titre' => $this->getTitre(),
+        'description' => $this->getDescription(),
+        'dateCreation' => $this->getDateCreation()->format('Y-m-d'),
+        'compteurJaime' => $this->getCompteurJaime(),
+        'compteurJaimePas' => $this->getCompteurJaimePas()
+    ];
+}
 }
