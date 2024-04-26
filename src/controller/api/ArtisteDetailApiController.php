@@ -41,12 +41,11 @@ class ArtisteDetailApiController extends AbstractController
      *
      * @return ResponseInterface The response interface
      */
-    public function execute(): ResponseInterface
-    {
-        $artisteId = intval($this->pathParams[0]);
+public function execute(): ResponseInterface
+{
+    $artisteId = intval($this->pathParams[0]);
+    $artiste = $this->artisteRepository->getArtisteById($artisteId);
 
-        $artiste = $this->artisteRepository->getArtisteById($artisteId);
-
-        return $this->jsonResponse($artiste->toJson());
-    }
+    return $this->jsonResponse($artiste->toArray()); 
+}
 }

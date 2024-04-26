@@ -29,5 +29,4 @@ class OeuvreDetailApiController extends AbstractController
 
         return $this->jsonResponse($oeuvre->toArray());
     }
-
 }

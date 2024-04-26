@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", async function () {
   const API_BASE_URL = "/glimpsGoneV2/api/oeuvre"; 
+  
 
   async function fetchAPI(url, options = {}) {
     try {

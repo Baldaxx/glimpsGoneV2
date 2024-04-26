@@ -62,14 +62,14 @@ class Artiste
     /**
      * Converts the artist instance to JSON.
      */
-    public function toJson(): string
+    public function toArray(): array
     {
-        return json_encode([
+        return [
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
             'telephone' => $this->telephone
-        ]);
+        ];
     }
 
     /**

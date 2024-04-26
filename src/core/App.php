@@ -6,7 +6,6 @@ use PDO;
 use GuzzleHttp\Psr7\ServerRequest; 
 use Psr\Http\Message\ResponseInterface;  
 use GlimpsGoneV2\controller\FaqController;
-use GlimpsGoneV2\controller\TotoController;
 use GlimpsGoneV2\controller\InfosController;
 use GlimpsGoneV2\controller\OeuvreController;
 use GlimpsGoneV2\controller\AccueilController;
@@ -14,12 +13,11 @@ use GlimpsGoneV2\controller\AjouterController;
 use GlimpsGoneV2\controller\GalerieController;
 use Psr\Http\Message\ServerRequestInterface;  
 use GlimpsGoneV2\core\model\ControllerWithParam;
-use GlimpsGoneV2\controller\TotoDetailController;
 use GlimpsGoneV2\controller\GalerieDownController;
 use GlimpsGoneV2\controller\ArtisteDetailController;
-use GlimpsGoneV2\controller\api\AfficherOeuvreController;
 use GlimpsGoneV2\controller\api\OeuvreDetailApiController;
 use GlimpsGoneV2\controller\api\ArtisteDetailApiController;
+use GlimpsGoneV2\controller\api\ArtistOeuvreJointApiController;
 
 class App
 {
@@ -43,11 +41,10 @@ class App
      */
     private array $controllers = [
         "GET /" => AccueilController::class,
-        "GET /toto" => TotoController::class,
-        "GET /toto/{string}" => TotoDetailController::class,
         "GET /artiste/{int}" => ArtisteDetailController::class,
         "GET /api/artiste/{int}" => ArtisteDetailApiController::class,
         "GET /api/oeuvre/{int}" => OeuvreDetailApiController::class,
+        "GET /api/artistOeuvre/{int}" => ArtistOeuvreJointApiController::class,
         "GET /ajouter" => AjouterController::class,
         "GET /faq" => FaqController::class,
         "GET /infos" => InfosController::class,
@@ -56,7 +53,7 @@ class App
         "POST /galerie" => OeuvreController::class,
         "DELETE /galerie" => OeuvreController::class,
         "PUT /galerie" => OeuvreController::class,
-        "GET /api/galerie" => AfficherOeuvreController::class,
+        
     ];
 
 // Crée une instance avec la requête HTTP actuelle
