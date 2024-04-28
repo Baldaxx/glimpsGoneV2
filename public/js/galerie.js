@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", async function () {
-  const API_BASE_URL = "/glimpsGoneV2/api/oeuvre"; 
-  
+  const API_BASE_URL = "/glimpsGoneV2/api/oeuvre";
+
 
   async function fetchAPI(url, options = {}) {
     try {
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       return;
     }
     document.getElementById("titreOeuvre").innerHTML = `${oeuvre.titre} (${
-      oeuvre.artiste}, ${new Date(oeuvre.dateCreation).getFullYear()})`;
+      oeuvre.artiste_nom}, ${new Date(oeuvre.dateCreation).getFullYear()})`;
     document.getElementById("descriptionOeuvre").innerHTML = oeuvre.description;
     document.getElementById("jaimeOeuvre").innerHTML = oeuvre.compteurJaime;
     document.getElementById("jaimePasOeuvre").innerHTML =

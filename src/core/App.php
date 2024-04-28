@@ -1,23 +1,13 @@
 <?php
 
-namespace GlimpsGoneV2\core;  
+namespace GlimpsGoneV2\core;
 
-use PDO;  
-use GuzzleHttp\Psr7\ServerRequest; 
-use Psr\Http\Message\ResponseInterface;  
-use GlimpsGoneV2\controller\FaqController;
-use GlimpsGoneV2\controller\InfosController;
-use GlimpsGoneV2\controller\OeuvreController;
-use GlimpsGoneV2\controller\AccueilController;
-use GlimpsGoneV2\controller\AjouterController;
-use GlimpsGoneV2\controller\GalerieController;
-use Psr\Http\Message\ServerRequestInterface;  
-use GlimpsGoneV2\core\model\ControllerWithParam;
-use GlimpsGoneV2\controller\GalerieDownController;
-use GlimpsGoneV2\controller\ArtisteDetailController;
-use GlimpsGoneV2\controller\api\OeuvreDetailApiController;
-use GlimpsGoneV2\controller\api\ArtisteDetailApiController;
 use GlimpsGoneV2\controller\api\ArtistOeuvreJointApiController;
+use GlimpsGoneV2\core\model\ControllerWithParam;
+use GuzzleHttp\Psr7\ServerRequest;
+use PDO;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class App
 {
@@ -39,34 +29,21 @@ class App
     /**
      * @var array|string[] Liste des contrôleurs de l'application.
      */
-    private array $controllers = [
-        "GET /" => AccueilController::class,
-        "GET /artiste/{int}" => ArtisteDetailController::class,
-        "GET /api/artiste/{int}" => ArtisteDetailApiController::class,
-        "GET /api/oeuvre/{int}" => OeuvreDetailApiController::class,
-        "GET /api/artistOeuvre/{int}" => ArtistOeuvreJointApiController::class,
-        "GET /ajouter" => AjouterController::class,
-        "GET /faq" => FaqController::class,
-        "GET /infos" => InfosController::class,
-        "GET /galerieDown" => GalerieDownController::class,
-        "GET /galerie" => GalerieController::class,
-        "POST /galerie" => OeuvreController::class,
-        "DELETE /galerie" => OeuvreController::class,
-        "PUT /galerie" => OeuvreController::class,
-        
-    ];
+    private array $controllers = [];
 
 // Crée une instance avec la requête HTTP actuelle
+
     private function __construct()
     {
-        $this->request = ServerRequest::fromGlobals();  
+        $this->request = ServerRequest::fromGlobals();
     }
 
 // Retourne une instance unique de la classe App, en la créant si nécessaire
     public static function getAppInstance(): App
     {
         if (self::$appInstance === null) {
-            self::$appInstance = new self();  
+            self::$appInstance = new self();
+            include __DIR__ . '/../router.php';
         }
         return self::$appInstance;
     }
@@ -75,7 +52,7 @@ class App
     public function getPDO(): PDO
     {
         if (self::$pdoInstance === null) {
-            $db = Config::getDbConfig();  
+            $db = Config::getDbConfig();
             self::$pdoInstance = new PDO("mysql:dbname={$db['name']};host={$db['host']}", $db['user'], $db['password'], [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
             ]);
@@ -86,28 +63,48 @@ class App
 // Gère la requête en appelant le contrôleur approprié et en envoyant sa réponse
     public function run(): void
     {
-        $controller = $this->getController();  
+        $controller = $this->getController();
         if ($controller !== null) {
-            $response = $controller->instantiate($this->request)->execute();  
-            $this->sendResponse($response); 
-                } else {
-            $this->fatalError("t a merdé à un endroit frérot !!!");  
+            $response = $controller->instantiate($this->request)->execute();
+            $this->sendResponse($response);
+        } else {
+            $this->fatalError("cette page n'existe pas frérot !!!");
         }
     }
 
     function fatalError(string $message): void
     {
-        header("Content-Type: application/json"); 
-        http_response_code(500); 
+        header("Content-Type: application/json");
+        http_response_code(500);
         echo json_encode(["error" => $message]);
         exit;
+    }
+
+    public function get(string $url, string $controller)
+    {
+        $this->controllers["GET $url"] = $controller;
+    }
+
+    public function post(string $url, string $controller)
+    {
+        $this->controllers["POST $url"] = $controller;
+    }
+
+    public function put(string $url, string $controller)
+    {
+        $this->controllers["PUT $url"] = $controller;
+    }
+
+    public function delete(string $url, string $controller)
+    {
+        $this->controllers["DELETE $url"] = $controller;
     }
 
 // Identifie et retourne le contrôleur correspondant à la requête, ou null si aucun ne correspond
     private function getController(): ControllerWithParam|null
     {
         $requestedPath = str_replace("/" . Config::getAppName(), "", $this->request->getUri()->getPath());
-        $requestedMethod = $this->request->getMethod();  
+        $requestedMethod = $this->request->getMethod();
         foreach ($this->controllers as $controllerPath => $controllerClass) {
             $pattern = $this->getPatternForPath($controllerPath);
             $method = $this->getMethodForPath($controllerPath);
@@ -125,19 +122,19 @@ class App
     private function getPatternForPath(string $path): string
     {
         $pattern = str_replace("/", "\\/", $path);
-        $pattern = str_replace("{string}", "(.+)", $pattern);  
+        $pattern = str_replace("{string}", "(.+)", $pattern);
         $pattern = str_replace("{int}", "([0-9]+)", $pattern);
         $pattern = str_replace("GET ", "", $pattern);
         $pattern = str_replace("POST ", "", $pattern);
         $pattern = str_replace("PUT ", "", $pattern);
         $pattern = str_replace("DELETE ", "", $pattern);
-        return "#^$pattern$#";  
+        return "#^$pattern$#";
     }
 
 // Extrait et retourne la méthode HTTP d'une route spécifiée
     private function getMethodForPath(string $path): string
     {
-        return explode(" ", $path)[0];  
+        return explode(" ", $path)[0];
     }
 
 // Envoie la réponse HTTP, incluant les en-têtes et le corps de la réponse
@@ -145,10 +142,10 @@ class App
     {
         foreach ($response->getHeaders() as $name => $values) {
             foreach ($values as $value) {
-                header(sprintf('%s: %s', $name, $value), false); 
+                header(sprintf('%s: %s', $name, $value), false);
             }
         }
-        http_response_code($response->getStatusCode());  
-        echo $response->getBody();  
+        http_response_code($response->getStatusCode());
+        echo $response->getBody();
     }
 }

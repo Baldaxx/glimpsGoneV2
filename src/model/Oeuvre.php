@@ -15,7 +15,9 @@ class Oeuvre
     private int $compteurJaime;
     private int $compteurJaimePas;
 
-    public function __construct(?int $id, string $titre, string $description, DateTime $dateCreation, int $compteurJaime, int $compteurJaimePas)
+    private Artiste $artiste;
+
+    public function __construct(?int $id, string $titre, string $description, DateTime $dateCreation, int $compteurJaime, int $compteurJaimePas, Artiste $artiste)
     {
         $this->id = $id;
         $this->titre = $titre;
@@ -23,6 +25,7 @@ class Oeuvre
         $this->dateCreation = $dateCreation;
         $this->compteurJaime = $compteurJaime;
         $this->compteurJaimePas = $compteurJaimePas;
+        $this->artiste = $artiste;
     }
 
     public function getId(): ?int
@@ -84,15 +87,27 @@ class Oeuvre
     {
         $this->compteurJaimePas = $compteurJaimePas;
     }
-public function toArray(): array
-{
-    return [
-        'id' => $this->getId(),
-        'titre' => $this->getTitre(),
-        'description' => $this->getDescription(),
-        'dateCreation' => $this->getDateCreation()->format('Y-m-d'),
-        'compteurJaime' => $this->getCompteurJaime(),
-        'compteurJaimePas' => $this->getCompteurJaimePas()
-    ];
-}
+
+    public function getArtiste(): Artiste
+    {
+        return $this->artiste;
+    }
+
+    public function setArtiste(Artiste $artiste): void
+    {
+        $this->artiste = $artiste;
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->getId(),
+            'titre' => $this->getTitre(),
+            'description' => $this->getDescription(),
+            'dateCreation' => $this->getDateCreation()->format('Y-m-d'),
+            'compteurJaime' => $this->getCompteurJaime(),
+            'compteurJaimePas' => $this->getCompteurJaimePas(),
+            "artiste_nom" => $this->getArtiste()->getName(),
+        ];
+    }
 }
