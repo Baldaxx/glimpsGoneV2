@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", async function () {
   const API_BASE_URL = "/glimpsGoneV2/api/oeuvre";
-
+  let identifiantOeuvreCourante = 1; 
 
   async function fetchAPI(url, options = {}) {
     try {
@@ -23,27 +23,48 @@ document.addEventListener("DOMContentLoaded", async function () {
   async function recupererEtAfficherOeuvre(id) {
     try {
       const oeuvre = await fetchAPI(`${API_BASE_URL}/${id}`);
-      if (!oeuvre) {
+      if (!oeuvre || Object.keys(oeuvre).length === 0) {
         throw new Error("Aucune oeuvre disponible.");
       }
       afficherOeuvre(oeuvre);
     } catch (error) {
       console.error(error.message);
+      window.location.href = "/glimpsGoneV2/galerieFin"; 
     }
   }
 
   function afficherOeuvre(oeuvre) {
     if (!oeuvre) {
       console.error("Aucune oeuvre à afficher.");
+      window.location.href = "/glimpsGoneV2/galerieDown";
       return;
     }
     document.getElementById("titreOeuvre").innerHTML = `${oeuvre.titre} (${
-      oeuvre.artiste_nom}, ${new Date(oeuvre.dateCreation).getFullYear()})`;
+      oeuvre.artiste_nom
+    }, ${new Date(oeuvre.dateCreation).getFullYear()})`;
     document.getElementById("descriptionOeuvre").innerHTML = oeuvre.description;
     document.getElementById("jaimeOeuvre").innerHTML = oeuvre.compteurJaime;
     document.getElementById("jaimePasOeuvre").innerHTML =
       oeuvre.compteurJaimePas;
   }
 
-  recupererEtAfficherOeuvre(1);
+  function suivant() {
+    identifiantOeuvreCourante++;
+    recupererEtAfficherOeuvre(identifiantOeuvreCourante);
+  }
+
+  function precedent() {
+    if (identifiantOeuvreCourante > 1) {
+      identifiantOeuvreCourante--;
+      recupererEtAfficherOeuvre(identifiantOeuvreCourante);
+    } else {
+      console.log("Vous êtes déjà à la première oeuvre.");
+      window.location.href = "/glimpsGoneV2/galerieFin"; 
+    }
+  }
+
+  document.getElementById("btn_suivant").addEventListener("click", suivant);
+  document.getElementById("btn_precedent").addEventListener("click", precedent);
+
+  recupererEtAfficherOeuvre(identifiantOeuvreCourante); 
 });

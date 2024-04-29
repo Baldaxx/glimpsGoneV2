@@ -1,15 +1,16 @@
 <?php
 
+use GlimpsGoneV2\core\App;
+use GlimpsGoneV2\controller\FaqController;
+use GlimpsGoneV2\controller\InfosController;
 use GlimpsGoneV2\controller\AccueilController;
 use GlimpsGoneV2\controller\AjouterController;
-use GlimpsGoneV2\controller\api\ArtisteDetailApiController;
-use GlimpsGoneV2\controller\api\OeuvreDetailApiController;
-use GlimpsGoneV2\controller\ArtisteDetailController;
-use GlimpsGoneV2\controller\FaqController;
 use GlimpsGoneV2\controller\GalerieController;
+use GlimpsGoneV2\controller\GalerieFinController;
 use GlimpsGoneV2\controller\GalerieDownController;
-use GlimpsGoneV2\controller\InfosController;
-use GlimpsGoneV2\core\App;
+use GlimpsGoneV2\controller\ArtisteDetailController;
+use GlimpsGoneV2\controller\api\OeuvreDetailApiController;
+use GlimpsGoneV2\controller\api\ArtisteDetailApiController;
 
 $app = App::getAppInstance();
 
@@ -34,10 +35,14 @@ $app->get("/galerieDown", GalerieDownController::class);
 /** Affiche la gallerie */
 $app->get("/galerie", GalerieController::class);
 
+/** Affiche la page fin de gallerie */
+$app->get("/galerieFin", GalerieFinController::class);
+
+
+
 /*
  * Route d'API json
  */
-
 /** Retourne le détail d'un artiste. */
 $app->get("/api/artiste/{int}", ArtisteDetailApiController::class);
 
