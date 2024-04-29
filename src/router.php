@@ -9,6 +9,7 @@ use GlimpsGoneV2\controller\GalerieController;
 use GlimpsGoneV2\controller\GalerieFinController;
 use GlimpsGoneV2\controller\GalerieDownController;
 use GlimpsGoneV2\controller\ArtisteDetailController;
+use GlimpsGoneV2\controller\AjouterOeuvreController;
 use GlimpsGoneV2\controller\api\OeuvreDetailApiController;
 use GlimpsGoneV2\controller\api\ArtisteDetailApiController;
 
@@ -37,6 +38,9 @@ $app->get("/galerie", GalerieController::class);
 
 /** Affiche la page fin de gallerie */
 $app->get("/galerieFin", GalerieFinController::class);
+
+/**AJouter une oeuvre à la base de donnée */
+$app->post("/ajouter", AjouterOeuvreController::class);
 
 
 

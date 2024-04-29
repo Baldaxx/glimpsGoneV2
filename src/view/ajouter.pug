@@ -2,35 +2,34 @@ include partials/head.pug
 include partials/menu.pug
 
 div.titre3Galerie.d-flex.justify-content-end.text-center.my-4
-  h3.titreProposer.m-0
-    | Soumettez votre oeuvre
-    br
-    span invisible
+  h3.titreProposer.m-0 Soumettez votre oeuvre
 
 div
   p.textInfo
     | Votre œuvre, un secret murmuré au monde, mérite une estrade au sein de notre galerie. C'est un pacte de confiance en la puissance de l'invisible, en la capacité de l'absent à émouvoir, à questionner, à relier. "Glimps Gone" n'est pas seulement un espace d'exposition ; c'est un voyage vers l'intérieur, une célébration de l'art qui transcende la matière.
     br
-    |
     | Nous vous invitons à libérer votre vision. Laissez "Glimps Gone" être le réceptacle de vos rêves, de vos pensées non dites. Ensemble, explorons la richesse de l'inexploré, prouvant que l'art ne se limite pas à ce qui peut être vu ou touché. Il réside aussi dans ce qui est ressenti, imaginé, partagé. Lancez-vous, partagez votre œuvre invisible, et enrichissez notre monde de votre unique perspective.
 
 div.container-fluid
-  form#formulaireProposerid.formulaireProposer
+  form#formulaireProposerid.formulaireProposer(action="/glimpsGoneV2/ajouter" method="POST")
     div.row.flex-md-row
       div.col-md-6.col-12
         div.mb-3
-          input.form-control#inputPrenom(name="inputPrenom" placeholder="Nom de scène" required)
+          label(for="inputPrenom") Nom de scène:
+          input.form-control#inputPrenom(name="artiste" placeholder="Nom de scène" required)
         div.mb-3
-          input.form-control#inputNom(type="text" placeholder="Titre de l'oeuvre" required)
+          label(for="inputNom") Titre de l'œuvre:
+          input.form-control#inputNom(name="titre" type="text" placeholder="Titre de l'œuvre" required)
         div.mb-3
-          input.form-control#inputEmail(type="email" placeholder="Email" required)
+          label(for="inputEmail") Email:
+          input.form-control#inputEmail(name="email" type="email" placeholder="Email" required)
         div.mb-3
-          input.form-control#inputTelephone(type="text" placeholder="Téléphone" required data-parsley-trigger="change" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" required)
+          label(for="inputTelephone") Téléphone:
+          input.form-control#inputTelephone(name="telephone" type="text" placeholder="Téléphone" required)
       div.col-md-6.col-12
         div.mb-3
-          textarea.form-control#inputCommentaire(rows="6" placeholder="Ajoutez votre oeuvre ici" style="resize: none;")
-        button#boutonValiderProposer(type="submit") Envoyer
-
+          label(for="inputCommentaire") Description:
+          textarea.form-control#inputCommentaire(name="description" rows="6" placeholder="Votre œuvre" required)
+        button#boutonValiderProposer.btn.btn-primary(type="submit") Envoyer
 
 include partials/footer.pug
-

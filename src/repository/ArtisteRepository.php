@@ -1,34 +1,41 @@
 <?php
 
-// Ce code PHP définit une classe appelée ArtisteRepository qui gère l'accès aux données des artistes dans une base de données. La méthode getArtisteById(int $id): Artiste récupère les informations d'un artiste spécifique à partir de la base de données en utilisant son identifiant, et retourne un objet Artiste correspondant. Si l'artiste n'est pas trouvé, une erreur fatale est déclenchée.
-
 namespace GlimpsGoneV2\repository;
 
-use GlimpsGoneV2\core\App; 
 use GlimpsGoneV2\model\Artiste;
+use PDO;
+use GlimpsGoneV2\core\App;
 
 class ArtisteRepository
 {
-    private \PDO $pdo;
+    private PDO $pdo;
 
     public function __construct()
     {
         $this->pdo = App::getAppInstance()->getPDO();
     }
 
-    public function getArtisteById(int $id): Artiste
+    public function findOrCreateByName(string $nom): Artiste
     {
-        $statement = $this->pdo->prepare("SELECT * FROM " . Artiste::TABLE_NAME . " WHERE id = ?");
-        if (!$statement->execute([$id])) {
-            App::getAppInstance()->fatalError("Cannot execute SQL request");
+        $stmt = $this->pdo->prepare("SELECT * FROM artiste WHERE nom = ?");
+        $stmt->execute([$nom]);
+        $result = $stmt->fetch();
+
+        if ($result) {
+            // Assurez-vous que les champs email et téléphone ne sont pas null
+            return new Artiste(
+                $result['id'],
+                $result['nom'],
+                $result['email'] ?? '', // Utilisation de l'opérateur null coalescent
+                $result['telephone'] ?? ''
+            );
+        } else {
+            // Créer un nouvel artiste si non trouvé avec des valeurs par défaut pour email et téléphone
+            $stmt = $this->pdo->prepare("INSERT INTO artiste (nom, email, telephone) VALUES (?, ?, ?)");
+            // Des valeurs par défaut sont passées pour email et téléphone
+            $stmt->execute([$nom, '', '']);
+            $id = $this->pdo->lastInsertId();
+            return new Artiste($id, $nom, '', '');
         }
-
-        $result = $statement->fetch();
-
-        if (!$result) {
-            App::getAppInstance()->fatalError("The artiste is not found.");
-        }
-
-        return Artiste::fromPdoResult($result);
     }
 }

@@ -3,9 +3,9 @@
 namespace GlimpsGoneV2\repository;
 
 use DateTime;
-use GlimpsGoneV2\model\Artiste;
 use PDO;
 use GlimpsGoneV2\model\Oeuvre;
+use GlimpsGoneV2\model\Artiste;
 
 class OeuvreRepository
 {
@@ -45,5 +45,20 @@ SQL;
                 $result["telephone"]
             )
         );
+    }
+
+    public function addOeuvre(Oeuvre $oeuvre): bool
+    {
+        $sql = "INSERT INTO oeuvre (artiste_id, titre, description, date_de_creation, compteur_jaime, compteur_jaime_pas) VALUES (?, ?, ?, ?, ?, ?)";
+        $statement = $this->pdo->prepare($sql);
+        $dateCreation = $oeuvre->getDateCreation()->format('Y-m-d');  // Utilisation correcte de getDateCreation
+        return $statement->execute([
+            $oeuvre->getArtiste()->getId(),
+            $oeuvre->getTitre(),
+            $oeuvre->getDescription(),
+            $dateCreation,
+            $oeuvre->getCompteurJaime(),
+            $oeuvre->getCompteurJaimePas()
+        ]);
     }
 }
