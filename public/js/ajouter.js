@@ -69,7 +69,7 @@ function submitForm() {
     .then((data) => {
       if (data.success) {
         alert("Oeuvre ajoutée avec succès !");
-        window.location.href = "/glimpsGoneV2/ajouterMerci"; 
+        window.location.href = "/glimpsGoneV2/ajouterMerci"; // Redirection après succès
       } else {
         throw new Error(data.error || "Erreur serveur");
       }

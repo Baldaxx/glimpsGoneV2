@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", async function () {
   const API_BASE_URL = "/glimpsGoneV2/api/oeuvre";
-  let identifiantOeuvreCourante = 1; 
+  let identifiantOeuvreCourante = 1;
 
   async function fetchAPI(url, options = {}) {
     try {
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       afficherOeuvre(oeuvre);
     } catch (error) {
       console.error(error.message);
-      window.location.href = "/glimpsGoneV2/galerieFin"; 
+      window.location.href = "/glimpsGoneV2/galerieFin";
     }
   }
 
@@ -59,12 +59,12 @@ document.addEventListener("DOMContentLoaded", async function () {
       recupererEtAfficherOeuvre(identifiantOeuvreCourante);
     } else {
       console.log("Vous êtes déjà à la première oeuvre.");
-      window.location.href = "/glimpsGoneV2/galerieFin"; 
+      window.location.href = "/glimpsGoneV2/galerieFin";
     }
   }
 
   document.getElementById("btn_suivant").addEventListener("click", suivant);
   document.getElementById("btn_precedent").addEventListener("click", precedent);
 
-  recupererEtAfficherOeuvre(identifiantOeuvreCourante); 
+  recupererEtAfficherOeuvre(identifiantOeuvreCourante);
 });
