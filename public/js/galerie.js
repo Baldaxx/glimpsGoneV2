@@ -57,7 +57,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       identifiantOeuvreCourante--;
       recupererEtAfficherOeuvre(identifiantOeuvreCourante);
     } else {
-      console.log("Vous êtes déjà à la première oeuvre.");
       window.location.href = "/glimpsGoneV2/galerieFin";
     }
   }

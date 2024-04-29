@@ -1,23 +1,25 @@
 include partials/head.pug
 include partials/menu.pug
 
-.row.mt-5
-  .col-lg-4.col-md-6.col-10.bg-light.m-auto.border.border-1.rounded.shadow.p-3
-    h1.mt-3.mb-4.text-center.h3 Formulaire d'inscription
-    != displayMessage()
-    form(method="POST" action="../controllers/addUser.php")
-      .mb-3
-        label(for="name" class="form-label fw-bold") Username
-        input(type="text" name="name" id="name" class="form-control")
-      .mb-3
-        label(for="email" class="form-label fw-bold") Email
-        input(type="email" name="email" id="email" class="form-control")
-      .mb-3
-        != displayMagicalNiveau()
-      .mb-4
-        label(for="password" class="form-label fw-bold") Password
-        input(type="password" name="password" id="password" class="form-control")
-      .text-center
-        button(type="submit" name="submit" class="btn btn-dark px-3 py-2") S'inscrire
+div.container-fluid
+  form#formulaireInscription.formulaireInscription(action="../controllers/addUser.php" method="POST")
+    div.row.flex-md-row
+      div.col-md-6.col-12
+        div.mb-3
+          label(for="name") Nom d'utilisateur:
+          input.form-control#name(name="name" placeholder="Entrez votre nom d'utilisateur" required)
+        div.mb-3
+          label(for="email") Email:
+          input.form-control#email(name="email" type="email" placeholder="Entrez votre email" required)
+        div.mb-3
+          label(for="password") Mot de passe:
+          input.form-control#password(name="password" type="password" placeholder="Entrez votre mot de passe" required)
+      div.col-md-6.col-12
+        div.mb-3
+
+          label(for="confirmPassword") Confirmez le mot de passe:
+          input.form-control#confirmPassword(name="confirmPassword" type="password" placeholder="Confirmez votre mot de passe" required)
+        div.d-flex.justify-content-center.mt-4
+          button#boutonValiderInscription.btn.btn-primary(type="submit") S'inscrire
 
 include partials/footer.pug
