@@ -282,9 +282,9 @@ footer {
     flex: 1;
 }
 
-.parsley-errors-list {
-    color: rgb(255, 0, 0);
-    font-family: 'lato light', 'arial';
+.titreEnregistrer, .h1Enregistrer {
+    color: #ffffff!important;
+        font-family: 'Lato light', 'arial';
 }
 
 @keyframes glitch {

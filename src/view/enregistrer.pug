@@ -2,24 +2,24 @@ include partials/head.pug
 include partials/menu.pug
 
 div.container-fluid
+  h1.text-center.mb-4(class="h1Enregistrer") S'enregistrer
   form#formulaireInscription.formulaireInscription(action="../controllers/addUser.php" method="POST")
     div.row.flex-md-row
       div.col-md-6.col-12
         div.mb-3
-          label(for="name") Nom d'utilisateur:
-          input.form-control#name(name="name" placeholder="Entrez votre nom d'utilisateur" required)
+          label(for="name" class="titreEnregistrer") Nom d'artiste:
+          input.form-control#name(name="name" placeholder="Entrez votre nom d'artiste" required)
         div.mb-3
-          label(for="email") Email:
+          label(for="email" class="titreEnregistrer") Email:
           input.form-control#email(name="email" type="email" placeholder="Entrez votre email" required)
         div.mb-3
-          label(for="password") Mot de passe:
+          label(for="password" class="titreEnregistrer") Mot de passe:
           input.form-control#password(name="password" type="password" placeholder="Entrez votre mot de passe" required)
       div.col-md-6.col-12
         div.mb-3
-
-          label(for="confirmPassword") Confirmez le mot de passe:
+          label(for="confirmPassword" class="titreEnregistrer") Confirmez le mot de passe:
           input.form-control#confirmPassword(name="confirmPassword" type="password" placeholder="Confirmez votre mot de passe" required)
         div.d-flex.justify-content-center.mt-4
-          button#boutonValiderInscription.btn.btn-primary(type="submit") S'inscrire
+          button#boutonValiderInscription.btn.btn(type="submit" class="titreEnregistrer") S'inscrire 
 
 include partials/footer.pug
