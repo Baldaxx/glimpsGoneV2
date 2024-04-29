@@ -40,8 +40,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       return;
     }
     document.getElementById("titreOeuvre").innerHTML = `${oeuvre.titre} (${
-      oeuvre.artiste_nom
-    }, ${new Date(oeuvre.dateCreation).getFullYear()})`;
+      oeuvre.artiste_nom}, ${new Date(oeuvre.dateCreation).getFullYear()})`;
     document.getElementById("descriptionOeuvre").innerHTML = oeuvre.description;
     document.getElementById("jaimeOeuvre").innerHTML = oeuvre.compteurJaime;
     document.getElementById("jaimePasOeuvre").innerHTML =

@@ -69,7 +69,7 @@ class Oeuvre
             'dateCreation' => $this->getDateCreation()->format('Y-m-d'),
             'compteurJaime' => $this->getCompteurJaime(),
             'compteurJaimePas' => $this->getCompteurJaimePas(),
-            'artiste' => $this->getArtiste()->toArray()
+            'artiste_nom' => $this->getArtiste()->getName()
         ];
     }
 }

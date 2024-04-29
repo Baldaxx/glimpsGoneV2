@@ -24,6 +24,7 @@ class OeuvreDetailApiController extends AbstractController
         $oeuvre = $this->oeuvreRepository->getOeuvreById($oeuvreId);
 
         if (!$oeuvre) {
+            error_log("Oeuvre with ID $oeuvreId not found"); 
             return $this->jsonResponse(['error' => "Oeuvre not found"], 404);
         }
 
