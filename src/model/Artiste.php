@@ -2,44 +2,15 @@
 
 namespace GlimpsGoneV2\model;
 
-/**
- * Representation of an artist.
- */
 class Artiste
 {
-    /**
-     * The name of the artist table in the database.
-     */
     public const TABLE_NAME = "artiste";
 
-    /**
-     * @var int|null Identifier of the artist. Null if the artist is not yet registered in the DB.
-     */
     private ?int $id;
-
-    /**
-     * @var string The name of the artist.
-     */
     private string $name;
-
-    /**
-     * @var string The email of the artist.
-     */
     private string $email;
-
-    /**
-     * @var string The telephone number of the artist.
-     */
     private string $telephone;
 
-    /**
-     * Constructor for the Artiste class.
-     *
-     * @param int|null $id
-     * @param string $name
-     * @param string $email
-     * @param string $telephone
-     */
     public function __construct(?int $id, string $name, string $email, string $telephone)
     {
         $this->id = $id;
@@ -48,33 +19,26 @@ class Artiste
         $this->telephone = $telephone;
     }
 
-    /**
-     * Creates an instance of Artiste from a PDO result.
-     *
-     * @param array $pdoResult
-     * @return Artiste
-     */
     public static function fromPdoResult(array $pdoResult): Artiste
     {
-        return new Artiste($pdoResult["id"], $pdoResult["nom"], $pdoResult["email"], $pdoResult["telephone"]);
+        return new Artiste(
+            $pdoResult["id"],
+            $pdoResult["nom"],
+            $pdoResult["email"],
+            $pdoResult["telephone"]
+        );
     }
 
-    /**
-     * Converts the artist instance to JSON.
-     */
     public function toArray(): array
     {
         return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'email' => $this->email,
-            'telephone' => $this->telephone
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'email' => $this->getEmail(),
+            'telephone' => $this->getTelephone()
         ];
     }
 
-    /**
-     * Getters and Setters
-     */
     public function getId(): ?int
     {
         return $this->id;

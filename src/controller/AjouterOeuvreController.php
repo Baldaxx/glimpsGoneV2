@@ -27,7 +27,7 @@ class AjouterOeuvreController extends AbstractController
     public function execute(): ResponseInterface
     {
         $requestData = $this->request->getParsedBody();
-        $requiredFields = ['titre', 'description', 'artiste']; // 'artiste' is the stage name
+        $requiredFields = ['titre', 'description', 'artiste']; 
 
         foreach ($requiredFields as $field) {
             if (empty($requestData[$field])) {
@@ -35,9 +35,8 @@ class AjouterOeuvreController extends AbstractController
             }
         }
 
-        // Get or create artist by stage name
         $artiste = $this->artisteRepository->findOrCreateByName($requestData['artiste']);
-        $dateCreation = new \DateTime(); // Automatically use the current date and time
+        $dateCreation = new \DateTime();
 
         $oeuvre = new Oeuvre(
             null,

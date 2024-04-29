@@ -59,4 +59,17 @@ class Oeuvre
     {
         return $this->artiste;
     }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->getId(),
+            'titre' => $this->getTitre(),
+            'description' => $this->getDescription(),
+            'dateCreation' => $this->getDateCreation()->format('Y-m-d'),
+            'compteurJaime' => $this->getCompteurJaime(),
+            'compteurJaimePas' => $this->getCompteurJaimePas(),
+            'artiste' => $this->getArtiste()->toArray()
+        ];
+    }
 }
