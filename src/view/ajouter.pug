@@ -1,35 +1,39 @@
 include partials/head.pug
 include partials/menu.pug
 
-div.titre3Galerie.d-flex.justify-content-end.text-center.my-4
-  h3.titreProposer.m-0 Soumettez votre oeuvre
+div.titre3Galerie.d-flex.text-center.my-4
+    h1.texteFocus1
+        | Eblouis-nous !
+    br
 
 div
   p.textInfo
-    | Votre œuvre, un secret murmuré au monde, mérite une estrade au sein de notre galerie. C'est un pacte de confiance en la puissance de l'invisible, en la capacité de l'absent à émouvoir, à questionner, à relier. "Glimps Gone" n'est pas seulement un espace d'exposition ; c'est un voyage vers l'intérieur, une célébration de l'art qui transcende la matière.
-    br
-    | Nous vous invitons à libérer votre vision. Laissez "Glimps Gone" être le réceptacle de vos rêves, de vos pensées non dites. Ensemble, explorons la richesse de l'inexploré, prouvant que l'art ne se limite pas à ce qui peut être vu ou touché. Il réside aussi dans ce qui est ressenti, imaginé, partagé. Lancez-vous, partagez votre œuvre invisible, et enrichissez notre monde de votre unique perspective.
-
+    | Allez, Picasso, libère ton esprit et accouche-nous d'un chef-d'œuvre encore jamais vu! Emporte-nous dans ton monde, dans ta subtilité et ton élégance. Ajoute des couleurs, des formes, et pourquoi pas, du vent! Éblouis-nous, oh grand révolutionnaire !
 div.container-fluid
   form#formulaireProposerid.formulaireProposer(action="/glimpsGoneV2/ajouter" method="POST")
     div.row.flex-md-row
       div.col-md-6.col-12
         div.mb-3
-          label(for="inputPrenom") Nom de scène:
+          label.label-custom(for="inputPrenom") Nom de scène:
           input.form-control#inputPrenom(name="artiste" placeholder="Nom de scène" required)
         div.mb-3
-          label(for="inputNom") Titre de l'œuvre:
+          label.label-custom(for="inputNom") Titre de l'œuvre:
           input.form-control#inputNom(name="titre" type="text" placeholder="Titre de l'œuvre" required)
         div.mb-3
-          label(for="inputEmail") Email:
+          label.label-custom(for="inputEmail") Email:
           input.form-control#inputEmail(name="email" type="email" placeholder="Email" required)
         div.mb-3
-          label(for="inputTelephone") Téléphone:
+          label.label-custom(for="inputTelephone") Téléphone:
           input.form-control#inputTelephone(name="telephone" type="text" placeholder="Téléphone" required)
       div.col-md-6.col-12
         div.mb-3
-          label(for="inputCommentaire") Description:
+          label.label-custom(for="inputCommentaire") Description:
           textarea.form-control#inputCommentaire(name="description" rows="6" placeholder="Votre œuvre" required)
-        button#boutonValiderProposer.btn.btn-primary(type="submit") Envoyer
-
+        button#boutonValiderProposer.custom-bouton1(type="submit") 
+            span Envoyer
 include partials/footer.pug
+script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js")
+script(src="https://unpkg.com/splitting/dist/splitting.min.js")
+script(src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js")
+script(src="/glimpsGoneV2/public/js/script.js")

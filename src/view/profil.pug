@@ -1,16 +1,23 @@
 include partials/head.pug
 include partials/menu.pug
 
-div.container
-    // PHP displayMessage() function call
-    h1.mt-3 Bonjour <?= $user['nom'] ?>
-    pre id="userId" id user : <?= $user['idutilisateur'] ?>
-    p Mon email: <?= $user['email'] ?>
-    p.fs-3 Mes rôles : 
-        //- PHP foreach loop for roles
-        each role in roles
-            p= role
-    a.btn.btn-danger(href="../controllers/logout.php") déconnexion
+div.titre3Galerie.d-flex.my-4
+    h1.texteFocus1
+        | Ton espace perso
+    br
 
+div.container
+    h1.mt-3 Bonjour #{user.prenom}
+    pre#userId.user-id user : #{user.idutilisateur}
+    p.label-custom Mon email:
+    p.info-custom #{user.email}
+    p.label-custom Mon téléphone:
+    p.info-custom #{user.telephone}
+    p.label-custom Ma bio:
+    p.info-custom #{user.bio}
+    p.label-custom Ma photo de profil:
+    p.info-custom #{user.photo}
+
+    a.btn.btn-danger(href="../controllers/logout.php") Déconnexion
 
 include partials/footer.pug

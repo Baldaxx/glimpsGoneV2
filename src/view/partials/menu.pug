@@ -1,10 +1,12 @@
 div.content
   div.container-fluid
-    div.row.align-items-end
-      div.col-3.col-sm-4.col-md-2
-        img.logo(src="/glimpsGoneV2/public/img/LogoBlanc.png", alt="Logo de Glimps Gone, l'extravagante galerie d'art d'oeuvre invisible")
-      div.col-9.col-sm-8.col-md-10
-        h1.titre GLIMPS GONE
+    div.row.align-items-center.justify-content-between
+      div.col-auto.d-flex.align-items-center
+        img.logo(src="/glimpsGoneV2/public/img/LogoBlanc.png", alt="Logo de Glimps Gone, l'extravagante galerie d'art d'œuvre invisible")
+        h1.titre.ml-3 GLIMPS GONE
+      div.col-auto.d-flex.align-items-center
+        button.custom-bouton1.mr-2 Se connecter
+        button.custom-bouton2.ml-2 S'enregistrer
     div
       h2.slogan L’extravagante Galerie d'Art des Œuvres Invisibles !
     div.nav-container
@@ -20,9 +22,6 @@ div.content
             a(href="/glimpsGoneV2/faq") FAQ
           li
             a(href="/glimpsGoneV2/infos") Contact
-
-
-            
     div.menuBurger
       button(onclick="toggleMenu()")
         img.burger(src="/glimpsGoneV2/public/img/menuBurger.png", alt="Menu")

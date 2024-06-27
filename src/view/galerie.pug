@@ -1,7 +1,7 @@
 include partials/head.pug
 include partials/menu.pug
 
-div.d-flex.justify-content-end.text-center.my-4
+div.d-flex.my-4
     h3#titreOeuvre.titreGalerie.m-0
         |
         br
@@ -9,7 +9,7 @@ div.d-flex.justify-content-end.text-center.my-4
 div.container-fluid
     div.row.flex-column-reverse.flex-md-row
         div.col-12.col-md-9.d-flex.align-items-center
-            p#descriptionOeuvre.galerieText.text-center.text-md-start 
+            p#descriptionOeuvre.galerieText.text-center.text-md-start
         div.col-12.col-md-3.text-center
             img.tableau(src="/glimpsGoneV2/public/img/Tableau.png", alt="Photo d'un encadrement de tableau orné, de couleur argenté, avec du vide à l'intérieur")
 div.container-fluid#compteurJJ
@@ -27,10 +27,16 @@ div.container-fluid#compteurJJ
         div.col-12.col-lg-6
             div.row
                 div.col-6
-                    a#btn_precedent.boutonValider(href="#") Précédent
+                    button#btn_precedent.custom-bouton2
+                        span Précédent
                 div.col-6
-                    a#btn_suivant.boutonValider(href="#") Suivant
+                    button#btn_suivant.custom-bouton1.ml-2
+                        span Suivant
 
 include partials/footer.pug
+script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js")
+script(src="https://unpkg.com/splitting/dist/splitting.min.js")
+script(src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js")
 script(src="/glimpsGoneV2/public/js/script.js")
 script(src="/glimpsGoneV2/public/js/galerie.js")

@@ -1,33 +1,39 @@
 include partials/head.pug
 include partials/menu.pug
 
-div.titre3Galerie.d-flex.justify-content-end.text-center.my-4
-    h3.titreInfos.m-0
-        | Virginie
-        br
-        span Baldacchino
+div.titre3Galerie.d-flex.my-4
+    h1.texteFocus1
+        | Oui, c'est aussi impressionnant que ça en a l'air.
+    br
+
 div
-    p.textInfo
-        | Passionnée d'art, de design et de décoration d'intérieur, je m'efforce de créer des espaces qui allient beauté et fonctionnalité, capturant l'essence de l'innovation. C'est dans cet esprit que "Glimps Gone : L'Extravagante Galerie d'Art des Œuvres Invisibles" est né, reflétant ma vision personnelle et mon engagement pour l'art dans toutes ses formes.
-        br
-        | Ce projet transcende les limites du perceptible, offrant un espace où
-        span l'imaginaire domine.
-        |  À travers Glimps Gone, j'invite le public à explorer l'art invisible et à célébrer notre imagination collective. Rejoignons-nous dans cette aventure extraordinaire, découvrant l'art omniprésent, prêt à être perçu par ceux qui regardent au-delà du visible.
+  p.textInfo
+    | Oh Rembrandt, tu veux nous écrire un mot doux ? Besoin d'aide pour peindre l'invisible ? Des conseils sur l'art de l'inutile ? Ou juste envie de nous dire à quel point notre génie t'impressionne ? Lâche-toi !
 div.container-fluid
-    form.formulaireProposer
-        div.row.flex-md-row
-            div.col-md-6.col-12
-                div.mb-3
-                    input.form-control#inputPrenom(placeholder="Prénom", required, )
-                div.mb-3
-                    input.form-control(type="text", id="inputNom", placeholder="Nom", required)
-                div.mb-3
-                    input.form-control(type="email", id="inputEmail", placeholder="Email", required, data-parsley-trigger="change", data-parsley-type="email", required)
-                div.mb-3
-                    input.form-control(type="tel", id="inputTelephone", placeholder="Téléphone", required)
-            div.col-md-6.col-12
-                div.mb-3
-                    textarea.form-control#inputCommentaire(rows="6", placeholder="Ajoutez votre message ici", style="resize: none;")
-                button#boutonValiderInfos(type="submit") Envoyer
+  form#formulaireProposerid.formulaireProposer(action="/glimpsGoneV2/ajouter" method="POST")
+    div.row.flex-md-row
+      div.col-md-6.col-12
+        div.mb-3
+          label.label-custom(for="inputPrenom") Nom d'artiste:
+          input.form-control#inputPrenom(name="artiste" placeholder="Nom..." required)
+        div.mb-3
+          label.label-custom(for="inputEmail") Email:
+          input.form-control#inputEmail(name="email" type="email" placeholder="Email..." required)
+        div.mb-3
+          label.label-custom(for="inputTelephone") Téléphone:
+          input.form-control#inputTelephone(name="telephone" type="text" placeholder="Téléphone..." required)
+      div.col-md-6.col-12
+        div.mb-3
+          label.label-custom(for="inputCommentaire") Ton mot doux :
+          textarea.form-control#inputCommentaire(name="Votre message..." rows="6" placeholder="Mot..." required)
+        button#boutonValiderProposer.custom-bouton1(type="submit") 
+            span Envoyer
 
 include partials/footer.pug
+script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js")
+script(src="https://unpkg.com/splitting/dist/splitting.min.js")
+script(src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js")
+script(src="/glimpsGoneV2/public/js/script.js")
+
+

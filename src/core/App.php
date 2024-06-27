@@ -100,7 +100,7 @@ class App
         $this->controllers["DELETE $url"] = $controller;
     }
 
-// Identifie et retourne le contrôleur correspondant à la requête, ou null si aucun ne correspond
+
     private function getController(): ControllerWithParam|null
     {
         $requestedPath = str_replace("/" . Config::getAppName(), "", $this->request->getUri()->getPath());
@@ -118,7 +118,7 @@ class App
         return null;
     }
 
-// Convertit un chemin de route en une expression régulière pour la correspondance d'URL
+
     private function getPatternForPath(string $path): string
     {
         $pattern = str_replace("/", "\\/", $path);
@@ -137,7 +137,7 @@ class App
         return explode(" ", $path)[0];
     }
 
-// Envoie la réponse HTTP, incluant les en-têtes et le corps de la réponse
+
     private function sendResponse(ResponseInterface $response): void
     {
         foreach ($response->getHeaders() as $name => $values) {

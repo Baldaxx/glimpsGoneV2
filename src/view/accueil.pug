@@ -2,30 +2,33 @@ include partials/head.pug
 include partials/menu.pug
 
 div.container-fluid
-  div.titre3Galerie.d-flex.justify-content-end.text-center.my-4
-    h3.titreIndex.m-0
-      | Qu'est ce que
-      br
-      span c'est ??
-
-div.container-fluid
   div.row.flex-column-reverse.flex-md-row
     div.col-12.col-md-12
       p.textIndex
-        | Bienvenue dans Glimps Gone l'Extravagante Galerie d'Art des Œuvres Invisibles !
+        h1.texteFocus1
+          | Oublie tout ce que tu pensais savoir sur l'art !
         br
-        span.texteFocus
-          | Oubliez tout ce que vous pensiez savoir sur l'art !
+        div.d-flex.justify-content-start.mt-4
+              button.custom-bouton1 
+                span Ajouter une oeuvre !
+              button.custom-bouton2.ml-2 
+                span Contactez-nous
         br
-        | Ici, dans les couloirs de notre galerie, les œuvres d'art n'attendent pas sagement d'être admirées. Pourquoi ? Car elles sont invisibles !
-        br
-        | Notre collection unique est une célébration, un carnaval de l'imagination où les tableaux se cachent derrière le voile de l'invisible et jouent à cache-cache dans le néant.
-        br
-        | Pas de panique ! Pas besoin de lunettes spéciales ni de guides spirituels pour apprécier notre exposition. Votre propre esprit est la toile, votre imagination le pinceau.
-        br
-        span.texteFocus
-          | Chez nous, chaque visiteur devient un artiste, un critique d'art déjanté, inventant des chefs-d'œuvre plus éclatés les uns que les autres.
-        br
-        | Alors, prêts à plonger dans le grand bain de l'art non-vu ? À interpréter le vide, à rire de l'absurde et à créer l'inimaginable ? Joignez-vous à la fête des sens (ou plutôt, du non-sens) et laissez votre imagination débridée faire le reste !
+      p.texteAnimation.box
+        | Bienvenue chez Glimps Gone, la galerie où l'art est tellement avant-gardiste que votre petit esprit va enfin servir à quelque chose !
+        br 
+        | Nos œuvres invisibles ne se contentent pas de rester là, elles prennent vie dans votre tête, parce qu'ici c'est vous l'artiste !
+        br 
+        | Pas besoin de lunettes spéciales ni de charlatans pour apprécier notre exposition. Votre propre cerveau est la toile, votre imagination le pinceau.
+        br 
+        | Alors, prêts à plonger dans l'univers de l'art invisible ? À créer l'inimaginable et à rire de l'absurde ? Rejoignez notre fête de l'imagination et laissez votre esprit s'envoler (enfin, si vous en avez un) !
+
+
 
 include partials/footer.pug
+script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js")
+script(src="https://unpkg.com/splitting/dist/splitting.min.js")
+script(src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js")
+script(src="/glimpsGoneV2/public/js/script.js")
+script(src="/glimpsGoneV2/public/js/accueil.js")

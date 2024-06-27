@@ -51,7 +51,7 @@ SQL;
     {
         $sql = "INSERT INTO oeuvre (artiste_id, titre, description, date_de_creation, compteur_jaime, compteur_jaime_pas) VALUES (?, ?, ?, ?, ?, ?)";
         $statement = $this->pdo->prepare($sql);
-        $dateCreation = $oeuvre->getDateCreation()->format('Y-m-d');  // Utilisation correcte de getDateCreation
+        $dateCreation = $oeuvre->getDateCreation()->format('Y-m-d');  
         return $statement->execute([
             $oeuvre->getArtiste()->getId(),
             $oeuvre->getTitre(),

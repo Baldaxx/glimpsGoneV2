@@ -26,7 +26,7 @@ html {
 }
 
 .logo {
-    width: 30%;
+    width: 10%;
     max-width: 120px;
     min-width: 40px;
     height: auto;
@@ -35,15 +35,16 @@ html {
 .titre {
     color: white;
     font-family: 'TheNextFont', 'arial';
-    font-size: 5rem;
+    font-size: 4rem;
 }
 
 .slogan {
-    color: white;
+    color: rgb(255, 255, 255);
     font-family: 'dancingSCript', 'arial';
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: end;
     margin-right: 95px;
+    margin-top: 50px;
 }
 
 .nav-container {
@@ -51,6 +52,7 @@ html {
     border-top: 1px solid #fff;
     border-bottom: 1px solid #fff;
     margin: auto;
+    margin-bottom: 50px;
 }
 
 nav ul {
@@ -58,6 +60,7 @@ nav ul {
     justify-content: space-around;
     list-style-type: none;
     padding-left: 0;
+
 }
 
 nav li a {
@@ -70,11 +73,11 @@ nav li a {
 }
 
 nav li a:hover {
-    color: #4b4b4b;
+    color: #09fc6e;
 }
 
 nav li a.active {
-    color: #4b4b4b;
+    color: #09fc6e;
 }
 
 .textIndex {
@@ -84,35 +87,98 @@ nav li a.active {
     font-size: 1rem;
 }
 
+.texteFocus1 {
+    font-size: 4rem;
+    font-family: 'TheNextFont', 'arial';
+    line-height: 0.80;
+    margin-top: 50px;
+    background-image: linear-gradient(to right, #00f7ff, #09fc6e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.custom-bouton1 {
+background-image: linear-gradient(to right, #00f7ff, #09fc6e);
+    color: #000000;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-family: 'Lato light', 'arial';
+    margin-right: 20px;
+}
+
+.custom-bouton2 {
+    background-color: transparent;
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-family: 'Lato light', 'arial';
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+button {
+position: relative;
+overflow: hidden;
+}
+
+  button span {
+      display: inline-block;
+  }
+
+.custom-bouton1:hover,
+.custom-bouton2:hover {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border-color: #00f7ff;
+}
+
+.label-custom {
+    color: #00f7ff;
+    font-family: 'Lato light', 'arial';
+    font-size: 1.8rem;
+}
+
+.label-custom {
+    color: #00f7ff;
+    font-family: 'Lato light', 'arial';
+    font-size: 1.8rem;
+}
+
+.info-custom {
+    color: white;
+    font-family: 'Lato light', 'arial';
+    font-size: 1.8rem;
+}
+
+.texteAnimation {
+    font-size: 3rem;
+    color: #c7c7c7;
+    line-height: 1;
+    font-family: 'Lato light';
+    margin-bottom: 200px;
+    margin-top: 200px;
+}
+
+.d-flex.justify-content-start {
+    display: flex;
+    justify-content: flex-start;
+}
+
 .texteFocus {
     font-size: 1.7rem;
-    color: #02A551;
+    color: #56ffa8;
     font-family: 'lato', 'arial';
 }
 
-.titreIndex,
-.titreFaq {
-    color: #161616;
-    font-family: 'TheNextFont', 'arial';
-    font-size: 2rem;
-    background-color: #02A551;
+
+.titreGalerie {
+    font-size: 4rem;
+        font-family: 'TheNextFont', 'arial';
+        line-height: 0.80;
+        margin-top: 50px;
+        background-image: linear-gradient(to right, #00f7ff, #09fc6e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
 }
 
-.titreGalerie,
-.titreInfos {
-    font-family: 'TheNextFont', 'arial';
-    font-size: 2.8rem;
-    background-color: #7070ff;
-    color: #161616;
-    font-size: 2rem;
-}
-
-.titreProposer {
-    color: #161616;
-    font-family: 'TheNextFont', 'arial';
-    font-size: 2rem;
-    background-color: #fc9701;
-}
 
 .titreIndex span,
 .titreGalerie span,
@@ -159,36 +225,45 @@ nav li a.active {
     transition: background-color 5000s ease-in-out 0s;
 }
 
-.accordion-item {
-    background-color: rgba(255, 255, 255, 0.062);
+
+
+.accordion-button {
+    background-color: #1b1b1b;
     border: none;
-    font-size: 1.6rem;
-    font-family: 'lato light', 'arial' !important;
-    margin-left: 200px;
-    margin-right: 200px;
-    text-align: center;
+    padding: 20px;
+    font-size: 1.2rem;
+    font-family: 'Lato', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+    position: relative;
+    overflow: hidden;
+    color: white;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    background-color: #1b1b1b;
+    color: white;
+}
+
+.accordion-button.collapsed {
+    background-color: #1b1b1b;
+    color: #00f7ff;
+    font-family: 'Lato light', 'arial';
+    font-size: 1.8rem;
+}
+
+.accordion-item {
+    border: none;
+    margin-bottom: 10px;
+    background-color: #1b1b1b;
 }
 
 .accordionText {
-    color: #02A551;
-    font-size: 1.3rem;
-    font-family: 'lato light', 'arial' !important;
-    padding: 2%;
-}
-
-.container-fluid button {
-    background-color: rgba(247, 0, 0, 0);
-    border: none;
-    font-family: 'lato light', 'arial' !important;
-}
-
-.accordion-collapse {
-    margin-bottom: 16px;
-}
-
-.collapsed {
-    font-size: 1.6rem;
-    font-family: 'lato light', 'arial';
+    padding: 20px;
+    background-color: #1b1b1b;
+    color: #ffffff;
+    font-family: 'Lato light', 'arial';
+    font-size: 1.8rem;
 }
 
 .textInfo,

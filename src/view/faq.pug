@@ -1,54 +1,57 @@
 include partials/head.pug
 include partials/menu.pug
 
-div.titre3Galerie.d-flex.justify-content-end.text-center.my-4
-  h3.titreFaq.m-0
-    | Plongez au coeur de l'énigme
+link(rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css")
+link(rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css")
+link(rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting-cells.css")
+
+div.titre3Galerie.d-flex.my-4
+    h1.texteFocus1
+        | Oui, c'est pour le SEO !!
     br
-    span avec notre FAQ
 
-div.container-fluid
-  div.accordion#accordionFlushExample
-    div.accordion-item
-      p#flush-headingOne
-        button.collapsed(type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne")
-          | Comment peut-on apprécier de l'art qu'on ne peut pas voir ?
-      div#flush-collapseOne.accordion-collapse.collapse(aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample")
-        div.accordionText
-          | Tout est dans l'œil de l'imaginaire ! Nos œuvres d'art sont si exclusives qu'elles ne se laissent pas voir par des moyens conventionnels. Imaginez une œuvre, et bam ! Elle est là. C'est une expérience unique, un peu comme écouter de la musique avec des gants de boxe, mais beaucoup plus artistique.
-
-    div.accordion-item
-      p#flush-headingTwo
-        button.collapsed(type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo")
-          | Quelle est l'oeuvre la plus populaire de la galerie ?
-      div#flush-collapseTwo.accordion-collapse.collapse(aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample")
-        div.accordionText
-          | Ah, c'est "Le Grand Rien" de Néant Néantsson. Une pièce si profondément vide qu'elle en devient pleine de significations. Les visiteurs passent des heures à contempler l'endroit où elle est supposée être exposée. Certains disent même avoir vu leur vie défiler devant leurs yeux !
-
-    div.accordion-item
-      p#flush-headingThree
-        button.collapsed(type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree")
-          | Comment puis-je soumettre ma propre oeuvre invisible ?
-      div#flush-collapseThree.accordion-collapse.collapse(aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample")
-        div.accordionText
-          | Simple comme bonjour ! Il suffit de ne pas nous envoyer votre œuvre. À la place, soumettez une description qui laisse notre imagination s'envoler vers des sommets inexplorés. Si votre description nous fait assez rire, pleurer ou nous plonge dans la confusion, votre "œuvre" gagnera sa place parmi notre illustre collection.
-
-    div.accordion-item
-      p#flush-headingFour
-        button.collapsed(type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour")
-          | Est-ce que la galerie propose des audioguides ?
-      div#flush-collapseFour.accordion-collapse.collapse(aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample")
-        div.accordionText
-          | Absolument ! Nos audioguides sont aussi invisibles que nos œuvres. En fait, il s'agit juste de vous promener avec des écouteurs sans musique. C'est une expérience profondément personnelle et introspective, garantie sans aucune interruption par de l'art audible.
-
-    div.accordion-item
-      p#flush-headingFive
-        button.collapsed(type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive")
-          | Peut-on prendre des photos des oeuvres ?
-      div#flush-collapseFive.accordion-collapse.collapse(aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample")
-        div.accordionText
-          | Encouragé ! Prenez votre appareil photo et capturez l'essence de l'invisible. Partagez vos "photos" avec le monde et regardez vos amis s'émerveiller devant votre sens aigu de l'art non-existant. C'est le moyen parfait de montrer que vous avez visité l'endroit le plus exclusif de l'univers de l'art.
-
+.container
+    .accordion#accordionFlushExample
+        .accordion-item
+            h2.accordion-header#flush-headingOne
+                button.accordion-button.collapsed(type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne")
+                    | Comment peut-on apprécier de l'art qu'on ne peut pas voir ?
+            #flush-collapseOne.accordion-collapse.collapse(aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample")
+                .accordionText
+                    | Tout est dans l'œil de l'imaginaire ! Nos œuvres d'art sont si exclusives qu'elles ne se laissent pas voir par des moyens conventionnels. Imaginez une œuvre, et bam ! Elle est là. C'est une expérience unique, un peu comme écouter de la musique avec des gants de boxe, mais beaucoup plus artistique.
+        .accordion-item
+            h2.accordion-header#flush-headingTwo
+                button.accordion-button.collapsed(type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo")
+                    | Quelle est l'oeuvre la plus populaire de la galerie ?
+            #flush-collapseTwo.accordion-collapse.collapse(aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample")
+                .accordionText
+                    | Ah, c'est "Le Grand Rien" de Néant Néantsson. Une pièce si profondément vide qu'elle en devient pleine de significations. Les visiteurs passent des heures à contempler l'endroit où elle est supposée être exposée. Certains disent même avoir vu leur vie défiler devant leurs yeux !
+        .accordion-item
+            h2.accordion-header#flush-headingThree
+                button.accordion-button.collapsed(type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree")
+                    | Comment puis-je soumettre ma propre oeuvre invisible ?
+            #flush-collapseThree.accordion-collapse.collapse(aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample")
+                .accordionText
+                    | Simple comme bonjour ! Il suffit de ne pas nous envoyer votre œuvre. À la place, soumettez une description qui laisse notre imagination s'envoler vers des sommets inexplorés. Si votre description nous fait assez rire, pleurer ou nous plonge dans la confusion, votre "œuvre" gagnera sa place parmi notre illustre collection.
+        .accordion-item
+            h2.accordion-header#flush-headingFour
+                button.accordion-button.collapsed(type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour")
+                    | Est-ce que la galerie propose des audioguides ?
+            #flush-collapseFour.accordion-collapse.collapse(aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample")
+                .accordionText
+                    | Absolument ! Nos audioguides sont aussi invisibles que nos œuvres. En fait, il s'agit juste de vous promener avec des écouteurs sans musique. C'est une expérience profondément personnelle et introspective, garantie sans aucune interruption par de l'art audible.
+        .accordion-item
+            h2.accordion-header#flush-headingFive
+                button.accordion-button.collapsed(type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive")
+                    | Peut-on prendre des photos des oeuvres ?
+            #flush-collapseFive.accordion-collapse.collapse(aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample")
+                .accordionText
+                    | Encouragé ! Prenez votre appareil photo et capturez l'essence de l'invisible. Partagez vos "photos" avec le monde et regardez vos amis s'émerveiller devant votre sens aigu de l'art non-existant. C'est le moyen parfait de montrer que vous avez visité l'endroit le plus exclusif de l'univers de l'art.
 
 include partials/footer.pug
-
+script(src="https://unpkg.com/bootstrap/dist/js/bootstrap.bundle.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js")
+script(src="https://unpkg.com/splitting/dist/splitting.min.js")
+script(src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js")
+script(src="/glimpsGoneV2/public/js/faq.js")
