@@ -1,3 +1,6 @@
+- var isUserLoggedIn = isset($_SESSION['user_id']) && $_SESSION['user_id'] !== null
+- var userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
+
 div.content
   div.container-fluid
     div.row.align-items-center.justify-content-between
@@ -5,8 +8,12 @@ div.content
         img.logo(src="/glimpsGoneV2/public/img/LogoBlanc.png", alt="Logo de Glimps Gone, l'extravagante galerie d'art d'œuvre invisible")
         h1.titre.ml-3 GLIMPS GONE
       div.col-auto.d-flex.align-items-center
-        button.custom-bouton1.mr-2 Se connecter
-        button.custom-bouton2.ml-2 S'enregistrer
+        if isUserLoggedIn
+          a.custom-bouton1.mr-2(href="/glimpsGoneV2/profil") Mon profil
+          a.custom-bouton2.ml-2(href="/glimpsGoneV2/deconnexion") Deconnexion
+        else
+          a.custom-bouton1.mr-2(href="/glimpsGoneV2/connexion") Se connecter
+          a.custom-bouton2.ml-2(href="/glimpsGoneV2/enregistrer") S'enregistrer
     div
       h2.slogan L’extravagante Galerie d'Art des Œuvres Invisibles !
     div.nav-container

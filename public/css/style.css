@@ -97,13 +97,15 @@ nav li a.active {
     -webkit-text-fill-color: transparent;
 }
 .custom-bouton1 {
-background-image: linear-gradient(to right, #00f7ff, #09fc6e);
+    background-image: linear-gradient(to right, #00f7ff, #09fc6e);
     color: #000000;
     border: none;
     border-radius: 10px;
     padding: 10px 20px;
     font-family: 'Lato light', 'arial';
     margin-right: 20px;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .custom-bouton2 {
@@ -113,15 +115,15 @@ background-image: linear-gradient(to right, #00f7ff, #09fc6e);
     border-radius: 10px;
     font-family: 'Lato light', 'arial';
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-}
-button {
-position: relative;
-overflow: hidden;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
 }
 
-  button span {
-      display: inline-block;
-  }
+.custom-bouton1 span,
+.custom-bouton2 span {
+    display: inline-block;
+}
 
 .custom-bouton1:hover,
 .custom-bouton2:hover {

@@ -3,21 +3,29 @@ include partials/menu.pug
 
 div.titre3Galerie.d-flex.my-4
     h1.texteFocus1
-        | Ton espace perso
+        | Salut #{user.prenom} voici ton profil !
     br
 
 div.container
-    h1.mt-3 Bonjour #{user.prenom}
-    pre#userId.user-id user : #{user.id}
+    // Affichage de la photo de profil depuis le dossier uploads
+    img(src=`/uploads/${user.photo}`, alt="Ma photo de profil", style="width: 150px; height: 150px; border-radius: 50%;")
+    
+    // Informations de profil
     p.label-custom Mon email:
     p.info-custom #{user.email}
     p.label-custom Mon téléphone:
     p.info-custom #{user.telephone}
     p.label-custom Ma bio:
     p.info-custom #{user.bio}
-    p.label-custom Ma photo de profil:
-    p.info-custom #{user.photo}
 
-    a.btn.btn-danger(href="../controllers/logout.php") Déconnexion
+    // Bouton de déconnexion
+    a.btn.btn-danger(href="/glimpsGoneV2/deconnexion") Déconnexion
 
 include partials/footer.pug
+
+// Chargement des scripts
+script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js")
+script(src="https://unpkg.com/splitting/dist/splitting.min.js")
+script(src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js")
+script(src="/glimpsGoneV2/public/js/script.js")

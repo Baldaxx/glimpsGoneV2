@@ -48,14 +48,16 @@ class EnregistrerController extends AbstractController
         // Déplacer le fichier uploadé
         $file->moveTo(__DIR__ . '/../../public' . $photo);
 
-        // Enregistrer l'utilisateur dans la base de données
-        try {
-            $this->userRepository->createUser($prenom, $nom, $email, $password, $telephone, $bio, $photo);
-        } catch (\Exception $e) {
-            $errorMessage = $e->getMessage();
-            $html = $this->templateEngine->render('enregistrer.pug', ['error' => $errorMessage]);
-            return new Response(200, [], $html);
+        // Vérifier si l'email existe déjà
+        if ($this->userRepository->getUserByEmail($email)) {
+            $html = $this->templateEngine->render('enregistrer.pug', [
+                'error' => 'Email already in use'
+            ]);
+            return new Response(400, [], $html);
         }
+
+        // Enregistrer l'utilisateur dans la base de données
+        $this->userRepository->createUser($prenom, $nom, $email, $password, $telephone, $bio, $photo);
 
         // Rediriger après l'enregistrement
         return new Response(302, ['Location' => '/glimpsGoneV2/connexion']);

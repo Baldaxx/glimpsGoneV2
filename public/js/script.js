@@ -36,9 +36,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Sélectionne uniquement les boutons avec les classes custom-bouton1 et custom-bouton2
+  // Sélectionne uniquement les éléments <a> avec les classes custom-bouton1 et custom-bouton2
   const buttons = document.querySelectorAll(
-    "button.custom-bouton1, button.custom-bouton2"
+    "a.custom-bouton1, a.custom-bouton2"
   );
 
   buttons.forEach((item) => {
@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
 
 
 // Lenis smooth scrolling

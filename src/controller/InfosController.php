@@ -2,23 +2,26 @@
 
 namespace GlimpsGoneV2\controller;
 
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 use GlimpsGoneV2\core\AbstractController;
 use GlimpsGoneV2\core\TemplateEngine;
+use Psr\Http\Message\ResponseInterface;
+use GuzzleHttp\Psr7\Response;
 
 class InfosController extends AbstractController
 {
-    private TemplateEngine $templateEngine;
-
-    public function __construct(ServerRequestInterface $request, array $pathParams)
+    public function execute(): ResponseInterface
     {
-        parent::__construct($request, $pathParams);
-        $this->templateEngine = new TemplateEngine();
-    }
+        $templateEngine = new TemplateEngine();
 
-    function execute(): ResponseInterface
-    {
-        return $this->templateEngine->render('infos.pug');
+        $isUserLoggedIn = isset($_SESSION['user_id']) && $_SESSION['user_id'] !== null;
+        $userId = $_SESSION['user_id'] ?? null;
+
+        $html = $templateEngine->render('infos.pug', [
+            'title' => 'Infos',
+            'isUserLoggedIn' => $isUserLoggedIn,
+            'userId' => $userId
+        ]);
+
+        return new Response(200, [], $html);
     }
 }
