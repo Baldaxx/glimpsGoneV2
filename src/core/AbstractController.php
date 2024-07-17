@@ -4,16 +4,18 @@
 
 namespace GlimpsGoneV2\core;
 
-use GuzzleHttp\Psr7\Response;
+use Throwable;
 use Phug\Renderer;
 use Phug\RendererException;
+use GlimpsGoneV2\model\User;
+use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
+use GlimpsGoneV2\repository\UserRepository;
 use Psr\Http\Message\ServerRequestInterface;
-use Throwable;
-use GlimpsGoneV2\model\Artiste;
 
 abstract class AbstractController
 {
+    private UserRepository $userRepository;
 
     protected ServerRequestInterface $request;
 
@@ -23,18 +25,32 @@ abstract class AbstractController
 
     public function __construct(ServerRequestInterface $request, array $pathParams)
     {
+        $this->userRepository = new UserRepository(App::getAppInstance()->getPDO());
         $this->request = $request;
         $this->pathParams = $pathParams;
     }
 
-    protected function getCurrentUser(): Artiste|null
+    protected function getCurrentUser(): User|null
     {
+        $userId = $_SESSION['user_id'] ?? null;
+        if ($userId === null) return null;
+        return $this->userRepository->getUserById($userId);
     }
 
-    protected function phugResponse(string $templateName, array $params): ResponseInterface
+    protected function phugResponse(string $templateName, array $params = []): ResponseInterface
     {
         $templateFile = __DIR__ . "/../view/" . $templateName . ".pug";
         $response = new Response();
+
+        $user = $this->getCurrentUser();
+        if ($user === null) {
+            $params['userId'] = null;
+            $params['isUserLoggedIn'] = false;
+        } else {
+            $params['userId'] = $user->getId();
+            $params['isUserLoggedIn'] = true;
+        }
+
 
         try {
             $output = $this->getPhugRenderer()->renderFile($templateFile, $params);
@@ -57,6 +73,10 @@ abstract class AbstractController
             ->withHeader("Content-Type", "application/json");
     }
 
+    protected function redirectionResponse(string $direction): ResponseInterface
+    {
+        return new Response(302, ['Location' => $direction]);
+    }
 
     private function getPhugRenderer(): Renderer
     {

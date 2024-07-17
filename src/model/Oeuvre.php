@@ -7,21 +7,17 @@ use DateTime;
 class Oeuvre
 {
     private ?int $id;
-    private string $titre;
-    private string $description;
+    public string $titre;
+    public string $description;
     private DateTime $dateCreation;
-    private int $compteurJaime;
-    private int $compteurJaimePas;
     private Artiste $artiste;
 
-    public function __construct(?int $id, string $titre, string $description, DateTime $dateCreation, int $compteurJaime, int $compteurJaimePas, Artiste $artiste)
+    public function __construct(?int $id, string $titre, string $description, DateTime $dateCreation, Artiste $artiste)
     {
         $this->id = $id;
         $this->titre = $titre;
         $this->description = $description;
         $this->dateCreation = $dateCreation;
-        $this->compteurJaime = $compteurJaime;
-        $this->compteurJaimePas = $compteurJaimePas;
         $this->artiste = $artiste;
     }
 
@@ -45,16 +41,6 @@ class Oeuvre
         return $this->dateCreation;
     }
 
-    public function getCompteurJaime(): int
-    {
-        return $this->compteurJaime;
-    }
-
-    public function getCompteurJaimePas(): int
-    {
-        return $this->compteurJaimePas;
-    }
-
     public function getArtiste(): Artiste
     {
         return $this->artiste;
@@ -66,10 +52,8 @@ class Oeuvre
             'id' => $this->getId(),
             'titre' => $this->getTitre(),
             'description' => $this->getDescription(),
-            'dateCreation' => $this->getDateCreation()->format('Y-m-d'),
-            'compteurJaime' => $this->getCompteurJaime(),
-            'compteurJaimePas' => $this->getCompteurJaimePas(),
-            'artiste_nom' => $this->getArtiste()->getName()
+            'dateCreation' => $this->getDateCreation()->getTimestamp(),
+            'artiste_nom' => $this->getArtiste()->getNom()
         ];
     }
 }

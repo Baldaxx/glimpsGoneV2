@@ -2,11 +2,12 @@
 
 namespace GlimpsGoneV2\controller;
 
-use GlimpsGoneV2\core\AbstractController;
-use GlimpsGoneV2\core\TemplateEngine;
-use GlimpsGoneV2\repository\UserRepository;
+use GlimpsGoneV2\core\App;
 use GuzzleHttp\Psr7\Response;
+use GlimpsGoneV2\core\TemplateEngine;
 use Psr\Http\Message\ResponseInterface;
+use GlimpsGoneV2\core\AbstractController;
+use GlimpsGoneV2\repository\UserRepository;
 
 class ConnexionController extends AbstractController
 {
@@ -17,7 +18,7 @@ class ConnexionController extends AbstractController
     {
         parent::__construct($request, $pathParams);
         $this->templateEngine = new TemplateEngine();
-        $this->userRepository = new UserRepository();
+        $this->userRepository = new UserRepository(App::getAppInstance()->getPDO());
     }
 
     public function execute(): ResponseInterface
@@ -40,8 +41,8 @@ class ConnexionController extends AbstractController
         if ($email && $password) {
             $user = $this->userRepository->getUserByEmail($email);
 
-            if ($user && password_verify($password, $user['password'])) {
-                $_SESSION['user_id'] = $user['id'];
+            if ($user && password_verify($password, $user->getPassword())) {
+                $_SESSION['user_id'] = $user->getId();
                 return new Response(302, ['Location' => '/glimpsGoneV2/profil']);
             }
         }

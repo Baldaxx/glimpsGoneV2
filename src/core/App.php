@@ -2,7 +2,6 @@
 
 namespace GlimpsGoneV2\core;
 
-use GlimpsGoneV2\controller\api\ArtistOeuvreJointApiController;
 use GlimpsGoneV2\core\model\ControllerWithParam;
 use GuzzleHttp\Psr7\ServerRequest;
 use PDO;
@@ -31,14 +30,14 @@ class App
      */
     private array $controllers = [];
 
-// Crée une instance avec la requête HTTP actuelle
+    // Crée une instance avec la requête HTTP actuelle
 
     private function __construct()
     {
         $this->request = ServerRequest::fromGlobals();
     }
 
-// Retourne une instance unique de la classe App, en la créant si nécessaire
+    // Retourne une instance unique de la classe App, en la créant si nécessaire
     public static function getAppInstance(): App
     {
         if (self::$appInstance === null) {
@@ -48,7 +47,7 @@ class App
         return self::$appInstance;
     }
 
-// Renvoie une instance de PDO pour la connexion à la base de données, en la créant si elle n'existe pas déjà
+    // Renvoie une instance de PDO pour la connexion à la base de données, en la créant si elle n'existe pas déjà
     public function getPDO(): PDO
     {
         if (self::$pdoInstance === null) {
@@ -60,7 +59,7 @@ class App
         return self::$pdoInstance;
     }
 
-// Gère la requête en appelant le contrôleur approprié et en envoyant sa réponse
+    // Gère la requête en appelant le contrôleur approprié et en envoyant sa réponse
     public function run(): void
     {
         $controller = $this->getController();
@@ -110,6 +109,7 @@ class App
             $method = $this->getMethodForPath($controllerPath);
             $paramsMatched = [];
             if (preg_match($pattern, $requestedPath, $paramsMatched) > 0 && $method == $requestedMethod) {
+                // preg_match rajoute l'element recherché complet (le pattern) en premier element de $paramsMatched, donc on supprime le premier element de $paramsMatched
                 array_shift($paramsMatched);
 
                 return new ControllerWithParam($controllerClass, $paramsMatched);
@@ -131,7 +131,7 @@ class App
         return "#^$pattern$#";
     }
 
-// Extrait et retourne la méthode HTTP d'une route spécifiée
+    // Extrait et retourne la méthode HTTP d'une route spécifiée
     private function getMethodForPath(string $path): string
     {
         return explode(" ", $path)[0];

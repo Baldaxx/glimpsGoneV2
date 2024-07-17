@@ -27,7 +27,7 @@ class AjouterOeuvreController extends AbstractController
     public function execute(): ResponseInterface
     {
         $requestData = $this->request->getParsedBody();
-        $requiredFields = ['titre', 'description', 'artiste']; 
+        $requiredFields = ['titre', 'description', 'artiste'];
 
         foreach ($requiredFields as $field) {
             if (empty($requestData[$field])) {
@@ -43,13 +43,11 @@ class AjouterOeuvreController extends AbstractController
             $requestData['titre'],
             $requestData['description'],
             $dateCreation,
-            0,
-            0,
             $artiste
         );
 
         if ($this->oeuvreRepository->addOeuvre($oeuvre)) {
-            return $this->jsonResponse(["success" => "Oeuvre ajoutée avec succès"], 200);
+            return $this->redirectionResponse('ajouterMerci');
         } else {
             return $this->jsonResponse(["error" => "Erreur lors de l'enregistrement"], 500);
         }

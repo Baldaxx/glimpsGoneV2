@@ -6,6 +6,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use GlimpsGoneV2\core\AbstractController;
 use GlimpsGoneV2\core\TemplateEngine;
+use GuzzleHttp\Psr7\Response;
 
 class GalerieDownController extends AbstractController
 {
@@ -19,6 +20,15 @@ class GalerieDownController extends AbstractController
 
     public function execute(): ResponseInterface
     {
-        return $this->templateEngine->render('galerieDown.pug');
+        $isUserLoggedIn = isset($_SESSION['user_id']) && $_SESSION['user_id'] !== null;
+        $userId = $_SESSION['user_id'] ?? null;
+
+        $html = $this->templateEngine->render('galerieDown.pug', [
+            'title' => 'Galerie Down',
+            'isUserLoggedIn' => $isUserLoggedIn,
+            'userId' => $userId
+        ]);
+
+        return new Response(200, [], $html);
     }
 }

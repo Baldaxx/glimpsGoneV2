@@ -3,20 +3,20 @@ include partials/menu.pug
 
 div.titre3Galerie.d-flex.my-4
     h1.texteFocus1
-        | Salut #{user.prenom} voici ton profil !
+        | Salut #{$data->getNom()} voici ton profil !
     br
 
 div.container
     // Affichage de la photo de profil depuis le dossier uploads
-    img(src=`/uploads/${user.photo}`, alt="Ma photo de profil", style="width: 150px; height: 150px; border-radius: 50%;")
+    img(src=$data->getPhoto(), alt="Ma photo de profil", style="width: 150px; height: 150px; border-radius: 50%;")
     
     // Informations de profil
     p.label-custom Mon email:
-    p.info-custom #{user.email}
+    p.info-custom #{$data->getEmail()}
     p.label-custom Mon téléphone:
-    p.info-custom #{user.telephone}
+    p.info-custom #{$data->getTelephone()}
     p.label-custom Ma bio:
-    p.info-custom #{user.bio}
+    p.info-custom #{$data->getBio()}
 
     // Bouton de déconnexion
     a.btn.btn-danger(href="/glimpsGoneV2/deconnexion") Déconnexion

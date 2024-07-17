@@ -2,16 +2,17 @@
 
 namespace GlimpsGoneV2\repository;
 
-use GlimpsGoneV2\core\Config;
 use PDO;
+use GlimpsGoneV2\model\User;
+use GlimpsGoneV2\core\Config;
 
 class UserRepository
 {
     private PDO $pdo;
 
-    public function __construct()
+    public function __construct(PDO $pdo)
     {
-        $this->pdo = Config::getPDO();
+        $this->pdo = $pdo;
     }
 
     public function createUser($prenom, $nom, $email, $password, $telephone, $bio, $photo)
@@ -20,17 +21,43 @@ class UserRepository
         $stmt->execute([$prenom, $nom, $email, $password, $telephone, $bio, $photo]);
     }
 
-    public function getUserByEmail($email)
+    public function getUserByEmail(string $email): User|null
     {
         $stmt = $this->pdo->prepare('SELECT * FROM users WHERE email = ?');
         $stmt->execute([$email]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($result === false) {
+            return null;
+        }
+        $user = new User(
+            $result['id'],
+            $result['nom'] ?? '',
+            $result['email'] ?? '',
+            $result['telephone'] ?? '',
+            $result['bio'] ?? '',
+            $result['photo'] ?? '',
+            $result['password']
+        );
+        return $user;
     }
 
-    public function getUserById($id)
+    public function getUserById(int $id): User|null
     {
         $stmt = $this->pdo->prepare('SELECT * FROM users WHERE id = ?');
         $stmt->execute([$id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($result === false) {
+            return null;
+        }
+        $user = new User(
+            $result['id'],
+            $result['nom'] ?? '',
+            $result['email'] ?? '',
+            $result['telephone'] ?? '',
+            $result['bio'] ?? '',
+            $result['photo'] ?? '',
+            $result['password']
+        );
+        return $user;
     }
 }

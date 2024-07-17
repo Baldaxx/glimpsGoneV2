@@ -43,10 +43,10 @@ class EnregistrerController extends AbstractController
         $password = password_hash($data['password'] ?? '', PASSWORD_DEFAULT);
         $telephone = $data['telephone'] ?? '';
         $bio = $data['bio'] ?? '';
-        $photo = '/uploads/' . $file->getClientFilename();
+        $photo = 'public/uploads/' . $file->getClientFilename();
 
         // Déplacer le fichier uploadé
-        $file->moveTo(__DIR__ . '/../../public' . $photo);
+        $file->moveTo(__DIR__ . '/../../' . $photo);
 
         // Vérifier si l'email existe déjà
         if ($this->userRepository->getUserByEmail($email)) {

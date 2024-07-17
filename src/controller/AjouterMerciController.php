@@ -21,9 +21,6 @@ class AjouterMerciController extends AbstractController
     public function execute(): ResponseInterface
     {
         // Rendre le contenu de la page ajouterMerci
-        $html = $this->templateEngine->render('ajouterMerci.pug');
-
-        // Retourner une réponse HTTP avec le contenu HTML
-        return new Response(200, [], $html);
+        return $this->phugResponse('ajouterMerci');
     }
 }
