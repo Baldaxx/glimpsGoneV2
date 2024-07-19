@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Sélectionne uniquement les éléments <a> avec les classes custom-bouton1 et custom-bouton2
   const buttons = document.querySelectorAll(
     "a.custom-bouton1, a.custom-bouton2"
   );
@@ -58,9 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
-
-// Lenis smooth scrolling
 document.addEventListener("DOMContentLoaded", function (event) {
   const lenis = new Lenis({
     duration: 1.2,

@@ -1,23 +1,23 @@
 include partials/head.pug
 include partials/menu.pug
 
-div.titre3Galerie.d-flex.justify-content-end.text-center.my-4
-    h3.titreInfos.m-0
-        | Le grand
+div.container-fluid
+    h1.texteFocus1
+        | Finito pipo !
+    br
+    p.textInfo
+        | Oupsi, y en a plus ou je ne les vois pas ? Ironique et 
+        | artistiquement paradoxale n'est-ce pas ?
         br
-        span rien
-div
-    p.textProposerMerci
-        | Fin de l'expo, ou début de la réflexion ?
+        | Restez connecté et à l'affût. Leur
+        | absence est un rappel poignant de leur subtile présence.
         br
-        | Comme un final
-        | d'art invisible, un clin d'œil malicieux à l'absurde. Merci d'avoir partagé ce moment de "moins c'est plus" avec nous.
-        br
-        br
-        | L'Extravagante Galerie vous salue !
-div.placeBoutonValiderCentre
-    a.boutonValider(href="galerie.pug") Galerie
-
+        | L'équipe de l'Extravagante Galerie
+        
 include partials/footer.pug
+script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js")
+script(src="https://unpkg.com/splitting/dist/splitting.min.js")
+script(src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js")
 script(src="/glimpsGoneV2/public/js/script.js")
 script(src="/glimpsGoneV2/public/js/galerie.js")
