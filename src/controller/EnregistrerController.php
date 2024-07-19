@@ -7,6 +7,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use GlimpsGoneV2\core\AbstractController;
 use GlimpsGoneV2\core\TemplateEngine;
 use GlimpsGoneV2\repository\UserRepository;
+use GlimpsGoneV2\core\Config;
 use GuzzleHttp\Psr7\Response;
 
 class EnregistrerController extends AbstractController
@@ -18,7 +19,7 @@ class EnregistrerController extends AbstractController
     {
         parent::__construct($request, $pathParams);
         $this->templateEngine = new TemplateEngine();
-        $this->userRepository = new UserRepository();
+        $this->userRepository = new UserRepository(Config::getPDO()); 
     }
 
     public function execute(): ResponseInterface
@@ -45,21 +46,17 @@ class EnregistrerController extends AbstractController
         $bio = $data['bio'] ?? '';
         $photo = 'public/uploads/' . $file->getClientFilename();
 
-        // Déplacer le fichier uploadé
         $file->moveTo(__DIR__ . '/../../' . $photo);
 
-        // Vérifier si l'email existe déjà
         if ($this->userRepository->getUserByEmail($email)) {
             $html = $this->templateEngine->render('enregistrer.pug', [
-                'error' => 'Email already in use'
+                'error' => 'Email déjà utilisé'
             ]);
             return new Response(400, [], $html);
         }
 
-        // Enregistrer l'utilisateur dans la base de données
         $this->userRepository->createUser($prenom, $nom, $email, $password, $telephone, $bio, $photo);
 
-        // Rediriger après l'enregistrement
         return new Response(302, ['Location' => '/glimpsGoneV2/connexion']);
     }
 }

@@ -1,7 +1,5 @@
 <?php
 
-// Classe abstraite de base pour tous les contrôleurs dans l'application. Elle fournit des méthodes communes et gère l'initialisation des contrôleurs avec les objets de requête HTTP et les paramètres de chemin. Cette classe inclut également des méthodes pour générer des réponses HTTP standardisées, telles que des réponses JSON et des réponses basées sur des templates Phug, facilitant le rendu des vues et la gestion des erreurs.
-
 namespace GlimpsGoneV2\core;
 
 use Throwable;

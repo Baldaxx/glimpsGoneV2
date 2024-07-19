@@ -7,8 +7,6 @@ if (session_status() === PHP_SESSION_NONE) {
 require __DIR__ . '/vendor/autoload.php';
 
 use GlimpsGoneV2\core\App;
-use GlimpsGoneV2\core\TemplateEngine;
-
 
 $app = App::getAppInstance();
 $app->run();

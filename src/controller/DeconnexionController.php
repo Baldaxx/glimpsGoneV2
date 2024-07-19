@@ -20,10 +20,10 @@ class DeconnexionController extends AbstractController
             session_start();
         }
 
-        // Détruire toutes les variables de session.
+        // Destruction de toutes les variables de session.
         $_SESSION = [];
 
-        // Si vous voulez détruire complètement la session, effacez également le cookie de session.
+        // Destruction du cookie de session.
         if (ini_get("session.use_cookies")) {
             $params = session_get_cookie_params();
             setcookie(
@@ -37,10 +37,8 @@ class DeconnexionController extends AbstractController
             );
         }
 
-        // Enfin, détruisez la session.
         session_destroy();
 
-        // Rediriger vers la page de connexion ou d'accueil
         return new Response(302, ['Location' => '/glimpsGoneV2/']);
     }
 }

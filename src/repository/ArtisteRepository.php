@@ -9,11 +9,6 @@ use GlimpsGoneV2\core\App;
 class ArtisteRepository
 {
     private PDO $pdo;
-
-    /**
-     * Constructeur de la classe.
-     * Initialise la connexion PDO à partir de l'instance de l'application.
-     */
     public function __construct()
     {
         $this->pdo = App::getAppInstance()->getPDO();

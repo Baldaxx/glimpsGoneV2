@@ -9,10 +9,12 @@ div.container-fluid
           | Oublie tout ce que tu pensais savoir sur l'art !
         br
         div.d-flex.justify-content-start.mt-4
-              button.custom-bouton1 
-                span Ajouter une oeuvre !
-              button.custom-bouton2.ml-2 
-                span Contactez-nous
+          a.custom-bouton1.mr-2(href="/glimpsGoneV2/enregistrer") Je veux en être !
+          a.custom-bouton2.ml-2(href="/glimpsGoneV2/infos") Contactez-nous !
+          div.containerChevron
+            div.chevron
+            div.chevron
+            div.chevron
         br
       p.texteAnimation.box
         | Bienvenue chez Glimps Gone, la galerie où l'art est tellement avant-gardiste que votre petit esprit va enfin servir à quelque chose !
@@ -22,8 +24,6 @@ div.container-fluid
         | Pas besoin de lunettes spéciales ni de charlatans pour apprécier notre exposition. Votre propre cerveau est la toile, votre imagination le pinceau.
         br 
         | Alors, prêts à plonger dans l'univers de l'art invisible ? À créer l'inimaginable et à rire de l'absurde ? Rejoignez notre fête de l'imagination et laissez votre esprit s'envoler (enfin, si vous en avez un) !
-
-
 
 include partials/footer.pug
 script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js")

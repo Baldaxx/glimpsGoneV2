@@ -67,7 +67,7 @@ class App
             $response = $controller->instantiate($this->request)->execute();
             $this->sendResponse($response);
         } else {
-            $this->fatalError("cette page n'existe pas frérot !!!");
+            $this->fatalError("cette page n'existe pas déso !!!");
         }
     }
 
