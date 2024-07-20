@@ -1,1 +1,0 @@
-a:3:{i:0;s:53:"C:\wamp64\www\glimpsGoneV2\src\view\partials\head.pug";i:1;s:53:"C:\wamp64\www\glimpsGoneV2\src\view\partials\menu.pug";i:2;s:55:"C:\wamp64\www\glimpsGoneV2\src\view\partials\footer.pug";}
