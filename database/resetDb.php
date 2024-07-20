@@ -2,8 +2,7 @@
 
 require __DIR__ . '/config/config.php';
 
-$dsn = "mysql:dbname=glimpsgone;host=localhost;port=3306";
-$pdo = new PDO($dsn, 'root', 'Mamandu13007.', [
+$PDO = new PDO("mysql:dbname={DB['name']};host={DB['host']}", DB['user'], DB['password'], [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
 ]);
 

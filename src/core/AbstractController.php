@@ -49,14 +49,12 @@ abstract class AbstractController
             $params['isUserLoggedIn'] = true;
         }
 
-
         try {
             $output = $this->getPhugRenderer()->renderFile($templateFile, $params);
             $response->getBody()->write($output);
         } catch (Throwable $e) {
             App::getAppInstance()->fatalError("Failed to render the view (" . $e->getMessage() . ")");
         }
-
         return $response;
     }
 
@@ -75,7 +73,6 @@ abstract class AbstractController
     {
         return new Response(302, ['Location' => $direction]);
     }
-
     private function getPhugRenderer(): Renderer
     {
         try {

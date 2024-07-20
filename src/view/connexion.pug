@@ -6,6 +6,10 @@ div.titre3Galerie.d-flex.my-4
         | À croire que revenir ici est plus attrayant que de répondre aux textos de ton ex !
     br
 
+if $error
+    div.error-message
+        p #{$error}
+
 div
   p.textInfo
     | Connecte-toi ma beauté !

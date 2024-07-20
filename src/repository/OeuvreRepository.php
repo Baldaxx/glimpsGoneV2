@@ -26,7 +26,6 @@ class OeuvreRepository
     {
         $stmt = $this->pdo->query('SELECT o.*, a.* FROM oeuvre o JOIN artiste a ON o.artiste_id = a.id');
         $oeuvres = [];
-
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             error_log('Row data: ' . print_r($row, true));
 
@@ -46,7 +45,6 @@ class OeuvreRepository
                 $artiste
             );
         }
-
         return $oeuvres;
     }
 
@@ -65,7 +63,7 @@ class OeuvreRepository
             $result['email'] ?? '',
             $result['telephone'] ?? ''
         );
-
+        
         $dateCreation = isset($row['date_de_creation']) ? $row['date_de_creation'] : '1970-01-01';
         $oeuvre = new Oeuvre(
             $result['id'],
@@ -76,7 +74,6 @@ class OeuvreRepository
             $result['compteur_jaime_pas'] ?? 0,
             $artiste
         );
-
         return $oeuvre;
     }
 }

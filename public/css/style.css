@@ -80,6 +80,10 @@ nav li a.active {
     color: #09fc6e;
 }
 
+.error-message {
+    color: #ffffff;
+}
+
 .textIndex {
     color: white;
     font-family: 'Lato light', 'arial';
@@ -96,6 +100,7 @@ nav li a.active {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
 .custom-bouton1 {
     background-image: linear-gradient(to right, #00f7ff, #09fc6e);
     color: #000000;
@@ -244,12 +249,12 @@ nav li a.active {
 
 .titreGalerie {
     font-size: 4rem;
-        font-family: 'TheNextFont', 'arial';
-        line-height: 0.80;
-        margin-top: 50px;
-        background-image: linear-gradient(to right, #00f7ff, #09fc6e);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+    font-family: 'TheNextFont', 'arial';
+    line-height: 0.80;
+    margin-top: 50px;
+    background-image: linear-gradient(to right, #00f7ff, #09fc6e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 
@@ -430,9 +435,10 @@ footer {
     flex: 1;
 }
 
-.titreEnregistrer, .h1Enregistrer {
-    color: #ffffff!important;
-        font-family: 'Lato light', 'arial';
+.titreEnregistrer,
+.h1Enregistrer {
+    color: #ffffff !important;
+    font-family: 'Lato light', 'arial';
 }
 
 @keyframes glitch {
