@@ -15,6 +15,7 @@ class App
     private static PDO|null $pdoInstance = null;
     private array $controllers = [];
 
+    // Cette fonction __construct() est privée et initialise une nouvelle requête HTTP en utilisant les données du serveur.
     private function __construct()
     {
         $this->request = ServerRequest::fromGlobals();
